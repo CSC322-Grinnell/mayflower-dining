@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  portionSize?: MyString
+  mechSoft: MyString
+  pureed: MyString
+  diet: MyString
+  hcPrep: MyString
+  hcPrepLeftover: MyString
+  bbPrep: MyString
+  bbPrpeLeftover: MyString
+  buckleyPrep: MyString
+  buckleyPrepLeftover: MyString
+
+two:
+  name: MyString
+  portionSize?: MyString
+  mechSoft: MyString
+  pureed: MyString
+  diet: MyString
+  hcPrep: MyString
+  hcPrepLeftover: MyString
+  bbPrep: MyString
+  bbPrpeLeftover: MyString
+  buckleyPrep: MyString
+  buckleyPrepLeftover: MyString
