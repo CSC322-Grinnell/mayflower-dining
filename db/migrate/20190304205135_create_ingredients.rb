@@ -9,7 +9,7 @@ class CreateIngredients < ActiveRecord::Migration[5.2]
       t.string :hcPrep
       t.string :hcPrepLeftover
       t.string :bbPrep
-      t.string :bbPrpeLeftover
+      t.string :bbPrepLeftover
       t.string :buckleyPrep
       t.string :buckleyPrepLeftover
 

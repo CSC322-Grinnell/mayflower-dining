@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_205135) do
+ActiveRecord::Schema.define(version: 2019_03_04_224726) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_205135) do
   create_table "dishes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "ingredient_id"
+    t.index ["ingredient_id"], name: "index_dishes_on_ingredient_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -37,12 +39,12 @@ ActiveRecord::Schema.define(version: 2019_03_04_205135) do
     t.string "mechSoft"
     t.string "pureed"
     t.string "diet"
-    t.string "hcPrep"
-    t.string "hcPrepLeftover"
-    t.string "bbPrep"
-    t.string "bbPrpeLeftover"
-    t.string "buckleyPrep"
-    t.string "buckleyPrepLeftover"
+    t.integer "hcPrep"
+    t.integer "hcPrepLeftover"
+    t.integer "bbPrep"
+    t.integer "bbPrepLeftover"
+    t.integer "buckleyPrep"
+    t.integer "buckleyPrepLeftover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,6 +54,8 @@ ActiveRecord::Schema.define(version: 2019_03_04_205135) do
     t.string "typeOfMeal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dish_id"
+    t.index ["dish_id"], name: "index_menus_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|
