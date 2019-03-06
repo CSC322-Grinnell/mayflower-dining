@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2019_03_04_224726) do
   end
 
   create_table "dishes", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ingredient_id"
@@ -35,23 +36,23 @@ ActiveRecord::Schema.define(version: 2019_03_04_224726) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.string "portionSize?"
-    t.string "mechSoft"
+    t.string "portion_size"
+    t.string "mech_soft"
     t.string "pureed"
     t.string "diet"
-    t.integer "hcPrep"
-    t.integer "hcPrepLeftover"
-    t.integer "bbPrep"
-    t.integer "bbPrepLeftover"
-    t.integer "buckleyPrep"
-    t.integer "buckleyPrepLeftover"
+    t.integer "hc_prep"
+    t.integer "hc_prep_leftover"
+    t.integer "bb_prep"
+    t.integer "bb_prep_leftover"
+    t.integer "buckley_prep"
+    t.integer "buckley_prep_leftover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "menus", force: :cascade do |t|
-    t.date "day"
-    t.string "typeOfMeal"
+    t.integer "day"
+    t.string "type_of_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "dish_id"
