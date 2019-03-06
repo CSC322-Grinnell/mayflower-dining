@@ -13,3 +13,4 @@ class CreateRelationships < ActiveRecord::Migration[5.2]
     change_column :ingredients, :buckleyPrepLeftover, :integer
   end
 end
+comm
