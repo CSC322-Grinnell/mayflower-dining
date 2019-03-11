@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_210512) do
+ActiveRecord::Schema.define(version: 2019_03_06_211357) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -31,7 +31,9 @@ ActiveRecord::Schema.define(version: 2019_03_06_210512) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "ingredient_id"
+    t.integer "menu_id"
     t.index ["ingredient_id"], name: "index_dishes_on_ingredient_id"
+    t.index ["menu_id"], name: "index_dishes_on_menu_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -48,6 +50,8 @@ ActiveRecord::Schema.define(version: 2019_03_06_210512) do
     t.integer "buckley_prep_leftover"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dish_id"
+    t.index ["dish_id"], name: "index_ingredients_on_dish_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -60,8 +64,12 @@ ActiveRecord::Schema.define(version: 2019_03_06_210512) do
   end
 
   create_table "temporary_menus", force: :cascade do |t|
+    t.date "date"
+    t.string "type_of_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "dish_id"
+    t.index ["dish_id"], name: "index_temporary_menus_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|

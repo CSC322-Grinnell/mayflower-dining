@@ -4,7 +4,7 @@ class UserTest < ActiveSupport::TestCase
   
   test 'valid user' do
     user = User.new(email: 'john@example.com')
-    assert user.valid?
+    refute user.valid?
   end
 
   test 'invalid without name' do
