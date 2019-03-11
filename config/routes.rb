@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/menu'
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users
