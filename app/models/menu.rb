@@ -4,7 +4,7 @@ class Menu < ApplicationRecord
     
     
     # Purpose:
-    #   Adds dishes to the appropriate day in the cylce (in Menu database)
+    #   Adds dishes to the appropriate day in the cycle (in Menu database)
     #   If specified day does not exist creates a new day, 
     #       else adds new dishes to the Menu record with the given day
     # Params: 
@@ -18,7 +18,7 @@ class Menu < ApplicationRecord
             menu = self.where(day = day_in_cycle.to_s)[0]
         end
             
-        for dish in dishes 
+        dishes.each do |dish|
             menu.dishes.append(dish)
             dish.menu = menu 
         end

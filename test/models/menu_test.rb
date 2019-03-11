@@ -80,6 +80,10 @@ class MenuTest < ActiveSupport::TestCase
         
     end
     
+    #add_to_cycle(day_in_cycle, dish_id,dish_type)
+    
+    #copy_to_temp_menu(day_id,date)
+    
     #remove_dish(dish_id,date)
     
     #remove_from_cycle(dish_id,day_id)

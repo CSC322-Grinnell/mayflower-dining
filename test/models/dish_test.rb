@@ -22,6 +22,21 @@ class DishTest < ActiveSupport::TestCase
         assert_equal(1,menu.dishes.length) 
     end
     
+    test 'add dish (not as child of Menu)' do
+        dish = Dish.new
+        assert dish.valid?
+    end
+    
+    test 'add_ingredients ' do
+        dish = Dish.new
+        ing1 = Ingredient.new
+        ing2 = Ingredient.new
+        ing3 = Ingredient.new
+        ing4 = Ingredient.new
+        dish.add_ingredients([ing1, ing2, ing3, ing4])
+        assert_equal([ing1, ing2, ing3, ing4],dish.ingredients)
+    end 
+    
     
     
     
