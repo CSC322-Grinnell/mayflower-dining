@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'static_pages/add_item'
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users
