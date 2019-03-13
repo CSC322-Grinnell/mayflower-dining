@@ -2,7 +2,7 @@
 <h2>Use this form to add a new dish to the database. </h2>
 <p>Don't try to find me.</p>
 
-<form accept-charset="UTF-8" action="/dish/add_to_cycle" method="post">
+<form accept-charset="UTF-8" action="/dish/add_to_cycle" method="post" class="new_dish">
      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <!-- Dish name input -->
     <div class="form-group row">
@@ -25,9 +25,6 @@
         </select>
     </div>
     <button type="submit" class="btn btn-default">Submit</button>
-</form>
-
-<form class="ingredient_list">
 </form>
 
     <!-- Add ingredient button -->
