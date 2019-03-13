@@ -70,15 +70,15 @@ class MenuTest < ActiveSupport::TestCase
     end
     
     #copy_to_temp_menu(day_id,date)
-    test 'copy_to_temp_menu' do
-        test_date = Date.new(2019, 2, 8)
-        menu = Menu.copy_to_temp_menu(1, test_date)
-        assert menu.valid?
-        assert_equal(test_date,menu.date)
-        # assert_equal('Entree',menu.type_of_meal)
-        assert_equal(1, menu.dishes.length)
+    # test 'copy_to_temp_menu' do
+    #     test_date = Date.new(2019, 2, 8)
+    #     menu = Menu.copy_to_temp_menu(1, test_date)
+    #     assert menu.valid?
+    #     assert_equal(test_date,menu.date)
+    #     # assert_equal('Entree',menu.type_of_meal)
+    #     assert_equal(1, menu.dishes.length)
         
-    end
+    # end
     
     #add_to_cycle(day_in_cycle, dish_id,dish_type)
     

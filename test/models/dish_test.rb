@@ -27,13 +27,13 @@ class DishTest < ActiveSupport::TestCase
         assert dish.valid?
     end
     
-    test 'add_ingredients ' do
+    test 'add_ingredients_by_id ' do
         dish = Dish.new
         ing1 = Ingredient.new
         ing2 = Ingredient.new
         ing3 = Ingredient.new
         ing4 = Ingredient.new
-        dish.add_ingredients([ing1, ing2, ing3, ing4])
+        Dish.add_ingredients_by_id(dish,[ing1, ing2, ing3, ing4])
         assert_equal([ing1, ing2, ing3, ing4],dish.ingredients)
     end 
     

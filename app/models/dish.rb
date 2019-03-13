@@ -4,9 +4,11 @@ class Dish < ApplicationRecord
     belongs_to :temporary_menu, optional: true
     
     
-    def self.add_ingredients(ingredients)
+    def self.add_ingredients_by_id(dish,ingredients)
         for ingredient in ingredients
-            self.ingredients.append(ingredient)
+            dish.ingredients.append(ingredient)
+            ingredient.dish = dish 
         end 
     end
+        
 end

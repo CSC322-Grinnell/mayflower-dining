@@ -2,27 +2,29 @@
 <h2>Use this form to add a new dish to the database. </h2>
 <p>Don't try to find me.</p>
 
-<form>
+<form accept-charset="UTF-8" action="/dish/add_to_cycle" method="post">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
     <!-- Dish name input -->
     <div class="form-group row">
-        <label for="dish_name" class="col-sm-2 col-form-label"> Dish Name </label>
-        <input type="dish_name_string" class="col-sm-5 form-control" id="dish_name" placeholder="Name of the dish">  </input>
+        <label for="dish_name" class="col-sm-2 col-form-label" > Dish Name </label>
+        <input type="dish_name_string" class="col-sm-5 form-control" id="dish_name" name="dish_name" placeholder="Name of the dish">  </input>
     </div>
         
     <!-- Date of menu input -->
     <div class="form-group row">
-        <label for="dish_name" class="col-sm-2 col-form-label"> Date </label>
-        <input type="dish_name_string" class="col-sm-5 form-control" id="dish_name" placeholder="Date of the dish">  </input>
+        <label for="dish_date" class="col-sm-2 col-form-label"> Date </label>
+        <input type="dish_date_string" class="col-sm-5 form-control" id="dish_date" name="dish_date" placeholder="Date of the dish">  </input>
     </div>
     
     <!-- Select menu -->
     <div class="form-group row">
         <label for="menu_select" class="col-sm-2 col-form-label"> Menu </label>
-        <select class="col-sm-5 form-control" id="menu_select" placeholder="--Menu--">
+        <select class="col-sm-5 form-control" id="menu_select" name="menu_select" placeholder="--Menu--">
             <option> Main Menu </option>
             <option> Bistro Menu </option>
         </select>
     </div>
+    <button type="submit" class="btn btn-default">Submit</button>
 </form>
 
 <form class="ingredient_list">
@@ -34,4 +36,4 @@
     <p>╮(╯▽╰)╭</p>
     <p> When you feel you are ready, save this dish and get ready for serving. </p>
     <!-- Save Button -->
-    <button> Save </button>
+    <button class="save_ingredient"> Save </button>
