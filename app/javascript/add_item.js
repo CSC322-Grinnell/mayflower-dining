@@ -10,20 +10,18 @@ $(document).ready(function() {
         console.log("clicked add_ingredient_button");
         e.preventDefault();
         
-        `gggg ${count}`
-        
+        //creating the new ingredient
         var one_ingredient = `<div class="form-group row" id="new_ing_${count}">`+
         '<input type="text" class="col-sm-2 form-control" id="ingredient_name" placeholder="Ingredient"> </input>'+
         '<input type="text" class="col-sm-2 form-control" id="ingredient_amount" placeholder="Amount"> </input>'+
         `<button class="remove-me" item=${count}>Remove</button></div>`;
         $(var_wrapper).append(one_ingredient);
         
+        //Delete button for each ingredient
         $('.remove-me').click(function(e) {
             e.preventDefault();
-           
             let theThingToDelete = $(this).attr('item');
             console.log(theThingToDelete);
-            //$(this).remove();
             $(`#new_ing_${theThingToDelete}`).remove();
         });
     });
