@@ -12,10 +12,10 @@ class Menu < ApplicationRecord
     #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
     #   dishes: an array of dishes to be served that day
     def self.add_dishes_to_cycle(day_in_cycle, dishes)
-        if self.where(day = day_in_cycle.to_s).length == 0
+        if self.where(:day => day_in_cycle.to_s).empty?
             menu = self.create(day: day_in_cycle)
         else  
-            menu = self.where(day = day_in_cycle.to_s)[0]
+            menu = self.where(:day => day_in_cycle.to_s).first
         end
             
         dishes.each do |dish|

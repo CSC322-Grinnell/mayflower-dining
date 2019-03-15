@@ -1,5 +1,6 @@
 $(document).ready(function() {
     var var_wrapper = $(".new_dish"); // fields wrapper
+    var insert_before_this = $(".insert_before_this"); // fields wrapper
     var add_ingredient_button = $(".add_ingredient"); //add_ingredient button
     var save_ingredient_button = $(".save_ingredient"); //save_ingredient button
     
@@ -11,11 +12,12 @@ $(document).ready(function() {
         e.preventDefault();
         
         //creating the new ingredient
-        var one_ingredient = `<div class="form-group row" id="new_ing_${count}">`+
-        '<input type="text" class="col-sm-2 form-control" id="ingredient_name" placeholder="Ingredient"> </input>'+
-        '<input type="text" class="col-sm-2 form-control" id="ingredient_amount" placeholder="Amount"> </input>'+
-        `<button class="remove-me" item=${count}>Remove</button></div>`;
-        $(var_wrapper).append(one_ingredient);
+        var one_ingredient = `<div class="form-group row" id="new_ing_${count}" ">`+
+        `<input type="text" class="col-sm-2 form-control" id="ingredient_name" name="ingredient[${count}][name]" placeholder="Ingredient"> </input>`+
+        `<input type="text" class="col-sm-2 form-control" id="ingredient_amount"  name="ingredient[${count}][amount]" placeholder="Amount"> </input>`+
+        `<button class="remove-me btn btn-danger" item=${count}>Remove</button></div>`;
+        $( one_ingredient).insertBefore(insert_before_this); 
+        // $(var_wrapper).append(one_ingredient);
         
         //Delete button for each ingredient
         $('.remove-me').click(function(e) {

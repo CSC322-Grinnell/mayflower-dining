@@ -4,8 +4,18 @@ class Dish < ApplicationRecord
     belongs_to :temporary_menu, optional: true
     
     
-    def self.add_ingredients_by_id(dish,ingredients)
-        for ingredient in ingredients
+    def self.add_ingredients(dish,ingredients)
+        if ingredients !=nil
+            for ingredient in ingredients
+                dish.ingredients.append(ingredient)
+                ingredient.dish = dish 
+            end 
+        end 
+    end
+    
+    def self.add_ingredients_with_dictionary(dish,ingredient_dictionaries)
+        ingredient_dictionaries.each do |index,item|
+            ingredient = Ingredient.create(name: item[:name], portion_size: item[:amount] )
             dish.ingredients.append(ingredient)
             ingredient.dish = dish 
         end 
