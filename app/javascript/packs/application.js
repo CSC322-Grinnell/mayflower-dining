@@ -8,5 +8,6 @@
 //
 // For more information, see the webpacker gem: https://github.com/rails/webpacker#readme
 
+import 'validator'
 import 'delete-me'
 import 'add_item'

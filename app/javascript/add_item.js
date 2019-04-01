@@ -6,6 +6,10 @@ $(document).ready(function() {
     
     var count = 0;
     
+    $.validate({
+        lang: 'en'
+    });
+    
     $(add_ingredient_button).click(function(e) {
         count++;
         console.log("clicked add_ingredient_button");
