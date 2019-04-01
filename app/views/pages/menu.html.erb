@@ -1,0 +1,132 @@
+<main role="main" class="container">
+  <head>
+  <style>
+    
+    hr {
+      display: block;
+      margin-top: 0.53em;
+      margin-bottom: 0.53em;
+      margin-left: 10%;
+      margin-right: 10%;
+      border-style: inset;
+      border-width: 1px;
+      color: #000000;
+    }
+    ul {
+        list-style-type:none;
+        padding-left: 0;
+    }
+    
+    h3{
+        text-decoration: underline;
+    }
+    .parent {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .menu {
+      display: inline-block;
+      width: 100%;
+    }
+    
+    * {
+     font-size: 100%;
+     font-family: Roboto;
+    }
+  </style>
+ 
+  
+  </head>
+  
+  <body>
+  <div class="row justify-content-center">
+  </div>
+  <div class="row justify-content-center">
+ 
+    <div class="col-md">
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+      <div class="page-header">
+    
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>Menu</h1>
+            <div class="form-group row">
+              <div class="col-xs-2">
+                <label for="ex1">Choose Date:</label>
+                <input class="form-control" id="datePicker" type="date" >
+              </div>
+            </div>
+            <div class="input-group date">
+          
+              <span class="input-group-addon">
+                  <i class="glyphicon glyphicon-th"></i>
+              </span>
+        </div>
+        
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-2" >
+        <ul>
+          <a href="#" onclick="return false;" id ="todText"><li>See today's menu</li></a>
+          <a href ="#" onclick="return false;" id ="tomText"><li>See tomorrow's menu</li></a>
+          <li></li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-8 text-center" >
+ 
+        
+        <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Menu for Today</h2>
+        <hr>
+        <ul>
+          <h3 class = "datemenu">Entrée</h3>
+          <li>Pork Roast</li>
+          <li>Baked Chicken Breast</li>
+          <li>Pancakes/Sausage</li>
+        </ul>
+        <ul>
+          <h3 class = "datemenu">Potato/Starch</h3>
+          <li>Dressing</li>
+          <li>Mashed Potatoes & Gravey*</li>
+          
+        </ul>
+        <ul>
+          <h3 class = "datemenu">Vegetable</h3>
+          <li>Harvest Beets</li>
+          <li>Peas*</li>
+          <li>Shoestring Potatoes</li>
+          <li>Hash Browns*</li>
+        </ul>
+        <ul>
+          <h3 class = "datemenu">Salad</h3>
+          <li>Fruited Slaw</li>
+          <li>Melon Balls</li>
+          <li>Rosy Applesauce*</li>
+        </ul>
+        <ul>
+          <h3 class = "datemenu">Featured Dessert</h3>
+          <li>Pork Roast</li>
+          <li>Baked Chicken Breast</li>
+          <li>Pancakes/Sausage</li>
+        </ul>
+      </div>
+      
+      <div class="col-lg-2" >
+        <% if user_signed_in? %>
+          <li style = "list-style-type:none; padding-left: 0;">
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+        <a href="../users/sign_in"><button type="button" class="btn btn-primary" style = "background-color: #3A6F8D; text-color: #000000;">Staff Login</button></a>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </body>
+</main>

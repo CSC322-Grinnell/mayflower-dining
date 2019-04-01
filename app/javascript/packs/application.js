@@ -9,4 +9,4 @@
 // For more information, see the webpacker gem: https://github.com/rails/webpacker#readme
 
 import 'delete-me'
-import 'menu.js'
+import 'menu'
