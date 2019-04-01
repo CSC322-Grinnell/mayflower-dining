@@ -11,5 +11,7 @@ class DishController < ApplicationController
             Menu.add_dishes_to_cycle(params[:dish_date], [dish])
         end
         
+        # redirect to main page or show complete page
+        redirect_to root_path
     end
 end
