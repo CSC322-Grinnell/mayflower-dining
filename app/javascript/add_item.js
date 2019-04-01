@@ -6,10 +6,6 @@ $(document).ready(function() {
     
     var count = 0;
     
-    $.validate({
-        lang: 'en'
-    });
-    
     $(add_ingredient_button).click(function(e) {
         count++;
         console.log("clicked add_ingredient_button");
@@ -37,4 +33,9 @@ $(document).ready(function() {
         e.preventDefault();
         $(".ingredient_list").trigger('submit.rails');
     });
+    
+    $.validate({
+        lang: 'en'
+    });
+    
 });
