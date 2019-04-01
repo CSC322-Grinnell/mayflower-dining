@@ -9,21 +9,23 @@
         <label for="dish_name" class="col-sm-2 col-form-label" > Dish Name : </label>
         <input type="dish_name_string" class="col-sm-5 form-control" id="dish_name" name="dish_name" placeholder="Name of the dish">  </input>
     </div>
-        
+    
+    <!-- Select menu -->
+    <div class="form-group row">
+        <label for="menu_select" class="col-sm-2 col-form-label"> Menu : </label>
+        <select class="col-sm-5 form-control" id="menu_select" name="menu_select" placeholder="--Menu--">
+            <option> -- Please select --</option>
+            <option> Main Menu </option>
+            <option> Bistro Menu </option>
+        </select>
+    </div>
+    
     <!-- Date of menu input -->
     <div class="form-group row">
         <label for="dish_date" class="col-sm-2 col-form-label"> Date : </label>
         <input type="dish_date_string" class="col-sm-5 form-control" id="dish_date" name="dish_date" placeholder="Date of the dish">  </input>
     </div>
     
-    <!-- Select menu -->
-    <div class="form-group row">
-        <label for="menu_select" class="col-sm-2 col-form-label"> Menu : </label>
-        <select class="col-sm-5 form-control" id="menu_select" name="menu_select" placeholder="--Menu--">
-            <option> Main Menu </option>
-            <option> Bistro Menu </option>
-        </select>
-    </div>
     <!-- Add ingredient button -->
     <button class="add_ingredient btn"> Add Ingredient </button>
     
