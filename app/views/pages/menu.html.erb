@@ -84,37 +84,43 @@
         
         <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Menu for Today</h2>
         <hr>
+        
         <ul>
-          <h3 class = "datemenu">Entrée</h3>
-          <li>Pork Roast</li>
-          <li>Baked Chicken Breast</li>
-          <li>Pancakes/Sausage</li>
+          <% @dishes.each do |element| %>
+            <li><%= element.name %></li>
+            <% end %>
         </ul>
-        <ul>
-          <h3 class = "datemenu">Potato/Starch</h3>
-          <li>Dressing</li>
-          <li>Mashed Potatoes & Gravey*</li>
+        <!--<ul>-->
+        <!--  <h3 class = "datemenu">Entrée</h3>-->
+        <!--  <li>Pork Roast</li>-->
+        <!--  <li>Baked Chicken Breast</li>-->
+        <!--  <li>Pancakes/Sausage</li>-->
+        <!--</ul>-->
+        <!--<ul>-->
+        <!--  <h3 class = "datemenu">Potato/Starch</h3>-->
+        <!--  <li>Dressing</li>-->
+        <!--  <li>Mashed Potatoes & Gravey*</li>-->
           
-        </ul>
-        <ul>
-          <h3 class = "datemenu">Vegetable</h3>
-          <li>Harvest Beets</li>
-          <li>Peas*</li>
-          <li>Shoestring Potatoes</li>
-          <li>Hash Browns*</li>
-        </ul>
-        <ul>
-          <h3 class = "datemenu">Salad</h3>
-          <li>Fruited Slaw</li>
-          <li>Melon Balls</li>
-          <li>Rosy Applesauce*</li>
-        </ul>
-        <ul>
-          <h3 class = "datemenu">Featured Dessert</h3>
-          <li>Pork Roast</li>
-          <li>Baked Chicken Breast</li>
-          <li>Pancakes/Sausage</li>
-        </ul>
+        <!--</ul>-->
+        <!--<ul>-->
+        <!--  <h3 class = "datemenu">Vegetable</h3>-->
+        <!--  <li>Harvest Beets</li>-->
+        <!--  <li>Peas*</li>-->
+        <!--  <li>Shoestring Potatoes</li>-->
+        <!--  <li>Hash Browns*</li>-->
+        <!--</ul>-->
+        <!--<ul>-->
+        <!--  <h3 class = "datemenu">Salad</h3>-->
+        <!--  <li>Fruited Slaw</li>-->
+        <!--  <li>Melon Balls</li>-->
+        <!--  <li>Rosy Applesauce*</li>-->
+        <!--</ul>-->
+        <!--<ul>-->
+        <!--  <h3 class = "datemenu">Featured Dessert</h3>-->
+        <!--  <li>Pork Roast</li>-->
+        <!--  <li>Baked Chicken Breast</li>-->
+        <!--  <li>Pancakes/Sausage</li>-->
+        <!--</ul>-->
       </div>
       
       <div class="col-lg-2" >
