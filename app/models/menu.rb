@@ -38,5 +38,16 @@ class Menu < ApplicationRecord
     def self.copy_to_temp_menu(day_in_cycle,date)
         true
     end
+    
+    def self.get_dishes_by_id(day_in_cycle)
+        Menu.where(day: day_in_cycle).dishes
+    end
+    
+    def self.get_dishes_by_date(date)
+        start_date = Date.parse("27/3/2019")
+        end_date = Date.parse(date)
+        day_in_cycle = (end_date - start_date) % 70
+        Menu.where(day: day_in_cycle)[0].dishes.select(:name)
+    end
         
 end
