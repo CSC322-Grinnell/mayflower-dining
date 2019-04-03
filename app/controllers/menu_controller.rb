@@ -6,6 +6,7 @@ class MenuController < ApplicationController
     end
     
     def new_date
+        # byebug
         date = params[:date]
         dishes = Menu.get_dishes_by_date(date)
         
