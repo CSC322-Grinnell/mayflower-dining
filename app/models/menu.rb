@@ -36,7 +36,21 @@ class Menu < ApplicationRecord
     #   date: a ruby date of which the dishes should  be stored under in the
     #         temporary menu 
     def self.copy_to_temp_menu(day_in_cycle,date)
-        true
+        if TemporaryMenu.where(:date => date.to_s).empty?
+            temporary_menu = TemporaryMenu.create(date: date)
+        else  
+            temporary_menu = TemporaryMenu.where(:date => date.to_s).first
+        end
+        
+        dishes = self.where(:day => day_in_cycle.to_s).dishes
+            
+        dishes.each do |dish|
+            dish_cpy = dish.dup
+            temporary_menu.dishes.append(dish)
+            dish_cpy.menu = temporary_menu 
+        end
+        
+        menu
     end
     
     def self.get_dishes_by_id(day_in_cycle)
@@ -45,7 +59,9 @@ class Menu < ApplicationRecord
     
     def self.get_dishes_by_date(date)
         start_date = Date.parse("27/3/2019")
-        # end_date = Date.parse(date)
+        
+        # using a begin rescue incase date is formatted incorrectly 
+        #right now just stops processing
         begin
             end_date = Date.parse(date)
         rescue ArgumentError

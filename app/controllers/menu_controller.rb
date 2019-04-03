@@ -11,8 +11,15 @@ class MenuController < ApplicationController
         dishes = Menu.get_dishes_by_date(date)
         
         today = Time.now.strftime("%Y-%m-%d")
+        tommorrow = Time.now + 24*60*60
+        tommorrow = tommorrow.strftime("%Y-%m-%d")
+        
         if  today == date
-            date = "today"
+            date = "Today"
+        elsif tommorrow == date
+            date = "Tomorrow"
+        else
+            date = Date.parse(date).strftime('%A') + ", " + date.to_s
         end
         
         @menu_date = date
