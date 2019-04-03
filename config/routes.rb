@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'static_pages/add_item'
   post 'dish/add_to_cycle'
-  get 'pages/menu'
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
   
