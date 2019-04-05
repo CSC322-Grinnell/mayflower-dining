@@ -26,6 +26,7 @@ class Menu < ApplicationRecord
         menu
     end
     
+    # incomplete 
     # Purpose:
     #   Makes a copy of the dishes in a given day of the cycle from Menu and
     #       stores it under the given date in the temporary menu.
