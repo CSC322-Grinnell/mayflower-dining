@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'prep/prep_page'
   get 'static_pages/add_item'
   post 'dish/add_to_cycle'
   get 'pages/menu'
