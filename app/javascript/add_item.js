@@ -2,7 +2,7 @@ $(document).ready(function() {
     var var_wrapper = $(".new_dish"); // fields wrapper
     var insert_before_this = $(".insert_before_this"); // fields wrapper
     var add_ingredient_button = $(".add_ingredient"); //add_ingredient button
-    var save_ingredient_button = $(".save_ingredient"); //save_ingredient button
+    //var save_ingredient_button = $(".save_ingredient"); //save_ingredient button
     
     var count = 0;
     
@@ -28,14 +28,14 @@ $(document).ready(function() {
         });
     });
     
-    $(save_ingredient_button).click(function(e) {
-        console.log("clicked save_ingredient_button");
-        e.preventDefault();
-        $(".ingredient_list").trigger('submit.rails');
-    });
+    // $(save_ingredient_button).click(function(e) {
+    //     console.log("clicked save_ingredient_button");
+    //     e.preventDefault();
+    //     $(".ingredient_list").trigger('submit.rails');
+    // });
     
-    $.validate({
-        lang: 'en'
-    });
+    // $.validate({
+    //     lang: 'en'
+    // });
     
 });
