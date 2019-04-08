@@ -14,10 +14,12 @@ class Dish < ApplicationRecord
     end
     
     def self.add_ingredients_with_dictionary(dish,ingredient_dictionaries)
-        ingredient_dictionaries.each do |index,item|
-            ingredient = Ingredient.create(name: item[:name], portion_size: item[:amount] )
-            dish.ingredients.append(ingredient)
-            ingredient.dish = dish 
+        if ingredient_dictionaries != nil
+            ingredient_dictionaries.each do |index,item|
+                ingredient = Ingredient.create(name: item[:name], portion_size: item[:amount] )
+                dish.ingredients.append(ingredient)
+                ingredient.dish = dish 
+            end 
         end 
     end
         
