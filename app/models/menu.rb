@@ -45,7 +45,6 @@ class Menu < ApplicationRecord
     
     def self.get_dishes_by_date(date)
         start_date = Date.parse("27/3/2019")
-        # end_date = Date.parse(date)
         begin
             end_date = Date.parse(date)
         rescue ArgumentError
@@ -59,5 +58,14 @@ class Menu < ApplicationRecord
         end
         
     end
+    
+    def self.get_ingredents_by_date(data)
+        dish_array =self.get_dishes_by_date;
+        if dish_array !=nil
+            new_dish_array=dish_array.ingredient.select(:name,:portion_size);
+            name_size_array=new_dish_array.group_by {|i| i[0]}.map{|name, size| [name,size.inject(0){|sum, x| sum + x[1]}]}
+        end 
+        return name_size_array
+    end 
         
 end
