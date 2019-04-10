@@ -63,9 +63,9 @@ class Menu < ApplicationRecord
         dish_array =self.get_dishes_by_date;
         if dish_array !=nil
             new_dish_array=dish_array.ingredient.select(:name,:portion_size);
-            name_size_array=new_dish_array.group_by {|i| i[0]}.map{|name, size| [name,size.inject(0){|sum, x| sum + x[1]}]}
+            sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
         end 
-        return name_size_array
+        return sorted_array
     end 
         
 end
