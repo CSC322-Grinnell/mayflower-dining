@@ -59,7 +59,10 @@ class Menu < ApplicationRecord
         
     end
     
-    def self.get_ingredents_by_date(data)
+    #output an sorted array that contains multiple arrays that have the 
+    #name of the ingredient at index 0 and the amount of the ingredient 
+    #at index 1. The ingredients are from the dishes of the input "data"
+    def self.get_ingredients_by_date(data)
         dish_array =self.get_dishes_by_date;
         if dish_array !=nil
             new_dish_array=dish_array.ingredient.select(:name,:portion_size);
