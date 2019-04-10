@@ -85,7 +85,9 @@ class Menu < ApplicationRecord
         start_date = Date.parse("27/3/2019")
         end_date = Date.parse(date)
         day_in_cycle = (end_date - start_date) % 70
-        Menu.where(day: day_in_cycle)[0].dishes.select(:name)
+        if !Menu.where(day: day_in_cycle).empty?
+            Menu.where(day: day_in_cycle)[0].dishes.select(:name)
+        end
     end
         
 end
