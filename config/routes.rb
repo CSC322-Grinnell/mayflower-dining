@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   get 'pages/add_item'
   post 'dish/add_to_cycle'
+  get 'menu', to: 'menu#menu'
+  get 'menu/:date', to: 'menu#new_date'
+  
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users

@@ -10,4 +10,6 @@
 
 //import 'validator'
 import 'delete-me'
+import 'menu'
+import 'new_date' 
 import 'add_item'
