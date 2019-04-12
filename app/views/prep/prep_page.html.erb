@@ -10,23 +10,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th scope="row">Potates</th>
-      <td>6 oz</td>
-      <td>French Fries</td>
-      <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td><input type="checkbox"></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td><input type="checkbox"></td>
-    </tr>
+    <% @ingriedent_array.each do |ingarr| %>
+      <tr>
+        <td><%= ingarr.name %></td>
+        <td><%= ingarr.portion_size %></td>
+        <td><input type="checkbox"></td>
+      </tr>
+   <% end %>
   </tbody>
 </table>
