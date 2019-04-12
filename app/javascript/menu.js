@@ -1,10 +1,5 @@
 
     
-    function updateHeader(date) {
-      
-      
-    }
-    
     function formatDate(date) {
       console.log("Entereed:");
         var d = new Date(date),
@@ -23,8 +18,6 @@
     function changeDate() {
       var mydate = document.getElementById("datePicker").value;
       
-      document.getElementById("datePicker").innerHTML = formatDate(mydate);
-      
       window.location.href = '../menu/' + mydate;
       
       
@@ -37,16 +30,15 @@
       var tom = new Date();
       tom.setDate(d.getDate()+1);
       
-      document.getElementById("datePicker").value = formatDate(tom);
-      window.location.href = '../menu/' + document.getElementById("datePicker").value;
+      window.location.href = '../menu/' + formatDate(tom);
     }
     
     function changeToToday () {
       
       var d = new Date();
-      document.getElementById("datePicker").value = formatDate(d);
+      //document.getElementById("datePicker").value = formatDate(d);
       
-      window.location.href = '../menu/' + document.getElementById("datePicker").value;
+      window.location.href = '../menu/' + formatDate(d);
     }
     
     
