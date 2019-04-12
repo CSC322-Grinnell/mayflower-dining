@@ -4,7 +4,7 @@
     Click on a day in the table below, the menu for that day will show up.</p>
     <p> </p>
     
-    <!-- table for selecting the day to edit -->
+    <!-- table for selecting the day to edit 
     <table style='width:60%'>
         <tr><th></th><th>Day 1</th><th>Day 2</th><th>Day 3</th><th>Day 4</th><th>Day 5</th><th>Day 6</th><th>Day 7</th></tr>
         <tr><th>Week 1</th><td>W1-D1</td><td>W1-D2</td><td>W1-D3</td><td>W1-D4</td><td>W1-D5</td><td>W1-D6</td><td>W1-D7</td></tr>
@@ -14,7 +14,31 @@
         <tr><th>Week 5</th><td>W5-D1</td><td>W5-D2</td><td>W5-D3</td><td>W5-D4</td><td>W5-D5</td><td>W5-D6</td><td>W5-D7</td></tr>
         <tr><th>Week 6</th><td>W6-D1</td><td>W6-D2</td><td>W6-D3</td><td>W6-D4</td><td>W6-D5</td><td>W6-D6</td><td>W6-D7</td></tr>
         <tr><th>Week 7</th><td>W7-D1</td><td>W7-D2</td><td>W7-D3</td><td>W7-D4</td><td>W7-D5</td><td>W7-D6</td><td>W7-D7</td></tr>
-    </table>
+    </table> -->
+    
+    <!-- Dropdown menu for selecting the day in the cycle -->
+    <div class="form-group row">
+        <label for="dish_date" class="col-sm-2 col-form-label"> Day of Cycle : </label>
+        <select class="col-sm-2 form-control" id="dish_date_week" name="dish_date_week" placeholder="--Week--"> 
+            <option value="0">Week 1</option>
+            <option value="1">Week 2</option>
+            <option value="2">Week 3</option>
+            <option value="3">Week 4</option>
+            <option value="4">Week 5</option>
+            <option value="5">Week 6</option>
+            <option value="6">Week 7</option>
+        </select>
+        <select class="col-sm-2 form-control" id="dish_date_day" name="dish_date_day" placeholder="--Day--"> 
+            <option value="1">Sunday</option>
+            <option value="2">Monday</option>
+            <option value="3">Tuesday</option>
+            <option value="4">Wednesday</option>
+            <option value="5">Thursday</option>
+            <option value="6">Friday</option>
+            <option value="7">Satuday</option>
+            <option value="first">First half</option>
+            <option value="second">Second half</option>
+        </select>
     
 
     
