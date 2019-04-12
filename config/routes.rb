@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   post 'dish/add_to_cycle'
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
-  get 'permanent_edit'
+  get 'permanent_edit', to: 'permanent_edit#permanent_edit'
   
   root to: "pages#home"
   ActiveAdmin.routes(self)
