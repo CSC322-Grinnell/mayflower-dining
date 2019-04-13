@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'prep/prep_page'
   get 'static_pages/add_item'
   post 'dish/add_to_cycle'
   get 'pages/menu'
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
+  get 'prep/prep_page', to: 'prep#prep_page'
   
   root to: "pages#home"
   ActiveAdmin.routes(self)

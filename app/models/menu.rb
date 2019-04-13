@@ -40,7 +40,7 @@ class Menu < ApplicationRecord
     end
     
     def self.get_dishes_by_id(day_in_cycle)
-        Menu.where(day: day_in_cycle).dishes
+        Menu.where(day: day_in_cycle)[0].dishes
     end
     
     def self.get_dishes_by_date(date)
@@ -63,12 +63,22 @@ class Menu < ApplicationRecord
     # output an sorted array that contains multiple arrays that have the 
     # name of the ingredient at index 0 and the amount of the ingredient 
     # at index 1. The ingredients are from the dishes of the input "data"
-    def self.get_ingredients_by_date(data)
-        dish_array =self.get_dishes_by_date;
-        if dish_array !=nil
-            new_dish_array=dish_array.ingredient.select(:name,:portion_size);
+    def self.get_ingredients_by_date(date)
+        # dishes_array is a 3d array 
+        dishs_array =self.get_dishes_by_id(date);
+        if dishs_array !=nil
+            # ingredients_array is a 2d array with each ingredients as an array
+            ingredients_array = dishs_array.flatten(1)
+            # go through each array 
+            ingredients_array.each do |ingredient|
+                # add the array into the new_dish_array 
+                new_dish_array=ingredient.select(:name,:portion_size)
+            end 
             sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
+        else
+            sorted_array = []
         end 
+        
         return sorted_array
     end 
         
