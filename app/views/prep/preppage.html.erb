@@ -10,12 +10,14 @@
     </tr>
   </thead>
   <tbody>
+    <%= puts @ingriedent_array.inspect %>
     <% @ingriedent_array.each do |arr| %>
       <tr>
-        <td><%= arr.name %></td>
-        <td><%= arr.portion_size %></td>
+        <td><%= arr[0] %></td>
+        <td><%= arr[1] %></td>
         <td><input type="checkbox"></td>
       </tr>
    <% end %>
+   
   </tbody>
 </table>
