@@ -26,40 +26,15 @@ class Menu < ApplicationRecord
         menu
     end
     
-    # incomplete 
-    # Purpose:
-    #   Makes a copy of the dishes in a given day of the cycle from Menu and
-    #       stores it under the given date in the temporary menu.
-    #   This is so that the data needed for the temporary change is available 
-    # Params: 
-    #   day_in_cycle:a day between 1 - 49, representin a day in the cycle
-    #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
-    #   date: a ruby date of which the dishes should  be stored under in the
-    #         temporary menu 
-    def self.copy_to_temp_menu(day_in_cycle,date)
-        if TemporaryMenu.where(:date => date.to_s).empty?
-            temporary_menu = TemporaryMenu.create(date: date)
-        else  
-            temporary_menu = TemporaryMenu.where(:date => date.to_s).first
-        end
-        
-        dishes = self.where(:day => day_in_cycle.to_s).dishes
-            
-        dishes.each do |dish|
-            dish_cpy = dish.dup
-            temporary_menu.dishes.append(dish)
-            dish_cpy.menu = temporary_menu 
-        end
-        
-        menu
-    end
+    
+ 
     
     def self.get_dishes_by_id(day_in_cycle)
-        Menu.where(day: day_in_cycle).dishes
+        Menu.where(day: day_in_cycle)[0].dishes
     end
     
     def self.get_dishes_by_date(date)
-        start_date = Date.parse("27/3/2019")
+        start_date = Date.new(2018, 12, 2)
         
         # using a begin rescue incase date is formatted incorrectly 
         #right now just stops processing
@@ -75,6 +50,8 @@ class Menu < ApplicationRecord
             menu.dishes.select(:name)
         end
         
+        menu
+        
     end
     
     def self.get_dishes_by_id(day_in_cycle)
@@ -82,7 +59,7 @@ class Menu < ApplicationRecord
     end
     
     def self.get_dishes_by_date(date)
-        start_date = Date.parse("27/3/2019")
+        start_date = Date.new(2018, 12, 2)
         end_date = Date.parse(date)
         day_in_cycle = (end_date - start_date) % 49
         if !Menu.where(day: day_in_cycle).empty?
