@@ -65,7 +65,8 @@ class Menu < ApplicationRecord
     # at index 1. The ingredients are from the dishes of the input "data"
     def self.get_ingredients_by_date(date)
         # dishes_array is a 3d array 
-        dishs_array =self.get_dishes_by_id(date);
+        new_dish_array=[]
+        dishs_array =self.get_dishes_by_date(date);
         if dishs_array !=nil
             # ingredients_array is a 2d array with each ingredients as an array
             ingredients_array = dishs_array.map { |dish|
@@ -76,7 +77,7 @@ class Menu < ApplicationRecord
             # go through each array 
             ingredients_array.each do |ingredient|
                 # add the array into the new_dish_array 
-                new_dish_array.push(ingredient.select(:name,:portion_size))
+                new_dish_array.push([ingredient.name,ingredient.portion_size])
             end 
             sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
         else
