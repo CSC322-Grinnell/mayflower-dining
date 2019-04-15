@@ -34,7 +34,7 @@ class Menu < ApplicationRecord
     end
     
     def self.get_dishes_by_date(date)
-        start_date = Date.new(2018, 12, 2)
+        start_date = Date.new(2018, 12, 8)
         
         # using a begin rescue incase date is formatted incorrectly 
         #right now just stops processing
@@ -59,12 +59,26 @@ class Menu < ApplicationRecord
     end
     
     def self.get_dishes_by_date(date)
-        start_date = Date.new(2018, 12, 2)
-        end_date = Date.parse(date)
-        day_in_cycle = (end_date - start_date) % 49
-        if !Menu.where(day: day_in_cycle).empty?
-            Menu.where(day: day_in_cycle)[0].dishes.select(:name)
-        end
+        if TemporaryMenu.where(:date => date.to_s).empty?
+            start_date = Date.new(2018, 12, 8)
+            end_date = Date.parse(date)
+            day_in_cycle = (end_date - start_date) % 49
+            if !Menu.where(day: day_in_cycle).empty?
+                Menu.where(day: day_in_cycle)[0].dishes.select(:name)
+            end
+        else  
+            temporary_menu = TemporaryMenu.where(:date => date.to_s)[0]
+            temporary_menu.dishes.select(:name)
+        end 
     end
+    
+    # def self.get_dishes_by_date(date)
+    #     start_date = Date.new(2018, 12, 8)
+    #     end_date = Date.parse(date)
+    #     day_in_cycle = (end_date - start_date) % 49
+    #     if !Menu.where(day: day_in_cycle).empty?
+    #         Menu.where(day: day_in_cycle)[0].dishes.select(:name)
+    #     end
+    # end
         
 end

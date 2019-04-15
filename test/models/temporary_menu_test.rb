@@ -3,7 +3,7 @@ require 'test_helper'
 class TemporaryMenuTest < ActiveSupport::TestCase
   test "add_dishes" do
     test_date = Date.new(2019, 2, 8)
-    start_date = Date.new(2018, 12, 2)
+    start_date = Date.new(2018, 12, 8)
     day_in_cycle = (test_date - start_date) % 49
     menu = Menu.where(day: day_in_cycle)[0]
     dish = Dish.create

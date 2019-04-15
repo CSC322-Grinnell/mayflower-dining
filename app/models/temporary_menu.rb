@@ -2,12 +2,11 @@ class TemporaryMenu < ApplicationRecord
     has_many :dishes
     
     def self.add_dishes(date, dishes)
-        start_date = Date.new(2018, 12, 2)
+        start_date = Date.new(2018, 12, 8)
         day_in_cycle = (date - start_date) % 49
-        self.copy_to_temp_menu(day_in_cycle, date)
         
         if self.where(:date => date).empty?
-            temporary_menu = self.create(date: date)
+            temporary_menu = self.copy_to_temp_menu(day_in_cycle, date)
         else  
             temporary_menu = self.where(:date => date).first
         end
