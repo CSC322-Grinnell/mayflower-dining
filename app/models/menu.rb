@@ -79,6 +79,7 @@ class Menu < ApplicationRecord
                 # add the array into the new_dish_array 
                 new_dish_array.push([ingredient.name,ingredient.portion_size])
             end 
+            #sort the array
             sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
         else
             sorted_array = []

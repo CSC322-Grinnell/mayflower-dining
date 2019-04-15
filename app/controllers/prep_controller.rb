@@ -4,8 +4,7 @@ class PrepController < ApplicationController
      if Menu.get_ingredients_by_date(date) != []
        @ingriedent_array = Menu.get_ingredients_by_date(date)
      else 
-      @ingriedent_array = [{name: "food", portion_size: "number"}]
+      @ingriedent_array = [[name: "food", portion_size: "number"]]
     end
-    puts @ingriedent_array
   end
 end
