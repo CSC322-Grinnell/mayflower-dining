@@ -72,7 +72,7 @@ class Menu < ApplicationRecord
             # go through each array 
             ingredients_array.each do |ingredient|
                 # add the array into the new_dish_array 
-                new_dish_array=ingredient.select(:name,:portion_size)
+                new_dish_array.push(ingredient.select(:name,:portion_size))
             end 
             sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
         else
