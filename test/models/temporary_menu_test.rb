@@ -13,7 +13,7 @@ class TemporaryMenuTest < ActiveSupport::TestCase
     dish5 = Dish.create
     temp_menu = TemporaryMenu.add_dishes(test_date,  [dish,dish2,dish3,dish4,dish5])
     assert temp_menu.valid?
-    assert_equal(menu.dishes.length, (temp_menu.dishes.length + 5))
+    assert_equal((menu.dishes.length+ 5), temp_menu.dishes.length)
   end
   
   test 'copy_to_temp_menu' do

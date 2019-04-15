@@ -37,7 +37,8 @@ class TemporaryMenu < ApplicationRecord
             temporary_menu = self.where(:date => date).first
         end
         
-        dishes =  Menu.where(:day => day_in_cycle.to_s)[0].dishes
+        menu = Menu.where(:day => day_in_cycle)[0]
+        dishes =  menu.dishes
             
         dishes.each do |dish|
             

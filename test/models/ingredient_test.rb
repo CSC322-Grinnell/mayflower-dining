@@ -9,10 +9,9 @@ class IngredientTest < ActiveSupport::TestCase
   
     test 'delete ingredient' do
         ingredient = Ingredient.create(name: 'Potatoes')
-        # loads 2 fixtures as well
-        assert_equal(3,Ingredient.all.length)
+         len = Ingredient.all.length 
         ingredient.destroy
-        assert_equal(2,Ingredient.all.length)
+        assert_equal((len - 1),Ingredient.all.length)
     end
  
 
