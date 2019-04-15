@@ -68,7 +68,7 @@ class Menu < ApplicationRecord
         dishs_array =self.get_dishes_by_id(date);
         if dishs_array !=nil
             # ingredients_array is a 2d array with each ingredients as an array
-            ingredients_array = dishs_array.flatten(1)
+            ingredients_array = dishs_array.pluck(:ingredients)
             # go through each array 
             ingredients_array.each do |ingredient|
                 # add the array into the new_dish_array 
