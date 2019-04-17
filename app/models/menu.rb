@@ -2,7 +2,6 @@ class Menu < ApplicationRecord
     has_many :dishes
     validates :day, presence: true
     
-    
     # Purpose:
     #   Adds dishes to the appropriate day in the cycle (in Menu database)
     #   If specified day does not exist creates a new day, 
@@ -25,14 +24,21 @@ class Menu < ApplicationRecord
         
         menu
     end
-    
-    
  
-    
+    # Purpose:
+    #   Get the array of dishes for a given day in the cycle
+    #     param verified between 1 - 49
+    # Params: 
+    #   day_in_cycle:a day between 1 - 49, representin a day in the cycle
+    #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
     def self.get_dishes_by_id(day_in_cycle)
         Menu.where(day: day_in_cycle)[0].dishes
     end
     
+    # Purpose:
+    #   Retrieve and display the array of dishes from database for given date
+    # Params: 
+    #   date from the date_picker, can be parsed to Date
     def self.get_dishes_by_date(date)
         start_date = Date.new(2018, 12, 8)
         
@@ -49,36 +55,7 @@ class Menu < ApplicationRecord
         if menu != nil
             menu.dishes.select(:name)
         end
-        
+
         menu
-        
     end
-    
-    def self.get_dishes_by_id(day_in_cycle)
-        Menu.where(day: day_in_cycle).dishes
-    end
-    
-    def self.get_dishes_by_date(date)
-        if TemporaryMenu.where(:date => date.to_s).empty?
-            start_date = Date.new(2018, 12, 8)
-            end_date = Date.parse(date)
-            day_in_cycle = (end_date - start_date) % 49
-            if !Menu.where(day: day_in_cycle).empty?
-                Menu.where(day: day_in_cycle)[0].dishes.select(:name)
-            end
-        else  
-            temporary_menu = TemporaryMenu.where(:date => date.to_s)[0]
-            temporary_menu.dishes.select(:name)
-        end 
-    end
-    
-    # def self.get_dishes_by_date(date)
-    #     start_date = Date.new(2018, 12, 8)
-    #     end_date = Date.parse(date)
-    #     day_in_cycle = (end_date - start_date) % 49
-    #     if !Menu.where(day: day_in_cycle).empty?
-    #         Menu.where(day: day_in_cycle)[0].dishes.select(:name)
-    #     end
-    # end
-        
 end
