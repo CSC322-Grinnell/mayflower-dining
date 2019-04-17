@@ -7,8 +7,8 @@ $(document).ready(function() {
     var count = 0;
     
     $(add_ingredient_button).click(function(e) {
-        count++;
-        console.log("clicked add_ingredient_button");
+        count++; // count up for each ingredient;
+        console.log("clicked add_ingredient_button"); // for debugging purposes
         e.preventDefault();
         
         //creating the new ingredient
@@ -27,11 +27,4 @@ $(document).ready(function() {
             $(`#new_ing_${theThingToDelete}`).remove();
         });
     });
-    
-    // $(save_ingredient_button).click(function(e) {
-    //     console.log("clicked save_ingredient_button");
-    //     e.preventDefault();
-    //     $(".ingredient_list").trigger('submit.rails');
-    // });
-    
 });
