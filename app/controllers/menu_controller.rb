@@ -7,22 +7,13 @@ class MenuController < ApplicationController
     
     def new_date
         # byebug
+        # One of our hardworking team member spent one week on this bug 
+        # and we think it is worth commemorating
         date = params[:date]
         dishes = Menu.get_dishes_by_date(date)
         
         # today = Time.now.strftime("%Y-%m-%d")
-        # tommorrow = Time.now + 24*60*60
-        # tommorrow = tommorrow.strftime("%Y-%m-%d")
-        
-        # if  today == date
-        #     date = "Today"
-        # elsif tommorrow == date
-        #     date = "Tomorrow"
-        # else
-        #     date = Date.parse(date).strftime('%A') + ", " + date.to_s
-        # end
-        
-        # @menu_date = date
+        # checks the target date and display corresponding menu
         @dishes = dishes.to_a
     end
 end
