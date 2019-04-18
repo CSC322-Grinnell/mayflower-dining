@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :dishes
+  resources :ingredients
   get 'pages/add_item'
   post 'dish/add_to_cycle'
   post 'dish/add_to_temp'
