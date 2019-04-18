@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ingredient.name %>
+</p>
+
+<p>
+  <strong>Portion size:</strong>
+  <%= @ingredient.portion_size %>
+</p>
+
+<p>
+  <strong>Mech soft:</strong>
+  <%= @ingredient.mech_soft %>
+</p>
+
+<p>
+  <strong>Pureed:</strong>
+  <%= @ingredient.pureed %>
+</p>
+
+<p>
+  <strong>Diet:</strong>
+  <%= @ingredient.diet %>
+</p>
+
+<p>
+  <strong>Hc prep:</strong>
+  <%= @ingredient.hc_prep %>
+</p>
+
+<p>
+  <strong>Hc prep leftover:</strong>
+  <%= @ingredient.hc_prep_leftover %>
+</p>
+
+<p>
+  <strong>Bb prep:</strong>
+  <%= @ingredient.bb_prep %>
+</p>
+
+<p>
+  <strong>Bb prep leftover:</strong>
+  <%= @ingredient.bb_prep_leftover %>
+</p>
+
+<p>
+  <strong>Buckley prep:</strong>
+  <%= @ingredient.buckley_prep %>
+</p>
+
+<p>
+  <strong>Buckley prep leftover:</strong>
+  <%= @ingredient.buckley_prep_leftover %>
+</p>
+
+<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
+<%= link_to 'Back', ingredients_path %>

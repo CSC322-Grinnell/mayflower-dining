@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Ingredients</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Portion size</th>
+      <th>Mech soft</th>
+      <th>Pureed</th>
+      <th>Diet</th>
+      <th>Hc prep</th>
+      <th>Hc prep leftover</th>
+      <th>Bb prep</th>
+      <th>Bb prep leftover</th>
+      <th>Buckley prep</th>
+      <th>Buckley prep leftover</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ingredients.each do |ingredient| %>
+      <tr>
+        <td><%= ingredient.name %></td>
+        <td><%= ingredient.portion_size %></td>
+        <td><%= ingredient.mech_soft %></td>
+        <td><%= ingredient.pureed %></td>
+        <td><%= ingredient.diet %></td>
+        <td><%= ingredient.hc_prep %></td>
+        <td><%= ingredient.hc_prep_leftover %></td>
+        <td><%= ingredient.bb_prep %></td>
+        <td><%= ingredient.bb_prep_leftover %></td>
+        <td><%= ingredient.buckley_prep %></td>
+        <td><%= ingredient.buckley_prep_leftover %></td>
+        <td><%= link_to 'Show', ingredient %></td>
+        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Ingredient', new_ingredient_path %>
