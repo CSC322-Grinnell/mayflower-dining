@@ -10,11 +10,12 @@
   <div id="checkbox-container">
   <tbody>
     <%= puts @ingriedent_array.inspect %>
-    <% @ingriedent_array.each do |arr| %>
+    <% @ingriedent_array.each_with_index do |arr| %>
       <tr>
         <td><%= arr[0] %></td>
         <td><%= arr[1] %></td>
-        <td><input type="checkbox" class="check" name="check" id="checkid"></td>
+        <!--<td><%# check_box_tag arr[3].to_s, 'done?', arr[3] -%></td>-->
+        <td><%= check_box_tag('poopop', arr[3]); %></td>
       </tr>
    <% end %>
   </tbody>

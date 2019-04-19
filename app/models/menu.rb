@@ -77,7 +77,7 @@ class Menu < ApplicationRecord
             # go through each array 
             ingredients_array.each do |ingredient|
                 # add the array into the new_dish_array 
-                new_dish_array.push([ingredient.name,ingredient.portion_size,ingredient.done])
+                new_dish_array.push([ingredient.name,ingredient.portion_size,ingredient.done, ingredient.id])
             end 
             #sort the array
             sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
@@ -88,4 +88,8 @@ class Menu < ApplicationRecord
         return sorted_array
     end 
         
+    
+    def self.get_indredient_by_id(id)
+        Ingredient.find(id)
+    end 
 end
