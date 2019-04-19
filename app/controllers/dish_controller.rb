@@ -15,4 +15,21 @@ class DishController < ApplicationController
         # redirect to main page or show complete page
         redirect_to root_path
     end
+    
+    def add_to_temp
+        # create dish
+        dish = Dish.new(name: params[:dish_name])
+        # add ingredients
+        ingredients = params[:ingredient]
+        Dish.add_ingredients_with_dictionary(dish,ingredients)
+        # add to cycle
+        if dish.valid?
+            dish.save()
+            dish_date = Date.parse(params[:date])
+            TemporaryMenu.add_dishes(dish_date, [dish])
+        end
+        
+        # redirect to main page or show complete page
+        redirect_to root_path
+    end
 end

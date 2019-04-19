@@ -1,10 +1,5 @@
 
     
-    function updateHeader(date) {
-      
-      
-    }
-    
     function formatDate(date) {
       console.log("Entereed:");
         var d = new Date(date),
@@ -22,8 +17,6 @@
       
     function changeDate() {
       var mydate = document.getElementById("datePicker").value;
-      document.getElementById("headerDate").innerHTML = "Menu for " + mydate;
-      document.getElementById("datePicker").innerHTML = formatDate(mydate);
       
       window.location.href = '../menu/' + mydate;
       
@@ -37,19 +30,15 @@
       var tom = new Date();
       tom.setDate(d.getDate()+1);
       
-      var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Sunday"];
-      var month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-      
-      document.getElementById("datePicker").value = formatDate(tom);
-      window.location.href = '../menu/' + document.getElementById("datePicker").value;
-      document.getElementById("headerDate").innerHTML = "Menu for Tomorrow, " + weekday[tom.getDay()] ;
+      window.location.href = '../menu/' + formatDate(tom);
     }
     
     function changeToToday () {
-      document.getElementById("headerDate").innerHTML = "Menu for Today";
+      
       var d = new Date();
-      document.getElementById("datePicker").value = formatDate(d);
-      window.location.href = '../menu/' + document.getElementById("datePicker").value;
+      //document.getElementById("datePicker").value = formatDate(d);
+      
+      window.location.href = '../menu/' + formatDate(d);
     }
     
     
@@ -60,5 +49,3 @@
         document.getElementById("todText").addEventListener("click", changeToToday);
         document.getElementById("datePicker").onchange = function() {changeDate()};
     });
-
-    

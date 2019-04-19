@@ -41,11 +41,10 @@ class MenuTest < ActiveSupport::TestCase
     end
   
     test 'delete day in cycle' do
-        menu = Menu.create(day: 2, type_of_meal: 'Salad')
         menu2 = Menu.create(day: 27, type_of_meal: 'Dinner')
-        assert_equal(4,Menu.all.length)
+        len = Menu.all.length
         menu2.destroy
-        assert_equal(3, Menu.all.length)
+        assert_equal((len - 1) , Menu.all.length)
     end
     
     #add_to_cycle(day_in_cycle, dish_id,dish_type)
@@ -65,32 +64,11 @@ class MenuTest < ActiveSupport::TestCase
         dish5 = Dish.create
         menu = Menu.add_dishes_to_cycle(19,  [dish,dish2,dish3,dish4,dish5])
         assert menu.valid?
-        assert_equal(1,menu.day)
+        assert_equal(19,menu.day)
+        assert_equal(5,menu.dishes.length)
         # assert_equal('Entree',menu.type_of_meal)
     end
     
-    #copy_to_temp_menu(day_id,date)
-    # test 'copy_to_temp_menu' do
-    #     test_date = Date.new(2019, 2, 8)
-    #     menu = Menu.copy_to_temp_menu(1, test_date)
-    #     assert menu.valid?
-    #     assert_equal(test_date,menu.date)
-    #     # assert_equal('Entree',menu.type_of_meal)
-    #     assert_equal(1, menu.dishes.length)
-        
-    # end
-    
-    #add_to_cycle(day_in_cycle, dish_id,dish_type)
-    
-    #copy_to_temp_menu(day_id,date)
-    
-    #remove_dish(dish_id,date)
-    
-    #remove_from_cycle(dish_id,day_id)
-    
-    #update_in_cycle(day_in_cycle,dish_id,dish_type)
-    
-    #get_dishes 
-    
+
     
 end
