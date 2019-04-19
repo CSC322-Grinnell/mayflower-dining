@@ -5,11 +5,17 @@ $(document).ready(function () {
   $.ajax({
     type:'GET',
     url:'/permanent_edit',
-    data: { selectingCommand : document.getElementById("CommandSelect"); 
+    data: { selectingCommand : document.getElementById("CommandSelect")
           },
     success:function(){
       //I assume you want to do something on controller action execution success?
+      changeDay();
       $(this).addClass('done');
+    }
+    
+    function changeDay(){
+      var day_id = document.getElementById();
+      window.location.href = '../permanent_edit/' + day_id;
     }
   });
 }
