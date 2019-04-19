@@ -32,7 +32,8 @@ class Menu < ApplicationRecord
     #   day_in_cycle:a day between 1 - 49, representin a day in the cycle
     #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
     def self.get_dishes_by_id(day_in_cycle)
-        Menu.where(day: day_in_cycle)[0].dishes
+        puts("day_in_cycle")
+        Menu.where(day: day_in_cycle).first.dishes
     end
     
     # Purpose:

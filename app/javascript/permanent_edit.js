@@ -1,32 +1,13 @@
-$(document).ready(function () {
-
-        $(document).on("click","#submit-button",submitfunction);
-        var submitfunction=function(){
-  $.ajax({
-    type:'GET',
-    url:'/permanent_edit',
-    data: { selectingCommand : document.getElementById("CommandSelect")
-          },
-    success:function(){
-      //I assume you want to do something on controller action execution success?
-      changeDay();
-      $(this).addClass('done');
+function changeURL () {
+      
+      var week = document.getElementById("cycle_week").value;
+      var day = document.getElementById("cycle_day").value;
+      var id = parseInt(week) * 7 + parseInt(day); 
+      window.location.href = '../permanent_edit/' + id ;
     }
     
-    function changeDay(){
-      var day_id = document.getElementById();
-      window.location.href = '../permanent_edit/' + day_id;
-    }
-  });
-}
-        
-        /*$("submitButton").click(function(){
-            $id_selected = parseInt($(".cycle_week").val()) * 7 + parseInt($(".cycle_day").val())
-            
-            $.get( "/controller/action.json", { id: id_selected } )
-  .done(view_dishes( id ) {
-    // Access your data here
-  });
-        });*/
-        
+    
+    
+    window.addEventListener('DOMContentLoaded', (event) => {
+        document.getElementById("submitButton").addEventListener("click", changeURL);
     });
