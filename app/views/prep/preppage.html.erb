@@ -4,20 +4,19 @@
     <tr>
       <th scope="col">Item</th>
       <th scope="col">Amount</th>
-      <th scope="col">Purpose</th>
       <th scope="col">Done?</th>
     </tr>
   </thead>
+  <div id="checkbox-container">
   <tbody>
     <%= puts @ingriedent_array.inspect %>
     <% @ingriedent_array.each do |arr| %>
       <tr>
         <td><%= arr[0] %></td>
         <td><%= arr[1] %></td>
-        <td></td>
-        <td><input type="checkbox"></td>
+        <td><input type="checkbox" class="check" name="check" id="checkid"></td>
       </tr>
    <% end %>
-   
   </tbody>
+  </div>
 </table>
