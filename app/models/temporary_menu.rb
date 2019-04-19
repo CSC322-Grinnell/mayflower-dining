@@ -1,6 +1,12 @@
 class TemporaryMenu < ApplicationRecord
     has_many :dishes
     
+    # incomplete documentation
+    # Purpose:
+    #
+    # Params:
+    #   date:
+    #   dishes: 
     def self.add_dishes(date, dishes)
         start_date = Date.new(2018, 12, 8)
         day_in_cycle = (date - start_date) % 49
