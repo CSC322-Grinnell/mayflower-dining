@@ -52,10 +52,10 @@ class Menu < ApplicationRecord
         
         day_in_cycle = (end_date - start_date) % 49
         menu = Menu.where(day: day_in_cycle)[0]
-        if menu != nil
-            menu.dishes.select(:name)
-        end
+        # if menu != nil
+        #     menu.dishes.select(:name)
+        # end
 
-        menu
+        menu.dishes
     end
 end
