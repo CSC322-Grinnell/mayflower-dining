@@ -32,7 +32,8 @@
         <hr>
         <ul>
           <% @dishes.each do |element| %>
-            <li><%= element.name %> </li>
+            <li><%= element.name %> <%= link_to "Edit", dish_path(@dish) %>
+            </li>
             
             <% end %>
         </ul>
