@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'permanent_edit/:id', to: 'permanent_edit#view_dishes'
   
   
+  
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users

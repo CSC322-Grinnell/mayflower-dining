@@ -1,0 +1,71 @@
+<div class="add_item_page">
+<h1>Edit Dish</h1>
+<p>Use this form to edit any existing dish in the database. </p>
+
+<form accept-charset="UTF-8" action="/dish/add_to_cycle" method="post" class="new_dish">
+     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <!-- Dish name input -->
+    <div class="form-group row">
+        <label for="dish_name" class="col-sm-2 col-form-label" > Dish Name : </label>
+        <input required type="dish_name_string" class="col-sm-4 form-control" id="dish_name" name="dish_name" placeholder="Name of the dish">  </input>
+    </div>
+    
+    <!-- Select menu -->
+    <div class="form-group row">
+        <label for="menu_select" class="col-sm-2 col-form-label"> Menu : </label>
+        <select class="col-sm-4 form-control" id="menu_select" name="menu_select" placeholder="--Menu--">
+            <option> Main Menu </option>
+            <option> Bistro Menu </option>
+        </select>
+    </div>
+    
+    <!-- Date of menu input -->
+    <div class="form-group row">
+        <label for="dish_date" class="col-sm-2 col-form-label"> Date : </label>
+        <select class="col-sm-2 form-control" id="dish_date_week" name="dish_date_week" placeholder="--Week--"> 
+            <option value="0">Week 1</option>
+            <option value="1">Week 2</option>
+            <option value="2">Week 3</option>
+            <option value="3">Week 4</option>
+            <option value="4">Week 5</option>
+            <option value="5">Week 6</option>
+            <option value="6">Week 7</option>
+        </select>
+        <select class="col-sm-2 form-control" id="dish_date_day" name="dish_date_day" placeholder="--Day--"> 
+            <option value="1">Sunday</option>
+            <option value="2">Monday</option>
+            <option value="3">Tuesday</option>
+            <option value="4">Wednesday</option>
+            <option value="5">Thursday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+            <option value="first">First half</option>
+            <option value="second">Second half</option>
+        </select>
+    </div>
+    
+    <!-- Select category of Main menu -->
+    <div class="form-group row">
+        <label for="category_select" class="col-sm-2 col-form-label"> Category : </label>
+        <select class="col-sm-4 form-control" id="category_select" name="category_select" placeholder="--Category--">
+            <option> Entrée </option>
+            <option> Potato/Starch </option>
+            <option> Sandwich Feature </option>
+            <option> Vegetables </option>
+            <option> Salad </option>
+            <option> Featured Dessert </option>
+        </select>
+    </div>
+    
+    <!-- Add ingredient button -->
+    <button class="add_ingredient btn btn-secondary"> Add Ingredient </button>
+    
+    <!-- The thing that we want to insert new ingredients before-->
+    <p class="insert_before_this">  </p>
+    <p> When you feel you are ready, save this dish and get ready for serving. </p>
+    <!-- Save Button -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+    
+</div>
