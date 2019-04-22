@@ -1,6 +1,5 @@
 class PermanentEditController < ApplicationController
     
-    
     def view_dishes
         day_in_cycle = params[:id].to_i 
         # day_in_cycle = 11 

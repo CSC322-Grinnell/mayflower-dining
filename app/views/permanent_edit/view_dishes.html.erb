@@ -1,7 +1,7 @@
 <div role="main" class="container">
     <h1> Permanent Edit for Cycle </h1>
     <p> Use this page to perform permanent changes to the database. <br>
-    Click on a day in the table below, the menu for that day will show up.</p>
+    Choose a day in the cycle with the drop-down menu below, the menu for that day will show up.</p>
     <p> </p>
     
     <!-- Dropdown menu for selecting the day in the cycle -->
@@ -25,10 +25,16 @@
             <option value="6">Friday</option>
             <option value="7">Saturday</option>
         </select>
-        <button id = "submitButton" class = "btn btn-primary" onclick = "window.location = window.location + '/'">Get Dishes</button>
+        <button id="submitButton" class="btn btn-primary" onclick="window.location = window.location + '/'">Get Dishes</button>
     </div>
     
-    <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Dishes for the day</h2>
+    
+    <h2 style="margin-top: 10px; color: #993300; " id ="headerDate">
+        <a style="padding: 4px 16px; border-radius: 50%; background-color: #f1f1f1; color: black;" href="#" id="previousButton">&#8249;</a>
+        Dishes for the day
+        <a style="padding: 4px 16px; border-radius: 50%; background-color: #f1f1f1; color: black;" href="#" id="nextButton">&#8250;</a>
+    </h2>
+    
         <hr>
         <ul>
           <% @dishes.each do |element| %>
@@ -37,5 +43,5 @@
             <% end %>
         </ul>
 
-    <script type = "text/javascript" src = "../../javascript/permanent_edit.js"></script>
+    <!--<script type = "text/javascript" src = "../../javascript/permanent_edit.js"></script> -->
 </div>
