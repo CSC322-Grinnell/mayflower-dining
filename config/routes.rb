@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   get 'dish/add_to_temporary_menu'
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
+  get 'temp', to: 'temporary_menu#menu'
+  get 'temp/:date', to: 'temporary_menu#new_date'
+  
   
   root to: "pages#home"
   ActiveAdmin.routes(self)

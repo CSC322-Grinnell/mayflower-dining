@@ -1,8 +1,8 @@
-class MenuController < ApplicationController
+class TemporaryMenuController < ApplicationController
     def menu
         # display the menu for the current day
         date = Time.now.strftime("%d/%m/%Y")
-        dishes = Menu.get_dishes_by_date(date)
+        dishes = TemporaryMenu.get_menu(date).dishes
         @dishes = dishes.to_a
     end
     
@@ -11,9 +11,18 @@ class MenuController < ApplicationController
         # One of our hardworking team member spent one week on this bug 
         # and we think it is worth commemorating
         date = params[:date]
-        dishes = Menu.get_dishes_by_date(date)
-
+        dishes = TemporaryMenu.get_menu(date).dishes
+        
+        # today = Time.now.strftime("%Y-%m-%d")
+        # checks the target date and display corresponding menu
         @dishes = dishes.to_a
+    end
+    
+    def edit 
+        
+    end
+    
+    def delete
     end
     
 end

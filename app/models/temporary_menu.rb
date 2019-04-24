@@ -25,6 +25,26 @@ class TemporaryMenu < ApplicationRecord
         temporary_menu
     end
     
+    # used for temporary editting and deleting but insuring that there is 
+    # a copy of date to be modified 
+    def self.get_menu(date)
+        
+        if date.is_a? String
+            date = Date.parse(date)
+        end
+        
+        start_date = Date.new(2018, 12, 8)
+        day_in_cycle = (date - start_date) % 49
+        
+        if self.where(:date => date).empty?
+            temporary_menu = self.copy_to_temp_menu(day_in_cycle, date)
+        else  
+            temporary_menu = self.where(:date => date).first
+        end
+        
+        temporary_menu
+    end 
+    
     # incomplete 
     # Purpose:
     #   Makes a copy of the dishes in a given day of the cycle from Menu and
@@ -61,6 +81,19 @@ class TemporaryMenu < ApplicationRecord
         end
         
         temporary_menu
+    end
+    
+    # Purpose:
+    #   Retrieve and display the array of dishes from database for given date
+    # Params: 
+    #   date from the date_picker, can be parsed to Date
+    def self.get_dishes_by_date(date)
+        menu = self.where(:date  => date.to_s )[0]
+        if menu == nil
+            Menu.get_dishes_by_date(date)
+        else
+            menu.dishes 
+        end
     end
     
 end

@@ -42,10 +42,10 @@ class IngredientsController < ApplicationController
   def update
     respond_to do |format|
       if @ingredient.update(ingredient_params)
-        format.html { redirect_to @ingredient, notice: 'Ingredient was successfully updated.' }
+        redirect_back fallback_location: root_path
         format.json { render :show, status: :ok, location: @ingredient }
       else
-        format.html { render :edit }
+        redirect_to :back
         format.json { render json: @ingredient.errors, status: :unprocessable_entity }
       end
     end
