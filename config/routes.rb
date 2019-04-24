@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
   get 'prep/prep_page', to: 'prep#preppage'
+  get 'prep/prep_page/:id', to: 'prep#checked'
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users
