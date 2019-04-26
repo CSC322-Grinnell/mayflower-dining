@@ -96,4 +96,13 @@ class TemporaryMenu < ApplicationRecord
         end
     end
     
+    # Needs testing 
+    # Purpose:
+    #   Remove the records with dates which have past
+    # Params: 
+    #   None
+    def self.clean_old_records()
+        self.where("date < ?", 1.days.ago).destroy_all
+    end
+    
 end

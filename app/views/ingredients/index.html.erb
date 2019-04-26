@@ -2,7 +2,7 @@
 
 <h1>Ingredients</h1>
 
-<table>
+<table class="table-striped table-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -34,7 +34,7 @@
         <td><%= ingredient.bb_prep_leftover %></td>
         <td><%= ingredient.buckley_prep %></td>
         <td><%= ingredient.buckley_prep_leftover %></td>
-        <td><%= link_to 'Show', ingredient %></td>
+        <td class="button"><%= link_to 'Show', ingredient %></td>
         <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
         <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
