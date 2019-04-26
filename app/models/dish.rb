@@ -24,7 +24,7 @@ class Dish < ApplicationRecord
     
     # Purpose:
     #   used for add_item
-    #   add ingredients to corresponding dish into the database
+    #   add ingredien\ts to corresponding dish into the database
     # Params:
     #   dish: the dish added to the database
     #   ingredient_dictionaries: an array of ingredients with amount descriptions
