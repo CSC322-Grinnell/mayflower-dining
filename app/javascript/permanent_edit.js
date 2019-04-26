@@ -16,6 +16,7 @@ function changeURL () {
     }
     
     function nextDayInCycle () {
+        console.log("going to next day");
         var link_array = window.location.pathname.split("/");
         var id = link_array[link_array.length - 1];
         id++;

@@ -32,7 +32,7 @@
                 <option value="7">Saturday</option>
             </select>
             <br>
-            <button id="submitButton" class="btn btn-primary" onclick="window.location = window.location + '/'">Get Dishes</button>
+            <button id="submitButton" class="btn btn-primary">Get Dishes</button>
 
             </div>
         </div>
@@ -40,23 +40,12 @@
             
             
             <ul class="pager">
-                <% if @day_in_cycle == 1 %>
-                 <li class="next"><a href="#" id="nextButton">Go to day 2</a></li>
-                 <h2 style="margin-top: 10px; color: #993300; " id ="headerDate" class="text-center">Dishes for the day</h2>
-                <hr>
-                <% elsif @day_in_cycle >= 1 || @day_in_cycle < 49 %>
                 <li class="previous"><a href="#" id="previousButton">Day <% @day_in_cycle - 1%></a></li>
                 
                 <h2 style="margin-top: 10px; color: #993300; " id ="headerDate" class="text-center">Dishes for the day</h2>
             
                  <li class="next"><a href="#" id="nextButton">Day <% @day_in_cycle + 1%></a></li>
                  <hr>
-             <% elsif @day_in_cycle == 49 %>
-                     <li class="previous"><a href="#" id="previousButton">Day 48</a></li>
-                
-                <h2 style="margin-top: 10px; color: #993300; " id ="headerDate" class="text-center">Dishes for the day</h2>
-                <hr>
-                <% end %>
                 
             </ul>
             
