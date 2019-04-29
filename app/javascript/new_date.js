@@ -3,7 +3,7 @@
     function changeDate() {
       // go to a new date and display the menu for that day
       var url = window.location.href.slice(-4); // retrieve date from the url
-      if(url == "menu" || url == "enu/") {
+      if(url == "menu" || url == "enu/" || url == "temp" || url == "emp/") {
         // does nothing (yet);
       }
       else {
