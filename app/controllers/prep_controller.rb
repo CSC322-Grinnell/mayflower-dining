@@ -11,6 +11,10 @@ class PrepController < ApplicationController
   def checked
       id = params [:id]
       ingredient =get_indredient_by_id(id)
-      ingredient.done=true
+      if ingredient.done == false
+        ingredient.done=true
+    else
+        ingredient.done=false
+    end 
   end 
 end

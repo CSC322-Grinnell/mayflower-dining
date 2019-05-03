@@ -1,3 +1,4 @@
+
     function formatDate(date) {
         var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -39,10 +40,10 @@
       window.location.href = '../menu/' + document.getElementById("datePicker").value;
     }
     
-    window.addEventListener('DOMContentLoaded', (event) => {
-        document.getElementById("tomText").addEventListener("click", changeToTomorrow);
-        document.getElementById("todText").addEventListener("click", changeToToday);
-        document.getElementById("datePicker").onchange = function() {changeDate()};
-    });
+    // window.addEventListener('DOMContentLoaded', (event) => {
+    //     document.getElementById("tomText").addEventListener("click", changeToTomorrow);
+    //     document.getElementById("todText").addEventListener("click", changeToToday);
+    //     document.getElementById("datePicker").onchange = function() {changeDate()};
+    // });
 
     
