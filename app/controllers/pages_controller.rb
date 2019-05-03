@@ -1,10 +1,9 @@
 class PagesController < ApplicationController
+  # home page
   def home
   end
   
-  def menu
-      date = Time.now.strftime("%d/%m/%Y")
-      dishes = Menu.get_dishes_by_date(date)
-      @dishes = dishes.to_a
+  # add_item page
+  def add_item
   end
 end

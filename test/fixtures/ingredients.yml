@@ -24,3 +24,17 @@ two:
   bb_prep_leftover: MyString
   buckley_prep: MyString
   buckley_prep_leftover: MyString
+
+
+three:
+  name: MyString
+  portion_size: MyString
+  mech_soft: MyString
+  pureed: MyString
+  diet: MyString
+  hc_prep: MyString
+  hc_prep_leftover: MyString
+  bb_prep: MyString
+  bb_prep_leftover: MyString
+  buckley_prep: MyString
+  buckley_prep_leftover: MyString

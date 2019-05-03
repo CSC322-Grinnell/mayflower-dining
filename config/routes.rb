@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get 'static_pages/add_item'
+  get 'pages/add_item'
   post 'dish/add_to_cycle'
-  get 'pages/menu'
+  post 'dish/add_to_temp'
+  get 'dish/add_to_temporary_menu'
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
   get 'prep/prep_page', to: 'prep#preppage'

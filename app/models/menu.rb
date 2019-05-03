@@ -2,7 +2,6 @@ class Menu < ApplicationRecord
     has_many :dishes
     validates :day, presence: true
     
-    
     # Purpose:
     #   Adds dishes to the appropriate day in the cycle (in Menu database)
     #   If specified day does not exist creates a new day, 
@@ -25,71 +24,39 @@ class Menu < ApplicationRecord
         
         menu
     end
-    
+ 
     # Purpose:
-    #   Makes a copy of the dishes in a given day of the cycle from Menu and
-    #       stores it under the given date in the temporary menu.
-    #   This is so that the data needed for the temporary change is available 
+    #   Get the array of dishes for a given day in the cycle
+    #     param verified between 1 - 49
     # Params: 
     #   day_in_cycle:a day between 1 - 49, representin a day in the cycle
     #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
-    #   date: a ruby date of which the dishes should  be stored under in the
-    #         temporary menu 
-    def self.copy_to_temp_menu(day_in_cycle,date)
-        true
-    end
-    
     def self.get_dishes_by_id(day_in_cycle)
         Menu.where(day: day_in_cycle)[0].dishes
     end
     
+    # Purpose:
+    #   Retrieve and display the array of dishes from database for given date
+    # Params: 
+    #   date from the date_picker, can be parsed to Date
     def self.get_dishes_by_date(date)
-        start_date = Date.parse("27/3/2019")
+        start_date = Date.new(2018, 12, 8)
+        
+        # using a begin rescue incase date is formatted incorrectly 
+        #right now just stops processing
         begin
             end_date = Date.parse(date)
         rescue ArgumentError
             return
         end
         
-        day_in_cycle = (end_date - start_date) % 70
+        day_in_cycle = (end_date - start_date) % 49
         menu = Menu.where(day: day_in_cycle)[0]
         if menu != nil
             menu.dishes
         end
-        
+
+        menu
     end
-    
-    # Purpose:
-    # output an sorted array that contains multiple arrays that have the 
-    # name of the ingredient at index 0 and the amount of the ingredient 
-    # at index 1. The ingredients are from the dishes of the input "data"
-    def self.get_ingredients_by_date(date)
-        # dishes_array is a 3d array 
-        new_dish_array=[]
-        dishs_array =self.get_dishes_by_date(date);
-        if dishs_array !=nil
-            # ingredients_array is a 2d array with each ingredients as an array
-            ingredients_array = dishs_array.map { |dish|
-                                    dish.ingredients.map { |ingredient|
-                                        ingredient
-                                        }.flatten
-                                    }.flatten
-            # go through each array 
-            ingredients_array.each do |ingredient|
-                # add the array into the new_dish_array 
-                new_dish_array.push([ingredient.name,ingredient.portion_size,ingredient.done, ingredient.id])
-            end 
-            #sort the array
-            sorted_array=new_dish_array.sort{|a,b| a[0]<=>b[0]}
-        else
-            sorted_array = []
-        end 
-        
-        return sorted_array
-    end 
-        
-    
-    def self.get_indredient_by_id(id)
-        Ingredient.find(id)
-    end 
+
 end

@@ -32,8 +32,10 @@ ActiveRecord::Schema.define(version: 2019_03_06_211357) do
     t.datetime "updated_at", null: false
     t.integer "ingredient_id"
     t.integer "menu_id"
+    t.integer "temporary_menu_id"
     t.index ["ingredient_id"], name: "index_dishes_on_ingredient_id"
     t.index ["menu_id"], name: "index_dishes_on_menu_id"
+    t.index ["temporary_menu_id"], name: "index_dishes_on_temporary_menu_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
