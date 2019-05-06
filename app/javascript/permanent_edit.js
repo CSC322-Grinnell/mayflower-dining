@@ -1,29 +1,55 @@
 function changeURL () {
       var week = document.getElementById("cycle_week").value;
       var day = document.getElementById("cycle_day").value;
-      var id = parseInt(week) * 7 + parseInt(day); 
-      window.location.href = '../permanent_edit/' + id ;
+      var url = window.location.href.slice(-14);
+      if (url == "permanent_edit" || url == "ermanent_edit/") {
+          window.location.href = '../permanent_edit/' + parseInt(week) + '/' + parseInt(day) ;
+      }
+      else {
+          window.location.href = '../' + parseInt(week) + '/' + parseInt(day) ;
+      }
+      
     }
     
     function prevDayInCycle () {
         var link_array = window.location.pathname.split("/");
-        var id = link_array[link_array.length - 1];
-        id--;
-        if (id < 1){
-            id = id + 49;
+        var arr_len = link_array.length;
+        var max_days = 7;
+        var max_week = 6;
+        var week = link_array[arr_len - 2]
+        var day = link_array[arr_len - 1];
+        day--;
+        if (day < 1 && week == 0){
+            day = max_days;
+            week = max_week;
         }
-        window.location.href = window.location.origin + "/permanent_edit/" + id;
+        else if (day < 1) {
+            day = max_days;
+            week--;
+        }
+        window.location.href = window.location.origin + "/permanent_edit/" + week + "/" + day;
     }
     
     function nextDayInCycle () {
-        console.log("going to next day");
+        
         var link_array = window.location.pathname.split("/");
-        var id = link_array[link_array.length - 1];
-        id++;
-        if (id > 49){
-            id = id - 49;
+        var arr_len = link_array.length;
+        var max_days = 7;
+        var max_week = 6;
+        var week = link_array[arr_len - 2]
+        var day = link_array[arr_len - 1];
+        
+        day++;
+        
+        if (day > max_days && week == max_week){
+            day = 1;
+            week = 0;
+        } 
+        else if (day > max_days) {
+            day = 1;
+            week++;
         }
-        window.location.href = window.location.origin + "/permanent_edit/" + id;
+        window.location.href = window.location.origin + "/permanent_edit/" + week + "/"+ day;
     }
     
     window.addEventListener('DOMContentLoaded', (event) => {

@@ -57,6 +57,6 @@ class Menu < ApplicationRecord
             menu.dishes.select(:name)
         end
 
-        menu
+        menu.dishes
     end
 end

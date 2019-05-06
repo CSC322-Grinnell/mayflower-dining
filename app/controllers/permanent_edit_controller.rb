@@ -1,10 +1,13 @@
 class PermanentEditController < ApplicationController
     
+    
     def view_dishes
-        day_in_cycle = params[:id].to_i 
+        day_in_cycle = params[:week].to_i * 7 + params[:day].to_i 
         # day_in_cycle = 11 
         dishes = Menu.get_dishes_by_id(day_in_cycle)
-        @day_in_cycle = day_in_cycle
+        @week = params[:week].to_i
+        @day = params[:day].to_i
+        
         @dishes = dishes.to_a
     end
 end

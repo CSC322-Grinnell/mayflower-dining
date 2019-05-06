@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get 'menu', to: 'menu#menu'
   get 'menu/:date', to: 'menu#new_date'
   get 'permanent_edit', to: 'permanent_edit#permanent_edit'
-  get 'permanent_edit/:id', to: 'permanent_edit#view_dishes'
+  get 'permanent_edit/:week/:day', to: 'permanent_edit#view_dishes'
   get '/edit_dish/:id', to: 'dish#show', as: 'dish'
   
   
