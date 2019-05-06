@@ -12,7 +12,7 @@ class CreateIngredients < ActiveRecord::Migration[5.2]
       t.integer :bb_prep_leftover
       t.integer :buckley_prep
       t.integer :buckley_prep_leftover
-
+      t.boolean :done
       t.timestamps
     end
   end
