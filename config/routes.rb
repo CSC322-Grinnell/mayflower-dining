@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get 'permanent_edit', to: 'permanent_edit#permanent_edit'
   get 'permanent_edit/:week/:day', to: 'permanent_edit#view_dishes'
   get '/edit_dish/:id', to: 'dish#show', as: 'dish'
-  
-  
+  get 'prep/prep_page', to: 'prep#preppage'
+  get 'prep/prep_page/:id', to: 'prep#checked'
+
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users

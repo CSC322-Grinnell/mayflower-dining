@@ -1,5 +1,4 @@
 
-    
     function formatDate(date) {
       console.log("Entereed:");
         var d = new Date(date),
@@ -40,9 +39,7 @@
       
       window.location.href = '../menu/' + formatDate(d);
     }
-    
-    
-    
+
     window.addEventListener('DOMContentLoaded', (event) => {
         
         document.getElementById("tomText").addEventListener("click", changeToTomorrow);

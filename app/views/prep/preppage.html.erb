@@ -1,0 +1,22 @@
+<h1>To-Do</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Item</th>
+      <th scope="col">Amount</th>
+      <th scope="col">Done?</th>
+    </tr>
+  </thead>
+  <div id="checkbox-container">
+  <tbody>
+    <%= puts @ingriedent_array.inspect %>
+    <% @ingriedent_array.each_with_index do |arr| %>
+      <tr>
+        <td><%= arr[0] %></td>
+        <td><%= arr[1] %></td>
+        <td class="checkBox" type="checkbox"><%= check_box_tag(arr[3]); %></td>
+      </tr>
+   <% end %>
+  </tbody>
+  </div>
+</table>
