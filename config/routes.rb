@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get 'menu/:date', to: 'menu#new_date'
   get 'temp', to: 'temporary_menu#menu'
   get 'temp/:date', to: 'temporary_menu#new_date'
-  
-  
+
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users

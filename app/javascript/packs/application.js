@@ -11,3 +11,5 @@
 import 'menu'
 import 'new_date' 
 import 'add_item'
+import 'permanent_edit'
+import 'preppage'
