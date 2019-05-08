@@ -17,12 +17,24 @@ dishes = Dish.create([{name: 'spaghetti'}, {name: 'salad'}, {name: 'cereal'}, {n
 seed = Random.new
 x = 1
 while x < 50
-# 	m = Menu.create(day: x)
+
 	d = dishes[seed.rand(11)].dup
 	d.ingredients.append(ingredients[seed.rand(11)].dup)
 	d.ingredients.append(ingredients[seed.rand(11)].dup)
 	d.ingredients.append(ingredients[seed.rand(11)].dup)
-# 	m.dishes.append(d)
+	Menu.add_dishes_to_cycle(x, [d])
+	
+	d = dishes[seed.rand(11)].dup
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+	Menu.add_dishes_to_cycle(x, [d])
+	
+	d = dishes[seed.rand(11)].dup
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+	d.ingredients.append(ingredients[seed.rand(11)].dup)
+
     Menu.add_dishes_to_cycle(x, [d])
 	x = x+1
 end

@@ -49,13 +49,13 @@
         <hr>
         
         <ul>
-          <% @dishes.each do |element| %>
-                              <tr>
-        <td><%= element.name %></td>
-        <td><%= link_to 'Edit', edit_dish_path(element) %></td>
-        <td><%= link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-            <% end %>
+         <% @dishes.each do |element| %>
+          <tr>
+            <td><%= element.name %></td>
+            <td><%= link_to 'Edit', edit_dish_path(element) %></td>
+            <td><%= link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+           </tr>
+        <% end %>
         </ul>
       </div>
       

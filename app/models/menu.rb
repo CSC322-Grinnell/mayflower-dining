@@ -38,7 +38,7 @@ class Menu < ApplicationRecord
     # Purpose:
     #   Retrieve and display the array of dishes from database for given date
     # Params: 
-    #   date from the date_picker, can be parsed to Date
+    #   date: s a string in the format YYYY-mm-dd
     def self.get_dishes_by_date(date)
         start_date = Date.new(2018, 12, 8)
         
