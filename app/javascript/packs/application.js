@@ -9,6 +9,7 @@
 // For more information, see the webpacker gem: https://github.com/rails/webpacker#readme
 
 import 'menu'
-import 'new_date'
+import 'new_date' 
 import 'add_item'
+import 'permanent_edit'
 import 'preppage'

@@ -1,0 +1,36 @@
+<div role="main" class="container">
+    <h1> Permanent Edit for Cycle </h1>
+    <p> Use this page to perform permanent changes to the database. <br>
+    Choose a day in the cycle with the drop-down menu below, the menu for that day will show up.</p>
+    <p> </p>
+    
+    <!-- Dropdown menu for selecting the day in the cycle -->
+    <div class="form-group row">
+        <label for="cycle_date" class="col-sm-2 col-form-label">Select Cycle Week :</label>
+        <select class="col-sm-2 form-control" id="cycle_week" name="cycle_week" placeholder="--Week--"> 
+            <option value="0">Week 1</option>
+            <option value="1">Week 2</option>
+            <option value="2">Week 3</option>
+            <option value="3">Week 4</option>
+            <option value="4">Week 5</option>
+            <option value="5">Week 6</option>
+            <option value="6">Week 7</option>
+        </select>
+        <label for="cycle_date" class="col-sm-2 col-form-label">Select Cycle Day :</label>
+        <select class="col-sm-2 form-control" id="cycle_day" name="cycle_day" placeholder="--Day--"> 
+            <option value="1">Sunday</option>
+            <option value="2">Monday</option>
+            <option value="3">Tuesday</option>
+            <option value="4">Wednesday</option>
+            <option value="5">Thursday</option>
+            <option value="6">Friday</option>
+            <option value="7">Saturday</option>
+        </select>
+        <button id = "submitButton" class = "btn btn-primary">Get Dishes</button>
+    </div>
+    
+    <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Dishes for the day</h2>
+        <hr>
+
+    <script type = "text/javascript" src = "../../javascript/permanent_edit.js"></script>
+</div>
