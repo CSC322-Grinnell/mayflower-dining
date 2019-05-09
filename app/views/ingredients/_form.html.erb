@@ -1,0 +1,72 @@
+<%= form_with(model: ingredient, local: true) do |form| %>
+  <% if ingredient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ingredient.errors.count, "error") %> prohibited this ingredient from being saved:</h2>
+
+      <ul>
+      <% ingredient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :portion_size %>
+    <%= form.text_field :portion_size %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :mech_soft %>
+    <%= form.text_field :mech_soft %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :pureed %>
+    <%= form.text_field :pureed %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :diet %>
+    <%= form.text_field :diet %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :hc_prep %>
+    <%= form.text_field :hc_prep %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :hc_prep_leftover %>
+    <%= form.text_field :hc_prep_leftover %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :bb_prep %>
+    <%= form.text_field :bb_prep %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :bb_prep_leftover %>
+    <%= form.text_field :bb_prep_leftover %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :buckley_prep %>
+    <%= form.text_field :buckley_prep %>
+  </div>
+
+  <div class="field form-group">
+    <%= form.label :buckley_prep_leftover %>
+    <%= form.text_field :buckley_prep_leftover %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary" %>
+  </div>
+<% end %>
