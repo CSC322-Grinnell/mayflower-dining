@@ -18,6 +18,10 @@ class Dish < ApplicationRecord
         end 
     end
     
+    def show
+        @dish = Dishes.find(params[:id])
+    end
+    
     # Purpose:
     #   used for add_item
     #   add ingredients to corresponding dish into the database
