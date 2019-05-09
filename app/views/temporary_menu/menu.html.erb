@@ -44,16 +44,15 @@
       <div class="col-lg-8 text-center" >
  
         
-        <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Menu for Today</h2>
+        <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Temporary Menu for Today</h2>
         <hr>
         
-        <ul>
-          <% @dishes.each do |element| %>
-                  <tr>
-        <td><%= element.name %></td>
-        <td><%= link_to 'Edit', edit_dish_path(element) %></td>
-        <td><%= link_to 'Destroy', element, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <ul> <% @dishes.each do |element| %>
+         <li>
+          <span><%= element.name %></span>
+           <%= link_to 'Edit'.html_safe, edit_dish_path(element), :class=>"btn btn-primary" %>
+           <%= link_to 'Destroy'.html_safe, element, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-primary"%>
+        </li>
             <% end %>
         </ul>
       </div>

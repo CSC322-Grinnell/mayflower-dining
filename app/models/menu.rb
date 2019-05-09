@@ -38,7 +38,7 @@ class Menu < ApplicationRecord
     # Purpose:
     #   Retrieve and display the array of dishes from database for given date
     # Params: 
-    #   date: s a string in the format YYYY-mm-dd
+    #   date: a string in the format YYYY-mm-dd
     def self.get_dishes_by_date(date)
         start_date = Date.new(2018, 12, 8)
         
@@ -52,9 +52,6 @@ class Menu < ApplicationRecord
         
         day_in_cycle = (end_date - start_date) % 49
         menu = Menu.where(day: day_in_cycle)[0]
-        # if menu != nil
-        #     menu.dishes.select(:name)
-        # end
 
         menu.dishes
     end

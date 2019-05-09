@@ -1,3 +1,4 @@
+
 <h1>Editing Dish</h1>
 
 <%= render 'form', dish: @dish %>
@@ -16,12 +17,12 @@
     <% @dish.ingredients.each do |ingredient| %>
       <tr>
         <td><%= ingredient.name %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_ingredient_path(ingredient), class: "btn btn-secondary" %></td>
+        <td><%= link_to 'Destroy', ingredient, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-secondary" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Show', @dish %> |
-<%= link_to 'Back', :back %>
+<%= link_to 'Show', @dish, class: "btn btn-primary" %> |
+<%= link_to 'Back', :back , class: "btn btn-primary"%>
