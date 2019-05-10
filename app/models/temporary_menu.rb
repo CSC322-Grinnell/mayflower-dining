@@ -86,14 +86,17 @@ class TemporaryMenu < ApplicationRecord
             
             # duplicate dishes
             dish_cpy = dish.dup
-            temporary_menu.dishes.append(dish)
-            dish_cpy.temporary_menu = temporary_menu 
+            temporary_menu.dishes.append(dish_cpy)
+            dish_cpy.temporary_menu = temporary_menu
+            dish_cpy.menu = nil
+            menu.dishes.delete(dish_cpy)
             
             #duplicate ingredients
             ingredients = dish.ingredients
             dish_cpy.ingredients.delete_all
             ingredients.each do |ingredient|
                 dish_cpy.ingredients.append(ingredient.dup)
+                dish.ingredients.delete(ingredient.dup)
             end
         end
         
