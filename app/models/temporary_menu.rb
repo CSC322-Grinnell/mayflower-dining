@@ -15,8 +15,8 @@ class TemporaryMenu < ApplicationRecord
             date = Date.parse(date)
         end
         
-        start_date = Date.new(2018, 12, 8)
-        day_in_cycle = (date - start_date) % 49
+        start_date = Date.new(2019, 12, 8)
+        day_in_cycle = ((date - start_date) % 49) + 1
         
         if self.where(:date => date).empty?
             temporary_menu = self.copy_to_temp_menu(day_in_cycle, date)
@@ -45,8 +45,8 @@ class TemporaryMenu < ApplicationRecord
             date = Date.parse(date)
         end
         
-        start_date = Date.new(2018, 12, 8)
-        day_in_cycle = (date - start_date) % 49
+        start_date = Date.new(2019, 12, 8)
+        day_in_cycle = ((date - start_date) % 49) + 1
         
         if self.where(:date => date).empty?
             temporary_menu = self.copy_to_temp_menu(day_in_cycle, date)

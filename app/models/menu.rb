@@ -41,17 +41,21 @@ class Menu < ApplicationRecord
     # Params: 
     #   date: a string in the format YYYY-mm-dd
     def self.get_dishes_by_date(date)
-        start_date = Date.new(2018, 12, 8)
+        start_date = Date.new(2019, 12, 8)
         
         # using a begin rescue incase date is formatted incorrectly 
         #right now just stops processing
         begin
-            end_date = Date.parse(date)
+            if date.is_a? String
+                end_date = Date.parse(date)
+            else
+                end_date = date
+            end
         rescue ArgumentError
             return
         end
         
-        day_in_cycle = (end_date - start_date) % 49
+        day_in_cycle = ((end_date - start_date) % 49 ) + 1
         menu = Menu.where(day: day_in_cycle)[0]
 
         menu.dishes
@@ -64,7 +68,7 @@ class Menu < ApplicationRecord
     def self.get_ingredients_by_date(date)
         # dishes_array is a 3d array 
         new_dish_array=[]
-        dishs_array =self.get_dishes_by_date(date);
+        dishs_array =TemporaryMenu.get_dishes_by_date(date);
         if dishs_array !=nil
             # ingredients_array is a 2d array with each ingredients as an array
             ingredients_array = dishs_array.map { |dish|
