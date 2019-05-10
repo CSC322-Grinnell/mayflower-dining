@@ -47,7 +47,10 @@
                 <ul class = "text-center">
                 <hr>
                   <% @dishes.each do |element| %>
-                    <li><%= element.name %> <button>Edit</button> <button>Delete</button></li>
+                    <li><%= element.name %> 
+                        <%= link_to 'Edit'.html_safe, edit_dish_path(element), :class=>"btn btn-primary" %>
+                        <%= link_to 'Destroy'.html_safe, element, method: :delete, data: { confirm: 'Are you sure?' } , :class=>"btn btn-primary"%>
+                    </li>
                     <% end %>
                 </ul>
                 </div>
