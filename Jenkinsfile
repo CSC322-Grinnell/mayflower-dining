@@ -4,7 +4,8 @@ pipeline {
     stage('reqs') {
       steps {
         sh 'echo "HELLOOOO"'
-        sh 'source ~/.rvm/scripts/rvm; rvm use 2.4.1'
+        sh '''
+source /home/ec2-user/.rvm/scripts; rvm use 2.4.1'''
         sh 'gem install bundler -v 2.0.1'
       }
     }
