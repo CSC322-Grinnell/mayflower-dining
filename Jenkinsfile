@@ -1,8 +1,8 @@
 pipeline {
   agent any
   stages {
-    stage('reqs'){
-      steps{
+    stage('reqs') {
+      steps {
         sh 'echo "HELLOOOO"'
         sh 'gem install bundler -v 2.0.1'
       }
@@ -13,8 +13,8 @@ pipeline {
         sh 'echo "BBBUUUNNDDDLLEEEE"'
       }
     }
-    stage('test'){
-      steps{
+    stage('test') {
+      steps {
         sh 'rails test'
       }
     }
