@@ -12,6 +12,7 @@ rvm use'''
     }
     stage('bundle') {
       steps {
+        sh 'gem install bundle'
         sh 'bundle install'
         sh 'echo "BBBUUUNNDDDLLEEEE"'
       }
