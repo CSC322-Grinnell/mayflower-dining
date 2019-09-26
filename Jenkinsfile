@@ -6,8 +6,8 @@ pipeline {
         sh '''#!/bin/bash -l
 source /var/lib/jenkins/.profile;
 /var/lib/jenkins/.rvm/bin/rvm list;
-ruby -v
-rvm use'''
+rvm use 2.4.1
+ruby -v'''
       }
     }
     stage('bundle') {
