@@ -3,10 +3,6 @@ pipeline {
   stages {
     stage('reqs') {
       steps {
-        sh '''$HOME
-ls -a
-
-pwd'''
         sh 'source /var/lib/jenkins/.rvm/scripts/rvm; rvm use 2.4.1'
         sh 'gem install bundler -v 2.0.1'
       }
