@@ -3,9 +3,10 @@ pipeline {
   stages {
     stage('reqs') {
       steps {
-        sh '''source /var/lib/jenkins/.rvm/scripts/rvm;
+        sh '''source /var/lib/jenkins/.profile;
 /var/lib/jenkins/.rvm/bin/rvm list;
-ruby -v'''
+ruby -v
+rvm use '''
       }
     }
     stage('bundle') {
