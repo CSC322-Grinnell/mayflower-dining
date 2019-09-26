@@ -4,7 +4,7 @@ pipeline {
     stage('reqs') {
       steps {
         sh 'source /var/lib/jenkins/.rvm/scripts/rvm'
-        sh 'rvm use 2.4.1'
+        sh '/var/lib/jenkins/.rvm/bin/rvm use 2.4.1'
       }
     }
     stage('bundle') {
