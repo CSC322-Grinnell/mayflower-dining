@@ -4,7 +4,7 @@ pipeline {
     stage('reqs') {
       steps {
         sh 'source /var/lib/jenkins/.rvm/scripts/rvm'
-        sh '''#!/bin/bash -xl
+        sh '''/bin/bash --login
 /var/lib/jenkins/.rvm/bin/rvm get stable
 /var/lib/jenkins/.rvm/bin/rvm use 2.4.1'''
       }
