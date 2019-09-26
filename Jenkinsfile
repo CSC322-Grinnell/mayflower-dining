@@ -12,7 +12,10 @@ ruby -v'''
     }
     stage('bundle') {
       steps {
-        sh 'gem install bundle'
+        sh '''ruby -v
+rvm use 2.4.1
+ruby -v
+gem install bundle'''
         sh 'bundle install'
         sh 'echo "BBBUUUNNDDDLLEEEE"'
       }
