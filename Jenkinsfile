@@ -3,9 +3,7 @@ pipeline {
   stages {
     stage('reqs') {
       steps {
-        sh 'source /var/lib/jenkins/.rvm/scripts/rvm'
-        sh '''/var/lib/jenkins/.rvm/bin/rvm get stable
-rvm use 2.4.1'''
+        sh 'source /var/lib/jenkins/.rvm/scripts/rvm;rvm use 2.4.1'
       }
     }
     stage('bundle') {
