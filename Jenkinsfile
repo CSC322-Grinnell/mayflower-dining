@@ -4,10 +4,11 @@ pipeline {
     stage('reqs') {
       steps {
         sh '''whoami
-ls -a 
+
+ls -a
 pwd'''
         sh '''source /var/lib/jenkins/.rvm/scripts/rvm 
-/var/lib/jenkins/.rvm/bin/rvm use 2.4.1
+/var/lib/jenkins/.rvm/bin/rvmÂ use 2.4.1
 
 echo "DOONEE"'''
         sh 'gem install bundler -v 2.0.1'
