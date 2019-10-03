@@ -11,7 +11,8 @@ default: &default
   pool: 5
   username: postgres
   password: postgres
-
+  host: localhost
+  
 development:
   adapter: postgresql
   encoding: unicode
@@ -30,6 +31,7 @@ test:
   pool: 5
   username: postgres
   password: postgres
+  host: localhost
 
 production:
   adapter: postgresql
