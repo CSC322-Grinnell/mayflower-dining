@@ -26,10 +26,10 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: test
+  database: postgres
   pool: 5
-  username: mayflower-dining
-  password: password1
+  username: postgres
+  password: postgres
 
 production:
   adapter: postgresql
