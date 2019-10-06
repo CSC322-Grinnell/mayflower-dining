@@ -1,1 +1,1 @@
-release: ./release-setup.sh
+release: bash ./release-setup.sh
