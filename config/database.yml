@@ -4,22 +4,13 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  database: mayflower_dev
-  pool: 5
-  username: postgres
-  password: postgres
-  host: localhost
+
   
 development:
-  adapter: postgresql
-  encoding: unicode
-  database: mayflower_dev
-  pool: 5
+  url: postgresql://localhost/
+  password: password
   username: postgres
-  password: postgres
+  database: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
