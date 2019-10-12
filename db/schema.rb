@@ -10,10 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_06_211357) do
+ActiveRecord::Schema.define(version: 2019_10_07_001034) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension "adminpack"
   enable_extension "plpgsql"
 
   create_table "active_admin_comments", force: :cascade do |t|
@@ -34,17 +33,10 @@ ActiveRecord::Schema.define(version: 2019_03_06_211357) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "ingredient_id"
-    t.integer "menu_id"
-    t.integer "temporary_menu_id"
-    t.index ["ingredient_id"], name: "index_dishes_on_ingredient_id"
-    t.index ["menu_id"], name: "index_dishes_on_menu_id"
-    t.index ["temporary_menu_id"], name: "index_dishes_on_temporary_menu_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
-    t.string "portion_size"
     t.string "mech_soft"
     t.string "pureed"
     t.string "diet"
@@ -57,8 +49,6 @@ ActiveRecord::Schema.define(version: 2019_03_06_211357) do
     t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dish_id"
-    t.index ["dish_id"], name: "index_ingredients_on_dish_id"
   end
 
   create_table "menus", force: :cascade do |t|
@@ -66,8 +56,15 @@ ActiveRecord::Schema.define(version: 2019_03_06_211357) do
     t.string "type_of_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dish_id"
-    t.index ["dish_id"], name: "index_menus_on_dish_id"
+    t.integer "dish_ids", default: [], array: true
+  end
+
+  create_table "recipes", force: :cascade do |t|
+    t.bigint "dishes_id"
+    t.bigint "ingredients_id"
+    t.string "portion_size"
+    t.index ["dishes_id"], name: "index_recipes_on_dishes_id"
+    t.index ["ingredients_id"], name: "index_recipes_on_ingredients_id"
   end
 
   create_table "temporary_menus", force: :cascade do |t|

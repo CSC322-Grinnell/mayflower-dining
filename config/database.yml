@@ -8,9 +8,9 @@
   
 development:
   url: postgresql://localhost/
-  password: password
+  password: postgres
   username: postgres
-  database: db
+  database: mayflower_dev
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,7 +19,7 @@ test:
   url: postgresql://localhost/
   password: postgres
   username: postgres
-  database: postgres
+  database:  mayflower_test
 
 production:
   adapter: postgresql

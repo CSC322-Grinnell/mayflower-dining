@@ -24,19 +24,8 @@ while x < 50
 	i.hc_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
 	i.bb_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
 	i.buckley_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	d.ingredients.append(i)
-	i = ingredients[seed.rand(11)].dup
-	i.portion_size = seed.rand(100).to_s + quantity[seed.rand(4)]
-	i.hc_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	i.bb_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	i.buckley_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	d.ingredients.append(i)
-	i = ingredients[seed.rand(11)].dup
-	i.portion_size = seed.rand(100).to_s + quantity[seed.rand(4)]
-	i.hc_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	i.bb_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	i.buckley_prep = seed.rand(1000).to_s + quantity[seed.rand(4)]
-	d.ingredients.append(i)
+	#d.ingredients.append(i)
+	
 	Menu.add_dishes_to_cycle(x, [d])
 	
 	d = dishes[seed.rand(11)].dup
