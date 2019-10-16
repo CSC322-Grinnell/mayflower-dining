@@ -1,9 +1,6 @@
 class Dish < ApplicationRecord
     has_many :recipes
     
-    #belongs_to :menu, optional: true
-    #belongs_to :temporary_menu, optional: true
-    
     # Purpose:
     #   used for temporary_add with duplicate ingredients
     #   add ingredients to corresponding dish into the database
