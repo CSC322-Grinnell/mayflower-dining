@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2019_10_07_001034) do
     t.integer "bb_prep_leftover"
     t.integer "buckley_prep"
     t.integer "buckley_prep_leftover"
-    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
