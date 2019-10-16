@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MayflowerDining</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+  </head>
+
+  <body>
+    <%= render partial: 'layouts/navbar' %>
+    <section class="flash">
+      <% if flash[:notice] %>
+        <p class="alert alert-primary"><%= notice %></p>
+      <% end %>
+      <% if flash[:alert] %>
+        <p class="alert alert-warning"><%= alert %></p>
+      <% end %>
+    </section>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

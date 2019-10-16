@@ -1,0 +1,25 @@
+<main role="main" class="container">
+  <div class="row justify-content-center">
+    <h1><Welcome to Mayflower community kitchen!</h1>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md">
+
+      <p>Find me in app/views/pages/home.html.erb</p>
+    </div>
+    <div class="col-md">
+      <p>
+      Now we have a few pages under construction for your reference:
+      <ul>
+        <li><%= link_to 'Menu', "menu", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Staff Menu', "temp", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Add Dish to Cycle', "pages/add_item", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Permanent Cycle Edit', "permanent_edit", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Add Dish Temporarily', "dish/add_to_temporary_menu", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Prep Page', "prep/prep_page", data: { turbolinks: 'false'} %></li>
+        <li><%= link_to 'Production Sheet (WIP)', "ingredients", data: { turbolinks: 'false'} %></li>
+        <li>To be continued...</li>
+      </p>
+    </div>
+  </div>
+</main>
