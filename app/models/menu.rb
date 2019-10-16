@@ -55,10 +55,7 @@ class Menu < ApplicationRecord
         end
         
         day_in_cycle = ((end_date - start_date) % 49 ) + 1
-<<<<<<< HEAD
         p day_in_cycle
-=======
->>>>>>> 8f8ac4840501cba8b149447413f3e5798f14b77e
         menu = Menu.where(day: day_in_cycle)[0]
 
         menu.dishes

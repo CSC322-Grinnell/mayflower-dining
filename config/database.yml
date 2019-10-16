@@ -1,6 +1,5 @@
 # SQLite version 3.x
 #   gem install sqlite3
-<<<<<<< HEAD
 #   gem install pg
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
@@ -12,26 +11,11 @@ development:
   password: postgres
   username: postgres
   database: mayflower_dev
-=======
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
-default: &default
-  adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  timeout: 5000
-
-development:
-  <<: *default
-  database: db/development.sqlite3
->>>>>>> 8f8ac4840501cba8b149447413f3e5798f14b77e
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-<<<<<<< HEAD
   url: postgresql://localhost/
   password: postgres
   username: postgres
@@ -44,11 +28,3 @@ production:
   pool: 5
   username: mayflower-dining
   password: password1
-=======
-  <<: *default
-  database: db/test.sqlite3
-
-production:
-  <<: *default
-  database: db/production.sqlite3
->>>>>>> 8f8ac4840501cba8b149447413f3e5798f14b77e

@@ -1,10 +1,6 @@
 Rails.application.configure do
   # Verifies that versions and hashed value of the package contents in the project's package.json
-<<<<<<< HEAD
   config.webpacker.check_yarn_integrity = false
-=======
-  config.webpacker.check_yarn_integrity = true
->>>>>>> 8f8ac4840501cba8b149447413f3e5798f14b77e
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -48,11 +44,8 @@ Rails.application.configure do
   # Raise an error on page load if there are pending migrations.
   config.active_record.migration_error = :page_load
 
-<<<<<<< HEAD
   #config.active_record.schema_format = :sql
   
-=======
->>>>>>> 8f8ac4840501cba8b149447413f3e5798f14b77e
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
