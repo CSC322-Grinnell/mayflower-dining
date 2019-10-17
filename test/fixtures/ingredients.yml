@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
   name: MyString
-  portion_size: MyString
+  : MyString
   mech_soft: MyString
   pureed: MyString
   diet: MyString
@@ -14,7 +14,7 @@ one:
 
 two:
   name: MyString
-  portion_size: MyString
+  : MyString
   mech_soft: MyString
   pureed: MyString
   diet: MyString
@@ -28,7 +28,7 @@ two:
 
 three:
   name: MyString
-  portion_size: MyString
+  : MyString
   mech_soft: MyString
   pureed: MyString
   diet: MyString

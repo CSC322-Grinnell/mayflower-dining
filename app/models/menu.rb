@@ -1,5 +1,4 @@
 class Menu < ApplicationRecord
-    has_many :dishes
     validates :day, presence: true
     
     # Purpose:
@@ -56,6 +55,7 @@ class Menu < ApplicationRecord
         end
         
         day_in_cycle = ((end_date - start_date) % 49 ) + 1
+        p day_in_cycle
         menu = Menu.where(day: day_in_cycle)[0]
 
         menu.dishes
