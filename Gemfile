@@ -74,5 +74,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'webpacker'
 gem 'activeadmin'
-gem 'bootstrap', '~> 4.1'
+gem 'bootstrap', '~> 4.3'
 gem 'jquery-rails'
