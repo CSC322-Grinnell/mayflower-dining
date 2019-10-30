@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   private
 
+
   # Checks that a user is signed in and has admin privileges.
   # If not, ask them to sign in again.
   def authenticate_admin_user!

@@ -1,4 +1,6 @@
 class TemporaryMenuController < ApplicationController
+    before_action :authenticate_user!, except: [:menu]
+
     def menu
         # display the menu for the current day
         date = Time.now.strftime("%d/%m/%Y")

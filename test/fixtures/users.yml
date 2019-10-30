@@ -1,0 +1,5 @@
+one:
+  email: MyString
+  encrypted_password: MyString
+  
+
