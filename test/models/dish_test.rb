@@ -1,44 +1,51 @@
 require 'test_helper'
 
 class DishTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-  
+
     test 'add dish' do
-        dish = Dish.new
+        recipes =[]
+        dish = Dish.add_dish("new", recipes)
         assert dish.valid?
     end
-  
-    test 'add dish (as child of Menu)' do
-      # can different days in the menu have the same dish?
-        menu = Menu.new(day: 1, dish_id: 1, type_of_meal: 'Entree')
-        assert menu.valid?
-        menu.save()
-        dish = Dish.new
-        dish.menu = menu
-        menu.dishes.append(dish)
-        assert dish.valid?
-        assert_equal(1,menu.dishes.length) 
+
+    test 'add dish with recipes' do
+      recipes = [["one", "something"], ["two", "something else"]]
+      dish = Dish.add_dish("new", recipes)
+      assert dish.valid?
+
+      recipes = Recipe.get_recipe_by_dish(dish)
+
+      recipes.each do |recipe|
+        assert recipe.valid?
+      end
     end
-    
-    test 'add dish (not as child of Menu)' do
-        dish = Dish.new
-        assert dish.valid?
+
+    test 'get dish success' do
+        dish = Dish.get_dish("one")
+        assert_equal(dish, Dish.where(name:"one").first)
     end
-    
-    test 'add_ingredients ' do
-        dish = Dish.new
-        ing1 = Ingredient.new
-        ing2 = Ingredient.new
-        ing3 = Ingredient.new
-        ing4 = Ingredient.new
-        Dish.add_ingredients(dish,[ing1, ing2, ing3, ing4])
-        assert_equal([ing1, ing2, ing3, ing4],dish.ingredients)
-    end 
-    
-    
-    
-    
-    
+
+    test 'get dish fail' do
+        assert_raise ArgumentError do
+          dish = Dish.get_dish("three")
+        end
+    end
+
+    test 'remove dish fail' do
+        assert_raise ArgumentError do
+          dish = Dish.remove_dish("one")
+        end
+    end
+
+    test 'remove dish success' do
+        # TODO: fix the next 2 lines
+        # The fixture currently does not like nil
+        dish = Dish.get_dish("two")
+        dish.menu_id = nil
+        dish.save
+        assert Dish.get_dish("two").menu_id == nil
+        dish = Dish.remove_dish("two")
+        assert_not Dish.exists?(dish.id)
+    end
+
 end
