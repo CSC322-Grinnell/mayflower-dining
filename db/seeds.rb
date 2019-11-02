@@ -10,7 +10,7 @@ row = 0
 
 while row < table.length
   # Each day ends on "CYCLE: xxx"
-  while !table[row][0].include? "CYCLE"
+  while !table[row][0].include? "CYCLE" 
     Dish.create({name: table[row][0]})
     row += 1
   end
@@ -19,4 +19,3 @@ while row < table.length
   # Skip two rows: "CYCLE: xxx" and another header
   row += 2
 end
-
