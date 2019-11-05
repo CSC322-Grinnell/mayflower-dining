@@ -13,9 +13,9 @@ while row < table.length
 
   # Each day ends on "CYCLE: xxx"
   while !table[row][0].include? "CYCLE" 
-    Dish.create({name: table[row][0]})
+    d = Dish.create({name: table[row][0]})
     # Add the id for the newly created dish
-    dish_ids.push(Dish.count)
+    dish_ids.push(d.id)
     row += 1
   end
 

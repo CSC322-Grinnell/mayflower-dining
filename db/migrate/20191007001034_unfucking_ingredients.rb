@@ -10,7 +10,7 @@ class UnfuckingIngredients < ActiveRecord::Migration[5.2]
       remove_column :ingredients, :portion_size
       remove_column :ingredients, :dish_id
       remove_column :dishes, :ingredient_id
-      remove_column :dishes, :menu_id
+      #remove_column :dishes, :menu_id
       remove_column :dishes, :temporary_menu_id
       remove_column :menus, :dish_id
       remove_column :ingredients, :done
