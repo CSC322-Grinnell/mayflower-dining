@@ -1,27 +1,511 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US">
   <head>
-    <title>MayflowerDining</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application' %>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-W2RW5MB');
+    </script>
+    <!-- End Google Tag Manager -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <link rel="pingback" href="https://www.mayflowerhomes.com/xmlrpc.php">
+    <title>Mayflower Community &#8211; A Place To Call Home</title>
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel="alternate" type="application/rss+xml" title="Mayflower Community &raquo; Feed" href="https://www.mayflowerhomes.com/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Mayflower Community &raquo; Comments Feed" href="https://www.mayflowerhomes.com/comments/feed/" />
+    <script type="text/javascript">
+      window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/12.0.0-1\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.mayflowerhomes.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=5.2.4"}};
+      !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56424,55356,57342,8205,55358,56605,8205,55357,56424,55356,57340],[55357,56424,55356,57342,8203,55358,56605,8203,55357,56424,55356,57340]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+      img.wp-smiley,
+      img.emoji {
+      display: inline !important;
+      border: none !important;
+      box-shadow: none !important;
+      height: 1em !important;
+      width: 1em !important;
+      margin: 0 .07em !important;
+      vertical-align: -0.1em !important;
+      background: none !important;
+      padding: 0 !important;
+      }
+    </style>
+    <link rel='stylesheet' id='wfsi-socialicons-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/web-font-social-icons/css/icons.css?ver=5.2.4' type='text/css' media='all' />
+    <style id='wfsi-socialicons-inline-css' type='text/css'>
+      a.ptwsi-social-icon,
+      a.ptwsi-social-icon:visited,
+      .ptwsi_social-icons li a:visited,
+      .ptwsi_social-icons li a {
+      color: #A0A0A0;
+      background:  #F2F2F2;
+      }
+    </style>
+    <link rel='stylesheet' id='ot-google-fonts-css'  href='//fonts.googleapis.com/css?family=Open+Sans:300,600,700,800' type='text/css' media='all' />
+    <link rel='stylesheet' id='contact-form-7-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.1.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/revslider/public/assets/css/settings.css?ver=5.2.6' type='text/css' media='all' />
+    <style id='rs-plugin-settings-inline-css' type='text/css'>
+      .tp-caption a{color:#ff7302;text-shadow:none;-webkit-transition:all 0.2s ease-out;-moz-transition:all 0.2s ease-out;-o-transition:all 0.2s ease-out;-ms-transition:all 0.2s ease-out}.tp-caption a:hover{color:#ffa902}
+    </style>
+    <link rel='stylesheet' id='wp-pagenavi-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/pagenavi-css.css?ver=2.70' type='text/css' media='all' />
+    <link rel='stylesheet' id='centum-base-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/css/base.css?ver=5.2.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='centum-skeleton-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/css/skeleton.css?ver=5.2.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='centum-style-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/style.css?ver=5.2.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='centum-boxed-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/css/boxed.css?ver=5.2.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='centum-scheme-css'  href='https://www.mayflowerhomes.com/wp-content/themes/Centum/css/light.css?ver=5.2.4' type='text/css' media='all' />
+    <link rel='stylesheet' id='js_composer_front-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/css/js_composer.min.css?ver=4.12' type='text/css' media='all' />
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.2.6'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/revslider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.2.6'></script>
+    <link rel='https://api.w.org/' href='https://www.mayflowerhomes.com/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.mayflowerhomes.com/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://www.mayflowerhomes.com/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 5.2.4" />
+    <link rel="canonical" href="https://www.mayflowerhomes.com/" />
+    <link rel='shortlink' href='https://www.mayflowerhomes.com/' />
+    <link rel="alternate" type="application/json+oembed" href="https://www.mayflowerhomes.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mayflowerhomes.com%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="https://www.mayflowerhomes.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.mayflowerhomes.com%2F&#038;format=xml" />
+    <style type="text/css">
+      body { color:#353535;font-size:14px;font-weight:600; }
+      h1{ font-size:24px;font-weight:600; }
+      h2{ font-size:20px;font-weight:600; }
+      h3{ font-size:18px;font-weight:600; }
+      h4{ font-size:16px; }
+      h5{ font-size:14px; }
+      h6{  }
+      h2.logo a,
+      h1.logo a {  }
+      #navigation ul li a {    }
+      h1.logo a,
+      #logo {
+      margin-top:0px;      }
+      #tagline {
+      margin-top:px;  }
+      @media only screen and (max-width: 767px) {
+      #tagline { margin-top: 5px;}
+      }
+      #header {
+      min-height: 100px;
+      }
+      @media only screen and (max-width: 767px) {
+      #navigation {
+      float: none;
+      }
+      .js .selectnav {
+      display: block;
+      }
+      .js #nav,
+      #navigation .dropmenu > li#search-in-menu,
+      #navigation ul li a {
+      display: none;
+      }
+      }
+      .post-icon { display: none; }
+      .post-content { margin: 22px 0 0; }
+      #backtotop a:hover,.feature-circle.blue,.prev:hover, .next:hover,.mr-rotato-prev:hover, .mr-rotato-next:hover { background-color: ; }
+      h1, h2, h3, h4, h5, h6 {
+      color:        }
+      a:hover, a:focus { color: ; }
+      a, a:visited { color:  ; }
+      #navigation ul li a:hover,
+      #navigation ul li:hover > a,
+      #bolded-line,
+      .button.gray:hover,
+      .button.light:hover,
+      .shipping-calculator-form button.button:hover,
+      table.cart-table .cart-btns input:hover,
+      table.cart-table .cart-btns a,
+      .stacktable.small-only .cart-btns a,
+      .price_slider_wrapper .ui-slider-horizontal .ui-slider-range,
+      .button.color,
+      .checkout-button,
+      .wc-proceed-to-checkout a.button.wc-forward,
+      .button.checkout.wc-forward,
+      .onsale,
+      #place_order,
+      input[type="submit"] {
+      background: #396e8e;
+      }
+      .blog-sidebar .widget #twitter-blog li a,
+      a, a:hover,
+      .testimonials-author,
+      .shop-item span.price,
+      .list-1 li:before, .list-2 li:before, .list-3 li:before, .list-4 li:before,
+      a.post-entry {
+      color: #396e8e      }
+      #navigation > div > ul > li.current-menu-item > a,
+      #navigation > div > ul > li.current_page_parent > a,
+      .pricing-table .color-3 h3, .color-3 .sign-up,
+      #home-slider.rsDefault .rsArrowIcn:hover,
+      .linking button.button,
+      .slider .tp-leftarrow:hover,
+      .slider .tp-rightarrow:hover,
+      a.button.checkout.wc-forward:hover, 
+      a.button.wc-forward:hover, 
+      body .widget_price_filter .price_slider_amount button.button:hover, 
+      .cart-btn .button.hovered, 
+      .button.wc-backward:hover, 
+      .magazine-lead figcaption:hover .button, 
+      .wishlist_table .add_to_cart.button:hover, 
+      .cart-btn .button:hover,
+      .featured-box:hover > .circle,
+      .featured-box:hover > .circle span,
+      #home-slider.rsDefault .rsArrowIcn:hover, #portfolio-slider.rsDefault .rsArrowIcn:hover,
+      #scroll-top-top a,
+      .quantity .plus:hover,#content .quantity .plus:hover,.quantity .minus:hover,#content .quantity .minus:hover,
+      .infobox,
+      .post-icon {
+      background-color:#396e8e;
+      }
+      .mr-rotato-prev:hover,
+      .mr-rotato-next:hover,
+      .pagination .current:hover,
+      .pagination a:hover, 
+      .woocommerce-pagination a:hover,
+      .widget_price_filter .button:hover, 
+      span.page-numbers.current,
+      li.current,
+      .tagcloud a:hover {
+      background-color: #396e8e;
+      border-color: #396e8e;
+      }
+      #filters a:hover,
+      .option-set .selected,
+      .wp-pagenavi .current,
+      .pagination .current,
+      #portfolio-navi a:hover {
+      background-color: #396e8e !important;
+      border: 1px solid #396e8e !important;
+      }
+      .pricing-table .color-3 h4 {
+      background-color:#396e8e;
+      opacity:0.8
+      }
+      .image-overlay-link, .image-overlay-zoom {
+      background-color: rgba(57,110,142,0.7);
+      }
+      body p a:visited {
+      color: #39708F;
+      }      
+    </style>
+    <meta name="generator" content="Powered by Visual Composer - drag and drop page builder for WordPress."/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css" href="https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen">
+    <![endif]--><!--[if IE  8]>
+    <link rel="stylesheet" type="text/css" href="https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen">
+    <![endif]-->
+    <style type="text/css" id="custom-background-css">
+      body.custom-background { background-color: #396e8e; background-image: url("https://www.mayflowerhomes.com/wp-content/uploads/2013/10/dh40jhc.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+    </style>
+    <meta name="generator" content="Powered by Slider Revolution 5.2.6 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+    <style type="text/css" id="wp-custom-css">
+      /*--- 2 Column Form Styles Start ---*/
+      #left {
+      width: 47%;
+      float: left;
+      margin-right:6%;
+      }
+      #right {
+      width: 47%;
+      float: left;
+      }
+      .clearfix:after {
+      content:"\0020";
+      display:block;
+      height:0;
+      clear:both;
+      visibility:hidden;
+      overflow:hidden;
+      margin-bottom:5px;
+      }
+      .clearfix {
+      display:block;
+      }
+      /*--- 2 Column Form Styles End ---*/
+      ul.social-icons a.facebook{
+      background-color:#396383;
+      }
+      .socialHeader{
+      color:#396e8e;
+      font-size:1.5em;
+      float:left;
+      padding:15px 10px 0 0;
+      }		
+    </style>
+    <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1537573501168{margin-top: 25px !important;}.vc_custom_1537571890176{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1537572550119{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1537572072801{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1537572578182{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1537572342165{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1537572596954{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1538431194321{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}.vc_custom_1538431284365{margin-bottom: 0px !important;border-bottom-width: 0px !important;padding-bottom: 20px !important;}</style>
+    <noscript>
+      <style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style>
+    </noscript>
   </head>
-
-  <body>
-    <%= render partial: 'layouts/navbar' %>
-    <section class="flash">
-      <% if flash[:notice] %>
+  <body class="home page-template page-template-template-home-flex page-template-template-home-flex-php page page-id-27 custom-background boxed light wpb-js-composer js-comp-ver-4.12 vc_responsive">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W2RW5MB"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    <div id="wrapper" >
+      <!-- Header
+        ================================================== -->
+      <!-- 960 Container -->
+      <div class="container ie-dropdown-fix">
+        <!-- Header -->
+        <div id="header" class="">
+          <!-- Logo -->
+          <div class="ten logo-area columns">
+            <div id="logo">
+              <a href="https://www.mayflowerhomes.com/" title="Mayflower Community" rel="home">
+              <img src="https://www.mayflowerhomes.com/wp-content/uploads/2013/02/mf_logo3.jpg" alt="Mayflower Community"/>
+              </a>
+              <div class="clear"></div>
+            </div>
+          </div>
+          <!-- Social / Contact -->
+          <div class="six header-details columns">
+            <ul class="social-icons">
+              <li><a target="_blank" class="facebook" title="Facebook" href="https://www.facebook.com/Mayflower-Community-164019130292098/"><i class="icon-facebook"></i></a></li>
+            </ul>
+            <div class="clear"></div>
+            <!-- Contact Details -->
+            <div id="contact-details">
+              <ul>
+                <li><i class="fa fa-envelope"></i><a href="mailto:info@mayflowerhomes.com">info@mayflowerhomes.com</a></li>
+                <li><i class="fa fa-phone"></i>800-936-6151</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- Header / End -->
+        <!-- Navigation -->
+        <div class="sixteen columns">
+          <div id="navigation">
+            <div id="mainmenu-cont" class="menu-main-container">
+              <ul id="menu-main" class="dropmenu main-menu">
+                <li id="menu-item-7" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-7"><a href="https://www.mayflowerhomes.com/" aria-current="page">Home</a></li>
+                <li id="menu-item-220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-220">
+                  <a href="https://www.mayflowerhomes.com/mission-statement/">About Us</a>
+                  <ul class="sub-menu">
+                    <li id="menu-item-170" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170"><a href="https://www.mayflowerhomes.com/mission-statement/">Mission Statement</a></li>
+                    <li id="menu-item-167" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167"><a href="https://www.mayflowerhomes.com/history/">History</a></li>
+                    <li id="menu-item-173" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173"><a href="https://www.mayflowerhomes.com/church-affiliation/">Church Affiliation</a></li>
+                    <li id="menu-item-165" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165"><a href="https://www.mayflowerhomes.com/facts/">Facts</a></li>
+                    <li id="menu-item-172" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172"><a href="https://www.mayflowerhomes.com/governing-boards/">Governing Boards</a></li>
+                    <li id="menu-item-171" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-171"><a href="https://www.mayflowerhomes.com/staff/">Staff</a></li>
+                    <li id="menu-item-164" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164"><a href="https://www.mayflowerhomes.com/employment/">Employment</a></li>
+                  </ul>
+                </li>
+                <li id="menu-item-221" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-221">
+                  <a href="https://www.mayflowerhomes.com/facilities-services/">Campus</a>
+                  <ul class="sub-menu">
+                    <li id="menu-item-115" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-115"><a href="https://www.mayflowerhomes.com/facilities-services/">Amenities</a></li>
+                    <li id="menu-item-101" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101"><a href="https://www.mayflowerhomes.com/campus-map/">Campus Map</a></li>
+                    <li id="menu-item-501" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-501"><a href="https://www.mayflowerhomes.com/photo-gallery/">Photo Gallery</a></li>
+                    <li id="menu-item-104" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104"><a href="https://www.mayflowerhomes.com/driving-directions/">Location &#038; Driving Directions</a></li>
+                    <li id="menu-item-107" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107"><a href="https://www.mayflowerhomes.com/faq/">FAQ</a></li>
+                  </ul>
+                </li>
+                <li id="menu-item-330" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330">
+                  <a href="https://www.mayflowerhomes.com/living-options-2/">Living Options</a>
+                  <ul class="sub-menu">
+                    <li id="menu-item-118" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118"><a href="https://www.mayflowerhomes.com/affordability/">Living Affordability</a></li>
+                    <li id="menu-item-8" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8">
+                      <a href="https://www.mayflowerhomes.com/apartments/">Independent Living</a>	
+                      <ul class="sub-menu">
+                        <li id="menu-item-119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-119">
+                          <a href="https://www.mayflowerhomes.com/apartments/">Apartments</a>		
+                          <ul class="sub-menu">
+                            <li id="menu-item-424" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-424"><a href="https://www.mayflowerhomes.com/1-bedroom-apartment/">1 Bedroom Apartment</a></li>
+                            <li id="menu-item-423" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423"><a href="https://www.mayflowerhomes.com/1-bedroom-plus-apartment/">1 Bedroom-Plus Apartment</a></li>
+                            <li id="menu-item-422" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-422"><a href="https://www.mayflowerhomes.com/2-bedroom-apartment/">2 Bedroom Apartment</a></li>
+                          </ul>
+                        </li>
+                        <li id="menu-item-127" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127"><a href="https://www.mayflowerhomes.com/patio-homes/">Patio Homes</a></li>
+                      </ul>
+                    </li>
+                    <li id="menu-item-9" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9">
+                      <a href="https://www.mayflowerhomes.com/home-services/">Health Services</a>	
+                      <ul class="sub-menu">
+                        <li id="menu-item-122" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-122"><a href="https://www.mayflowerhomes.com/home-services/">Home Services</a></li>
+                        <li id="menu-item-120" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120"><a href="https://www.mayflowerhomes.com/assisted-living/">Assisted Living</a></li>
+                        <li id="menu-item-121" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121"><a href="https://www.mayflowerhomes.com/health-center/">Health Center</a></li>
+                        <li id="menu-item-125" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-125"><a href="https://www.mayflowerhomes.com/memory-support/">Memory Support</a></li>
+                        <li id="menu-item-2261" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2261"><a href="https://www.mayflowerhomes.com/rehab-care/">Rehab Care</a></li>
+                      </ul>
+                    </li>
+                    <li id="menu-item-1145" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1145"><a href="https://www.mayflowerhomes.com/watertower-square/">Watertower Square Residences</a></li>
+                    <li id="menu-item-912" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-912"><a href="https://www.mayflowerhomes.com/available-homes/">Available Homes</a></li>
+                    <li id="menu-item-109" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109"><a href="https://www.mayflowerhomes.com/how-to-apply/">How To Apply</a></li>
+                  </ul>
+                </li>
+                <li id="menu-item-223" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-223">
+                  <a href="https://www.mayflowerhomes.com/activities/">Life At Mayflower</a>
+                  <ul class="sub-menu">
+                    <li id="menu-item-176" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176"><a href="https://www.mayflowerhomes.com/activities/">Activities</a></li>
+                    <li id="menu-item-662" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-662"><a href="https://www.mayflowerhomes.com/menus/">Menus</a></li>
+                    <li id="menu-item-666" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-666"><a href="https://www.mayflowerhomes.com/calendar/">Calendar</a></li>
+                    <li id="menu-item-2604" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2604"><a href="https://www.mayflowerhomes.com/mini-gift-shop/">Mini Gift Shop</a></li>
+                    <li id="menu-item-187" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-187"><a href="https://www.mayflowerhomes.com/residents-association/">Residents Association</a></li>
+                    <li id="menu-item-1992" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1992"><a href="https://www.mayflowerhomes.com/news/">News</a></li>
+                    <li id="menu-item-185" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185"><a href="https://www.mayflowerhomes.com/newsletters/">Newsletters</a></li>
+                  </ul>
+                </li>
+                <li id="menu-item-162" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-162"><a href="https://www.mayflowerhomes.com/donations/">Giving</a></li>
+                <li id="menu-item-169" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169"><a href="https://www.mayflowerhomes.com/life-around-town/">Grinnell Area</a></li>
+                <li id="menu-item-161" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161"><a href="https://www.mayflowerhomes.com/contact-us/">Contact Us</a></li>
+              </ul>
+            </div>
+            <select class="selectnav">
+              <option value="/">Select Page</option>
+              <option value="https://www.mayflowerhomes.com/" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-7">Home</option>
+              <option value="https://www.mayflowerhomes.com/mission-statement/" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-220">About Us</option>
+              <option value="https://www.mayflowerhomes.com/mission-statement/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-170">&#151; Mission Statement</option>
+              <option value="https://www.mayflowerhomes.com/history/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-167">&#151; History</option>
+              <option value="https://www.mayflowerhomes.com/church-affiliation/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-173">&#151; Church Affiliation</option>
+              <option value="https://www.mayflowerhomes.com/facts/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-165">&#151; Facts</option>
+              <option value="https://www.mayflowerhomes.com/governing-boards/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-172">&#151; Governing Boards</option>
+              <option value="https://www.mayflowerhomes.com/staff/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-171">&#151; Staff</option>
+              <option value="https://www.mayflowerhomes.com/employment/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-164">&#151; Employment</option>
+              <option value="https://www.mayflowerhomes.com/facilities-services/" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-221">Campus</option>
+              <option value="https://www.mayflowerhomes.com/facilities-services/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-115">&#151; Amenities</option>
+              <option value="https://www.mayflowerhomes.com/campus-map/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-101">&#151; Campus Map</option>
+              <option value="https://www.mayflowerhomes.com/photo-gallery/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-501">&#151; Photo Gallery</option>
+              <option value="https://www.mayflowerhomes.com/driving-directions/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-104">&#151; Location &#038; Driving Directions</option>
+              <option value="https://www.mayflowerhomes.com/faq/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-107">&#151; FAQ</option>
+              <option value="https://www.mayflowerhomes.com/living-options-2/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-330">Living Options</option>
+              <option value="https://www.mayflowerhomes.com/affordability/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-118">&#151; Living Affordability</option>
+              <option value="https://www.mayflowerhomes.com/apartments/" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-8">&#151; Independent Living</option>
+              <option value="https://www.mayflowerhomes.com/apartments/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-119">&#151; &#151; Apartments</option>
+              <option value="https://www.mayflowerhomes.com/1-bedroom-apartment/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-424">&#151; &#151; &#151; 1 Bedroom Apartment</option>
+              <option value="https://www.mayflowerhomes.com/1-bedroom-plus-apartment/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-423">&#151; &#151; &#151; 1 Bedroom-Plus Apartment</option>
+              <option value="https://www.mayflowerhomes.com/2-bedroom-apartment/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-422">&#151; &#151; &#151; 2 Bedroom Apartment</option>
+              <option value="https://www.mayflowerhomes.com/patio-homes/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-127">&#151; &#151; Patio Homes</option>
+              <option value="https://www.mayflowerhomes.com/home-services/" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-9">&#151; Health Services</option>
+              <option value="https://www.mayflowerhomes.com/home-services/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-122">&#151; &#151; Home Services</option>
+              <option value="https://www.mayflowerhomes.com/assisted-living/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-120">&#151; &#151; Assisted Living</option>
+              <option value="https://www.mayflowerhomes.com/health-center/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-121">&#151; &#151; Health Center</option>
+              <option value="https://www.mayflowerhomes.com/memory-support/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-125">&#151; &#151; Memory Support</option>
+              <option value="https://www.mayflowerhomes.com/rehab-care/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2261">&#151; &#151; Rehab Care</option>
+              <option value="https://www.mayflowerhomes.com/watertower-square/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1145">&#151; Watertower Square Residences</option>
+              <option value="https://www.mayflowerhomes.com/available-homes/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-912">&#151; Available Homes</option>
+              <option value="https://www.mayflowerhomes.com/how-to-apply/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-109">&#151; How To Apply</option>
+              <option value="https://www.mayflowerhomes.com/activities/" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-223">Life At Mayflower</option>
+              <option value="https://www.mayflowerhomes.com/activities/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-176">&#151; Activities</option>
+              <option value="https://www.mayflowerhomes.com/menus/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-662">&#151; Menus</option>
+              <option value="https://www.mayflowerhomes.com/calendar/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-666">&#151; Calendar</option>
+              <option value="https://www.mayflowerhomes.com/mini-gift-shop/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2604">&#151; Mini Gift Shop</option>
+              <option value="https://www.mayflowerhomes.com/residents-association/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-187">&#151; Residents Association</option>
+              <option value="https://www.mayflowerhomes.com/news/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1992">&#151; News</option>
+              <option value="https://www.mayflowerhomes.com/newsletters/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-185">&#151; Newsletters</option>
+              <option value="https://www.mayflowerhomes.com/donations/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-162">Giving</option>
+              <option value="https://www.mayflowerhomes.com/life-around-town/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-169">Grinnell Area</option>
+              <option value="https://www.mayflowerhomes.com/contact-us/" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-161">Contact Us</option>
+            </select>
+            <!-- Search Form -->
+          </div>
+          <div class="clear"></div>
+        </div>
+        <!-- Navigation / End -->
+      </div>
+      <!--Our Stuff-->
+      <section class="flash">
+        <% if flash[:notice] %>
         <p class="alert alert-primary"><%= notice %></p>
-      <% end %>
-      <% if flash[:alert] %>
+        <% end %>
+        <% if flash[:alert] %>
         <p class="alert alert-warning"><%= alert %></p>
-      <% end %>
-    </section>
-    <div class="container">
-      <%= yield %>
+        <% end %>
+      </section>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <!--End Our Stuff-->
     </div>
+    <!-- Footer Start -->
+    <div id="footer">
+      <div class="container">
+        <div class="four columns">
+          <div id="text-6" class="widget widget_text">
+            <div class="footer-headline">
+              <h4>Mayflower Community</h4>
+            </div>
+            <div class="textwidget">
+              <p>616 Broad Street<br />
+                Grinnell, IA 50112<br />
+                Phone: 641-236-6151 or 800-936-6151<br />
+                Main Office Fax: 641-236-6154<br />
+                Health Center Fax: 641-236-6153<br />
+                <a href="mailto:info@mayflowerhomes.com">info@mayflowerhomes.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="four columns">
+          <div id="pt-social-icons-2" class="widget pt-social-icons">
+            <div class="footer-headline">
+              <h4>Connect With Us!</h4>
+            </div>
+            <style type="text/css">
+              .ptwsi_social-icons.ptwsi5 li a:visited,
+              .ptwsi_social-icons.ptwsi5 li a{
+              background: #396e8e;
+              color:  #ffffff;
+              }
+            </style>
+            <ul class="ptwsi_social-icons ptwsi5">
+              <li><a target="_blank" class="facebook   ptwsi-social-icon" href="https://www.facebook.com/Mayflower-Community-164019130292098/"><i class="ptwsi-icon-facebook"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="four columns">
+        </div>
+        <div class="four columns">
+        </div>
+        <div class="sixteen columns">
+          <div id="footer-bottom">
+            © Copyright 2018 Mayflower Homes, Inc. All Rights Reserved.				
+            <div id="scroll-top-top"><a href="#"></a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Footer End -->
+    <link rel='stylesheet' id='prettyphoto-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/prettyphoto/css/prettyPhoto.min.css?ver=4.12' type='text/css' media='all' />
+    <link rel='stylesheet' id='vc_pageable_owl-carousel-css-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/owl-carousel2-dist/assets/owl.min.css?ver=4.12' type='text/css' media='' />
+    <link rel='stylesheet' id='animate-css-css'  href='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/bower/animate-css/animate.min.css?ver=4.12' type='text/css' media='' />
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/purethemes-shortcodes/js/shortcodes.js?ver=5.2.4'></script>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var wpcf7 = {"apiSettings":{"root":"https:\/\/www.mayflowerhomes.com\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"}};
+      /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=5.1.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/jquery.royalslider.min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/jquery.flexslider-min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/tooltip.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/effects.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/mfp.min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/carousel.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/stacktable.js?ver=20140612'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/jquery.isotope.min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/owl.carousel.min.js?ver=5.2.4'></script>
+    <script type='text/javascript'>
+      /* <![CDATA[ */
+      var centum = {"home_slider_scale_mode":"none","home_royal_delay":"5000","home_slider_loop":"1","home_slider_autoheight":"1","home_slider_autoplay":"1","home_slider_arrows_hide":"","retinalogo":""};
+      /* ]]> */
+    </script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/themes/Centum/js/custom.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-includes/js/wp-embed.min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/js/dist/js_composer_front.min.js?ver=4.12'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/prettyphoto/js/jquery.prettyPhoto.min.js?ver=4.12'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/bower/masonry/dist/masonry.pkgd.min.js?ver=4.12'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/owl-carousel2-dist/owl.carousel.min.js?ver=4.12'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/bower/imagesloaded/imagesloaded.pkgd.min.js?ver=5.2.4'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-includes/js/underscore.min.js?ver=1.8.3'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/lib/waypoints/waypoints.min.js?ver=4.12'></script>
+    <script type='text/javascript' src='https://www.mayflowerhomes.com/wp-content/plugins/js_composer/assets/js/dist/vc_grid.min.js?ver=4.12'></script>
   </body>
 </html>

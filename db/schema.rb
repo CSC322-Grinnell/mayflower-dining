@@ -33,8 +33,6 @@ ActiveRecord::Schema.define(version: 2019_10_07_001034) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "menu_id"
-    t.index ["menu_id"], name: "index_dishes_on_menu_id"
   end
 
   create_table "ingredients", force: :cascade do |t|
@@ -58,7 +56,6 @@ ActiveRecord::Schema.define(version: 2019_10_07_001034) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "dish_ids", default: [], array: true
-    t.index ["day", "type_of_meal"], name: "by_day_type_of_meal", unique: true
   end
 
   create_table "recipes", force: :cascade do |t|
