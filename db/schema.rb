@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_14_053948) do
+ActiveRecord::Schema.define(version: 2019_11_15_193127) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2019_11_14_053948) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "description"
+    t.string "dish_type"
   end
 
   create_table "dishes_menus", force: :cascade do |t|
@@ -68,20 +70,15 @@ ActiveRecord::Schema.define(version: 2019_11_14_053948) do
   end
 
   create_table "recipes", force: :cascade do |t|
+    t.string "name"
+    t.string "comment"
     t.string "portion_size"
+    t.string "ingredients_type"
     t.bigint "dish_id"
     t.bigint "ingredient_id"
+    t.integer "step"
     t.index ["dish_id"], name: "index_recipes_on_dish_id"
     t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
-  end
-
-  create_table "temporary_menus", force: :cascade do |t|
-    t.date "date"
-    t.string "type_of_meal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "dish_id"
-    t.index ["dish_id"], name: "index_temporary_menus_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|

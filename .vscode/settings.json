@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "database": "mayflower_dev",
+            "dialect": "PostgreSQL",
+            "name": "mayflower_dev",
+            "password": "postgres",
+            "port": 5432,
+            "server": "localhost",
+            "username": "postgres"
+        }
+    ]
+}

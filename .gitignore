@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
+/.vscode
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
@@ -34,3 +35,7 @@
 /node_modules
 yarn-debug.log*
 .yarn-integrity
+
+
+mayflower_dev Session.sql
+/db/seeds.rb
