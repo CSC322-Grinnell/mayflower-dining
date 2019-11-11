@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   get 'permanent_edit/:week/:day', to: 'permanent_edit#view_dishes'
   get 'prep/prep_page', to: 'prep#preppage'
   get 'prep/prep_page/:id', to: 'prep#checked'
-
   root to: "pages#home"
   ActiveAdmin.routes(self)
   devise_for :users

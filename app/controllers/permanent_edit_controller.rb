@@ -1,5 +1,5 @@
 class PermanentEditController < ApplicationController
-    
+    before_action :authenticate_user!
     
     def view_dishes
         day_in_cycle = params[:week].to_i * 7 + params[:day].to_i 

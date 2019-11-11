@@ -1,4 +1,6 @@
 class DishController < ApplicationController
+    before_action :authenticate_user!
+    
     def add_to_cycle
         # create dish
         dish = Dish.new(name: params[:dish_name])

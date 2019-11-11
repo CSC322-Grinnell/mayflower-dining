@@ -1,4 +1,6 @@
 class PrepController < ApplicationController
+  before_action :authenticate_user!
+  
   def preppage
      date = Date.today
      if Menu.get_ingredients_by_date(date) != []

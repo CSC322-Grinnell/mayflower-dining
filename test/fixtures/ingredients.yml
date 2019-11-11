@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 one:
-  name: MyString
-  : MyString
+  id: 1
+  name: "one"
   mech_soft: MyString
   pureed: MyString
   diet: MyString
@@ -13,8 +13,8 @@ one:
   buckley_prep_leftover: MyString
 
 two:
-  name: MyString
-  : MyString
+  id: 2
+  name: "two"
   mech_soft: MyString
   pureed: MyString
   diet: MyString
@@ -27,8 +27,8 @@ two:
 
 
 three:
-  name: MyString
-  : MyString
+  id: 3
+  name: "three"
   mech_soft: MyString
   pureed: MyString
   diet: MyString

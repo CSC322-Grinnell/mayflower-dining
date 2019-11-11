@@ -1,4 +1,5 @@
 class DishesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   # GET /dishes
