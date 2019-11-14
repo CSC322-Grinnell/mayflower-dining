@@ -10,7 +10,7 @@
 ## FOR NOW THE NIL MENU IS MENU NUMBER 100
 
 class Menu < ApplicationRecord
-    has_many :dishes
+    has_and_belongs_to_many :dishes
     validates :day, presence: true
     validates :type_of_meal, presence: true
 
@@ -20,7 +20,7 @@ class Menu < ApplicationRecord
       raise ArgumentError, 'day in cycle should be 1-49' \
         unless day >= 1 || day <= 49
       raise ArgumentError, 'type of meal is invalid' \
-        unless (type.eql? "Breakfast") || (type.eql? "Lunch") || (type.eql? "Dinner")
+        unless (type.eql? "Breakfast") || (type.eql? "Dinner") || (type.eql? "Supper")
     end
 
     # Returns an existing menu entry. If needed, it creates one.
@@ -30,7 +30,7 @@ class Menu < ApplicationRecord
       if menu.exists?
           menu = menu.first
       else
-          menu = self.create(day: day, type_of_meal: type)
+          menu = self.create!(day: day, type_of_meal: type)
       end
 
       menu
@@ -44,11 +44,8 @@ class Menu < ApplicationRecord
     def self.add_dishes_to_cycle(day, type, dishes)
         menu = self.get_menu(day, type)
         dishes.each do |dish|
-            menu.dish_ids.append(dish.id)
-            dish.menu_id = menu.id
-            dish.save
+            DishMenu.create!(dish_id:dish.id, menu_id:menu.id)
         end
-        menu.save
         menu
     end
 
@@ -58,10 +55,7 @@ class Menu < ApplicationRecord
     #     else adds new dishes to the Menu record with the given day
     def self.add_dish_to_cycle(day, type, dish)
         menu = self.get_menu(day, type)
-        menu.dish_ids.append(dish.id)
-        menu.save
-        dish.menu_id = menu.id
-        dish.save
+        DishMenu.create!(dish_id:dish.id, menu_id:menu.id)
         menu
     end
 
@@ -72,8 +66,7 @@ class Menu < ApplicationRecord
     #   day_in_cycle:a day between 1 - 49, representin a day in the cycle
     #                ie. Week 1, Day 1 = 1; Week 3, Day 5 = ,19
     def self.get_dishes_by_day_type(day, type)
-        self.validate_menu(day, type)
-        self.where(day: day, type_of_meal: type).first.dish_ids
+        DishMenu.where(menu_id:self.get_menu(day, type).id)
     end
 
     # Purpose:
@@ -94,19 +87,15 @@ class Menu < ApplicationRecord
         end
         start_date = Date.new(2019, 12, 8)
         day = ((end_date - start_date) % 49 ) + 1
-        self.get_menu(day, type).dish_ids
+        DishMenu.where(menu_id:self.get_menu(day, type).id)
     end
 
     # remove a dish from menu with a given day and type
-    def self.remove_dish(dish)
-      if Menu.exists?(dish.menu_id)
-        dish.menu_id = nil
-        dish.save
+    def self.remove_dish_by_day_type(dish, day, type)
+      menu = self.get_menu(day, type)
+      DishMenu.where(dish_id:dish.id, menu_id:menu.id).each do |r|
+        r.delete
       end
       dish
     end
-
-
-
-
 end

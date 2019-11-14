@@ -41,9 +41,7 @@ class DishTest < ActiveSupport::TestCase
         # TODO: fix the next 2 lines
         # The fixture currently does not like nil
         dish = Dish.get_dish("two")
-        dish.menu_id = nil
         dish.save
-        assert Dish.get_dish("two").menu_id == nil
         dish = Dish.remove_dish("two")
         assert_not Dish.exists?(dish.id)
     end

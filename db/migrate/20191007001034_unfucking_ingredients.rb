@@ -10,13 +10,13 @@ class UnfuckingIngredients < ActiveRecord::Migration[5.2]
       remove_column :ingredients, :portion_size
       remove_column :ingredients, :dish_id
       remove_column :dishes, :ingredient_id
-      # remove_column :dishes, :menu_id
+      remove_column :dishes, :menu_id
       remove_column :dishes, :temporary_menu_id
       remove_column :menus, :dish_id
       remove_column :ingredients, :done
 
       add_column :menus, :dish_ids, :integer, array: true, default: []
-      add_index :menus, [:day, :type_of_meal], unique: true,  name: "by_day_type_of_meal"
+
 
   end
 end
