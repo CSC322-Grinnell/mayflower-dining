@@ -24,43 +24,41 @@ class MenuTest < ActiveSupport::TestCase
     end
 
     test 'add dishes to cycle' do
-        m = Menu.get_menu(1, "Breakfast")
-        m.dish_ids = [1]
-        m.save
-        assert([1], Menu.get_menu(1, "Breakfast").dish_ids)
         dishes = []
         dishes.push(Dish.get_dish("rando"))
         dishes.push(Dish.get_dish("two"))
         Menu.add_dishes_to_cycle(1,"Breakfast", dishes)
-        assert_equal([1,12,2], Menu.get_menu(1, "Breakfast").dish_ids)
-        assert_equal(Menu.get_menu(1, "Breakfast").id, Dish.get_dish("two").menu_id)
-        assert_equal(Menu.get_menu(1, "Breakfast").id, Dish.get_dish("rando").menu_id)
+        m = Menu.get_menu(1, "Breakfast")
+        assert DishMenu.exists?(dish_id:Dish.get_dish("rando").id, menu_id:m.id)
+        assert DishMenu.exists?(dish_id:Dish.get_dish("two").id, menu_id:m.id)
     end
 
     test 'add dish to cycle' do
-        m = Menu.get_menu(1, "Breakfast")
-        m.dish_ids = [1]
-        m.save
-        assert([1], Menu.get_menu(1, "Breakfast").dish_ids)
         Menu.add_dish_to_cycle(1, "Breakfast" , Dish.get_dish("rando"))
-        assert_equal([1,12], Menu.get_menu(1, "Breakfast").dish_ids)
-        assert_equal(Menu.get_menu(1, "Breakfast").id, Dish.get_dish("rando").menu_id)
+        m = Menu.get_menu(1, "Breakfast")
+        assert DishMenu.exists?(dish_id:Dish.get_dish("rando").id, menu_id:m.id)
     end
 
     test 'get dishes by day type' do
       dishes = []
       dishes.push(Dish.get_dish("rando"))
       dishes.push(Dish.get_dish("two"))
-      Menu.add_dishes_to_cycle(1,"Breakfast", dishes)
-      assert_equal([12,2], Menu.get_dishes_by_day_type(1, "Breakfast"))
+      Menu.add_dishes_to_cycle(1, "Breakfast", dishes)
+      Menu.get_dishes_by_day_type(1, "Breakfast").each do |r|
+        assert Dish.exists?(r.dish_id)
+      end
     end
 
     test 'get dishes by date type' do
       dishes = []
-      dishes.push(Dish.get_dish("rando"))
       dishes.push(Dish.get_dish("two"))
+      dishes.push(Dish.get_dish("rando"))
       Menu.add_dishes_to_cycle(1,"Breakfast", dishes)
-      assert_equal([12,2], Menu.get_dishes_by_date_type("2019-12-8", "Breakfast"))
+      lst = Menu.get_dishes_by_date_type("2019-12-8", "Breakfast").order(:dish_id)
+      assert_equal lst[0].dish_id, Dish.get_dish("two").id
+      assert_equal lst[0].menu_id, Menu.get_menu(1, "Breakfast").id
+      assert_equal lst[1].dish_id, Dish.get_dish("rando").id
+      assert_equal lst[1].menu_id, Menu.get_menu(1, "Breakfast").id
     end
 
     test 'remove_dish' do
@@ -68,12 +66,14 @@ class MenuTest < ActiveSupport::TestCase
       dishes.push(Dish.get_dish("rando"))
       dishes.push(Dish.get_dish("two"))
       dishes.push(Dish.get_dish("one"))
-      Menu.add_dishes_to_cycle(1,"Breakfast", dishes)
-      assert_equal([12,2,1], Menu.get_dishes_by_day_type(1, "Breakfast"))
-      assert_equal(Menu.get_menu(1, "Breakfast").id, Dish.get_dish("one").menu_id)
-      Menu.remove_dish(Dish.get_dish("two"))
-      assert_equal([12,1], Menu.get_dishes_by_day_type(1, "Breakfast"))
-      assert_not Menu.exists?(Dish.get_dish("one").menu_id)
+      m = Menu.add_dishes_to_cycle(1,"Breakfast", dishes)
+      assert DishMenu.exists?(dish_id:Dish.get_dish("rando").id, menu_id:m.id)
+      assert DishMenu.exists?(dish_id:Dish.get_dish("two").id, menu_id:m.id)
+      assert DishMenu.exists?(dish_id:Dish.get_dish("one").id, menu_id:m.id)
+      Menu.remove_dish_by_day_type(Dish.get_dish("two"), 1, "Breakfast")
+      Menu.get_dishes_by_day_type(1, "Breakfast").each do |r|
+          assert_not_equal r.dish_id , Dish.get_dish("two").id
+      end
     end
 
 end

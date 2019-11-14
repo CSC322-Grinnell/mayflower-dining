@@ -3,20 +3,16 @@
 one:
   day: 1
   type_of_meal: Breakfast
-  dish_ids: [1]
 
 
 two:
   day: 2
   type_of_meal: MyString
-  dish_ids: []
 
 three:
   day: 13
   type_of_meal: MyString
-  dish_ids : []
 
 four:
   day: 19
   type_of_meal: MyString
-  dish_ids : []

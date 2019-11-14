@@ -4,7 +4,6 @@ class RecipeTest < ActiveSupport::TestCase
 
     test 'add recipe' do
         recipe = Recipe.create_recipe(Dish.find(1), Ingredient.find(1), "ps")
-        assert Recipe.find(1).valid?
         assert recipe.valid?
     end
 
@@ -23,12 +22,12 @@ class RecipeTest < ActiveSupport::TestCase
     test 'update dish' do
         recipe = Recipe.update_dish(Recipe.find(1), Dish.find(2))
         assert recipe.valid?
-        assert_equal(2, Recipe.find(recipe.id).dishes_id)
+        assert_equal(2, Recipe.find(recipe.id).dish_id)
     end
 
     test 'update ingredient' do
         recipe = Recipe.update_ingredient(Recipe.find(1), Ingredient.find(2))
         assert recipe.valid?
-        assert_equal(2, Recipe.find(recipe.id).ingredients_id)
+        assert_equal(2, Recipe.find(recipe.id).ingredient_id)
     end
 end

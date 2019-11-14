@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_001034) do
+ActiveRecord::Schema.define(version: 2019_11_14_053948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 2019_10_07_001034) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "dishes_menus", force: :cascade do |t|
+    t.bigint "dish_id"
+    t.bigint "menu_id"
+    t.boolean "temp", default: false
+    t.boolean "show", default: true
+    t.index ["dish_id"], name: "index_dishes_menus_on_dish_id"
+    t.index ["menu_id"], name: "index_dishes_menus_on_menu_id"
+  end
+
   create_table "ingredients", force: :cascade do |t|
     t.string "name"
     t.string "mech_soft"
@@ -55,15 +64,15 @@ ActiveRecord::Schema.define(version: 2019_10_07_001034) do
     t.string "type_of_meal"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "dish_ids", default: [], array: true
+    t.index ["day", "type_of_meal"], name: "by_day_type_of_meal", unique: true
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.bigint "dishes_id"
-    t.bigint "ingredients_id"
     t.string "portion_size"
-    t.index ["dishes_id"], name: "index_recipes_on_dishes_id"
-    t.index ["ingredients_id"], name: "index_recipes_on_ingredients_id"
+    t.bigint "dish_id"
+    t.bigint "ingredient_id"
+    t.index ["dish_id"], name: "index_recipes_on_dish_id"
+    t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
   end
 
   create_table "temporary_menus", force: :cascade do |t|

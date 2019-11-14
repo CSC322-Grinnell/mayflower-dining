@@ -6,10 +6,10 @@
 ### End of CRUD
 
 class Dish < ApplicationRecord
-    belongs_to :menu, optional: true
-    belongs_to :temporary_menu, optional: true
-    belongs_to :recipe, optional: true
+    has_and_belongs_to_many :menus
+    has_many :recipes
     validates :name, presence: true
+    # belongs_to :temporary_menu, optional: true
 
 
     # Creates a dish
@@ -19,7 +19,7 @@ class Dish < ApplicationRecord
     #   [ingredient_name, portion_size]
     def self.add_dish(name, recipes)
       # create dish
-      dish = self.create(name:name)
+      dish = self.create!(name:name)
       # create the recipes for this dish
       recipes.each do |recipe|
         Recipe.create_recipe(dish, Ingredient.get_ingredient(recipe[0]), recipe[1])
@@ -41,7 +41,7 @@ class Dish < ApplicationRecord
     def self.remove_dish(name)
       dish = self.get_dish(name)
       raise ArgumentError, "Dependent menu exist. Remove from menu before removing from dishes." \
-        unless dish.menu_id == nil
+        unless not DishMenu.exists?(dish_id:dish.id)
 
       # delete acompanying recipes
       recipes = Recipe.get_recipe_by_dish(dish)

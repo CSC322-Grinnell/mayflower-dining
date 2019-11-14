@@ -7,7 +7,7 @@
 
 
 class Ingredient < ApplicationRecord
-  belongs_to :recipe, optional: true
+  has_many :recipes
   validates :name, presence: true
 
   # gets an ingredient from its name
