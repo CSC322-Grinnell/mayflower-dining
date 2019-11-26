@@ -1,29 +1,33 @@
 # Create admin user
 User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
 
-Ingredient.create({name: "Ingredient one"})
-Ingredient.create({name: "Ingredient two"})
-Ingredient.create({name: "Ingredient three"})
-Ingredient.create({name: "Ingredient four"})
+# Import the csv table and remove all blank rows
+table = CSV.parse(File.read("db/menus/cycle1.csv"), headers: true, skip_blanks: true) \
+  .delete_if { |row| row.to_hash.values.all?(&:blank?) }
 
-d1 = Dish.create({name:"Dish one"})
-d2 = Dish.create({name:"Dish two"})
-d3 = Dish.create({name:"Dish three"})
+day = 1
+row = 0
 
-Recipe.create({dish_id:1,ingredient_id:1})
-Recipe.create({dish_id:1,ingredient_id:3})
+while row < table.length
+  # Each day ends on "CYCLE: xxx"
+  while !table[row][0].include? "CYCLE"
+    type = "Dinner" # default type
+    name = table[row][0]
+    if name.start_with?("*")
+      type = "Supper"
+      name = name[1..-1]
+    elsif name.start_with?("**")
+      type = "Dinner"
+      name = name[2..-1]
+    end
+    dish = Dish.create({name: name})
+    Menu.add_dish_to_cycle(day, type, dish)
 
-Recipe.create({dish_id:2,ingredient_id:2})
-Recipe.create({dish_id:2,ingredient_id:4})
+    # Add the id for the newly created dish
+    row += 1
+  end
 
-Recipe.create({dish_id:3,ingredient_id:3})
-Recipe.create({dish_id:3,ingredient_id:4})
-
-Menu.create({day: 1, type_of_meal: "Dinner"})
-Menu.create({day: 1, type_of_meal: "Supper"})
-
-DishMenu.create({dish_id:1,menu_id:1})
-DishMenu.create({dish_id:2,menu_id:1})
-
-DishMenu.create({dish_id:2,menu_id:2})
-DishMenu.create({dish_id:3,menu_id:2})
+  day += 1
+  # Skip two rows: "CYCLE: xxx" and another header
+  row += 2
+end
