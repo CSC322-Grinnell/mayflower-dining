@@ -13,8 +13,8 @@ class Recipe < ApplicationRecord
 
 
   # Creates a recipe given a dish and ingredient
-  def self.create_recipe(dish, ingredient, portion_size)
-    self.create!(dish: dish, ingredient: ingredient, portion_size: portion_size)
+  def self.create_recipe(dish, ingredient, portion_size, comment)
+    self.create!(dish: dish, ingredient: ingredient, portion_size: portion_size, comment:comment )
   end
 
   # Gets recipes for a certain dish

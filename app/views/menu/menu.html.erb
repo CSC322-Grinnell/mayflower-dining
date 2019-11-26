@@ -3,6 +3,9 @@
   </head>
   
   <body>
+  <% if flash[:error] %>
+    <div class="notice"><%= flash[:error] %></div>
+  <% end %>
   <div class="row justify-content-center">
   </div>
   <div class="row justify-content-center">
@@ -48,8 +51,13 @@
         <hr>
         
         <ul>
-          <% @dishes.each do |element| %>
-            <li><%= element.name %></li>
+          <% @lunch_dishes.each do |element| %>
+            <li><%= element.name%></li>
+              <% element.recipies.each do |recipe| %>
+                <li><%= recipe[:portion_size] %></li>
+                <li><%= recipe[:ingredient] %></li>
+                <li><%= recipe[:comment] %></li>
+              <% end %>
             <% end %>
         </ul>
       </div>

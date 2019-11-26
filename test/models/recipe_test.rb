@@ -3,7 +3,7 @@ require 'test_helper'
 class RecipeTest < ActiveSupport::TestCase
 
     test 'add recipe' do
-        recipe = Recipe.create_recipe(Dish.find(1), Ingredient.find(1), "ps")
+        recipe = Recipe.create_recipe(Dish.find(1), Ingredient.find(1), "ps", "comment")
         assert recipe.valid?
     end
 

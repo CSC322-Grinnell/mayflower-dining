@@ -4,13 +4,13 @@ class DishTest < ActiveSupport::TestCase
 
     test 'add dish' do
         recipes =[]
-        dish = Dish.add_dish("new", recipes)
+        dish = Dish.add_dish("new","description", recipes)
         assert dish.valid?
     end
 
     test 'add dish with recipes' do
       recipes = [["one", "something"], ["two", "something else"]]
-      dish = Dish.add_dish("new", recipes)
+      dish = Dish.add_dish("new","description", recipes)
       assert dish.valid?
 
       recipes = Recipe.get_recipe_by_dish(dish)

@@ -6,7 +6,7 @@ class UnfuckingIngredients < ActiveRecord::Migration[5.2]
         t.references :ingredients
         t.string :portion_size
       end
-
+      
       remove_column :ingredients, :portion_size
       remove_column :ingredients, :dish_id
       remove_column :dishes, :ingredient_id
@@ -17,6 +17,8 @@ class UnfuckingIngredients < ActiveRecord::Migration[5.2]
 
       add_column :menus, :dish_ids, :integer, array: true, default: []
 
-
   end
 end
+
+
+

@@ -10,19 +10,19 @@ class Dish < ApplicationRecord
     has_many :recipes
     validates :name, presence: true
     # belongs_to :temporary_menu, optional: true
-
+ 
 
     # Creates a dish
     # First input is name of dish
     # Second input is a list of recipes, each of which is a list in
     #   the following format:
-    #   [ingredient_name, portion_size]
-    def self.add_dish(name, recipes)
+    #   [ingredient_name, portion_size, comment]
+    def self.add_dish(name, description, recipes)
       # create dish
-      dish = self.create!(name:name)
+      dish = self.create!(name:name, description:description)
       # create the recipes for this dish
       recipes.each do |recipe|
-        Recipe.create_recipe(dish, Ingredient.get_ingredient(recipe[0]), recipe[1])
+        Recipe.create_recipe(dish, Ingredient.get_ingredient(recipe[0]), recipe[1], recipe[2])
       end
 
       dish
@@ -35,7 +35,6 @@ class Dish < ApplicationRecord
       raise ArgumentError, "Dish doesn't exist." unless !dish.empty?
       dish.first
     end
-
     # destroy a dish based on name
     # also destroys its recipes
     def self.remove_dish(name)
