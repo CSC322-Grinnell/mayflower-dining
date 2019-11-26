@@ -70,12 +70,10 @@ ActiveRecord::Schema.define(version: 2019_11_15_193127) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.string "name"
-    t.string "comment"
     t.string "portion_size"
-    t.string "ingredients_type"
     t.bigint "dish_id"
     t.bigint "ingredient_id"
+    t.string "comment"
     t.integer "step"
     t.index ["dish_id"], name: "index_recipes_on_dish_id"
     t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
