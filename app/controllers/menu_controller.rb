@@ -4,7 +4,7 @@ class MenuController < ApplicationController
     #finds the dishes and their recipies for a given meal_type and given day
     # spits out an array in the format [{name: ,recipies: [ingredient: ,portion_size:, comment:, step:, displayed:,]}]
     def find_dishes(meal_type,day)
-        dishes_menu_arr = Menu.get_dishes_by_day_type(day,meal_type)
+        dishes_menu_arr = Menu.get_dishes_by_date_type(day,meal_type)
         dishes = []
         error = nil
         dishes_menu_arr.each do |dish_menu|
@@ -34,8 +34,8 @@ class MenuController < ApplicationController
     def menu
         # 1'st day hardcoded for now that the db and seed doesn't have all the data. Later, well use date
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @dinner_dishes = find_dishes("Dinner",1)
-        error, @supper_dishes = find_dishes("Supper",1)
+        error, @dinner_dishes = find_dishes("Dinner",date)
+        error, @supper_dishes = find_dishes("Supper",date)
         flash[:error] = error
     end 
 

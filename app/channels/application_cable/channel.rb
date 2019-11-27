@@ -1,5 +1,5 @@
 module ApplicationCable
-  class Connection < ActionCable::Channel::Base
+  class Channel < ActionCable::Channel::Base
 
   end
 end

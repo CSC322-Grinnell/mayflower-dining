@@ -1,5 +1,9 @@
 # Create admin user
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
+begin 
+  User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
+rescue => e
+  puts "Admin already created"
+end 
 
 kMenuDir = 'db/menus/'
 
