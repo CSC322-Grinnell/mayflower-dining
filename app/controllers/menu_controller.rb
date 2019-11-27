@@ -34,7 +34,8 @@ class MenuController < ApplicationController
     def menu
         # 1'st day hardcoded for now that the db and seed doesn't have all the data. Later, well use date
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @lunch_dishes = find_dishes("Dinner",1)
+        error, @dinner_dishes = find_dishes("Dinner",1)
+        error, @supper_dishes = find_dishes("Supper",1)
         flash[:error] = error
     end 
 

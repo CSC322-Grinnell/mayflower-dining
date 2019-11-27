@@ -1,75 +1,70 @@
 <main role="main" class="container">
-  <head>
-  </head>
   
   <body>
   <% if flash[:error] %>
     <div class="notice"><%= flash[:error] %></div>
   <% end %>
-  <div class="row justify-content-center">
-  </div>
-  <div class="row justify-content-center">
- 
-    <div class="col-md">
-    </div>
-  </div>
-  
   <div class="container-fluid">
-      <div class="page-header">
-    
-    </div>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-sm-12 col-md-4">
             <h1>Menu</h1>
-            <div class="form-group row">
-              <div class="col-xs-2">
-                <label for="ex1">Choose Date:</label>
-                <input class="form-control" id="datePicker" type="date" >
-              </div>
-            </div>
-            <div class="input-group date">
-          
-              <span class="input-group-addon">
-                  <i class="glyphicon glyphicon-th"></i>
-              </span>
-        </div>
+            <ul>
+              <a href="#" onclick="return false;" id ="todText"><li>See today's menu</li></a>
+              <a href ="#" onclick="return false;" id ="tomText"><li>See tomorrow's menu</li></a>
+            </ul>
+            <br />
+              <div id="calendar"></div>
+              <script type="text/javascript">
+               $(function () {
+                   $('#calendar').datetimepicker({
+                       inline: true,
+                       locale: 'en-us',
+                       format: 'L'
+                   });
+               });
+           </script>
+           <br />
+            <% if user_signed_in? %>
+              <li style = "list-style-type:none; padding-left: 0;">
+                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+              </li>
+            <% else %>
+            <a href="../users/sign_in"><button type="button" class="btn btn-primary">Staff Login</button></a>
+            <% end %>
         
         </div>
-    </div>
-    <div class="row">
-      <div class="col-lg-2" >
-        <ul>
-          <a href="#" onclick="return false;" id ="todText"><li>See today's menu</li></a>
-          <a href ="#" onclick="return false;" id ="tomText"><li>See tomorrow's menu</li></a>
-        </ul>
-      </div>
-      
-      <div class="col-lg-8 text-center" >
+      <div class="col-sm-12 col-md-8">
  
-        
-        <h2 style="margin-top: 10px; color: #993300;" id ="headerDate">Menu for Today</h2>
+        <h1>Menu for Today</h1>
         <hr>
         
-        <ul>
-          <% @lunch_dishes.each do |element| %>
-            <li><%= element.name%></li>
-              <% element.recipies.each do |recipe| %>
-                <li><%= recipe[:portion_size] %></li>
-                <li><%= recipe[:ingredient] %></li>
-                <li><%= recipe[:comment] %></li>
-              <% end %>
+        <div>
+          <h2>Dinner Menu</h2>
+          <% @dinner_dishes.each do |element| %>
+            <h3><%= element.name%></h3>
+            <ul>
+                <% element.recipies.each do |recipe| %>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:portion_size] %></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:ingredient] %></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:comment] %></li>
+                <% end %>
+            </ul>
             <% end %>
-        </ul>
-      </div>
-      
-      <div class="col-lg-2" >
-        <% if user_signed_in? %>
-          <li style = "list-style-type:none; padding-left: 0;">
-            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-          </li>
-        <% else %>
-        <a href="../users/sign_in"><button type="button" class="btn btn-primary" style = "background-color: #3A6F8D; text-color: #000000;">Staff Login</button></a>
-        <% end %>
+        </div>
+        <hr />
+        <div>
+          <h2>Supper Menu</h2>
+          <% @supper_dishes.each do |element| %>
+            <h3><%= element.name%></h3>
+            <ul>
+                <% element.recipies.each do |recipe| %>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:portion_size] %></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:ingredient] %></li>
+                  <li>&nbsp;&nbsp;&nbsp;&nbsp;<%= recipe[:comment] %></li>
+                <% end %>
+            </ul>
+            <% end %>
+        </div>
       </div>
     </div>
   </div>
