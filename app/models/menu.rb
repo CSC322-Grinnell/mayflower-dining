@@ -53,9 +53,9 @@ class Menu < ApplicationRecord
     #     and appropriate type
     # If specified day does not exist creates a new day,
     #     else adds new dishes to the Menu record with the given day
-    def self.add_dish_to_cycle(day, type, dish)
+    def self.add_dish_to_cycle(day, type, dish, permanent=true )
         menu = self.get_menu(day, type)
-        DishMenu.create!(dish_id:dish.id, menu_id:menu.id)
+        DishMenu.create!(dish_id:dish.id, menu_id:menu.id, temp:!permanent)
         menu
     end
 
@@ -91,11 +91,18 @@ class Menu < ApplicationRecord
     end
 
     # remove a dish from menu with a given day and type
-    def self.remove_dish_by_day_type(dish, day, type)
+    def self.remove_dish_by_day_type(dish, day, type, permanent=true)
       menu = self.get_menu(day, type)
-      DishMenu.where(dish_id:dish.id, menu_id:menu.id).each do |r|
-        r.delete
-      end
+      if permanent
+        DishMenu.where(dish_id:dish.id, menu_id:menu.id).each do |r|
+          r.delete
+        end
+      else
+        DishMenu.where(dish_id:dish.id, menu_id:menu.id).each do |r|
+          r.show = false
+          r.save
+        end
+      end  
       dish
     end
 end

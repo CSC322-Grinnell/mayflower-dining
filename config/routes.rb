@@ -1,15 +1,12 @@
 Rails.application.routes.draw do
-  #resources :dishes
-  #resources :ingredients
 #--------------------------------------- menu
 
+
+  # api to edit the menu (add dish, delete dish)
+  get 'menu/edit/(:date/:acts/:dish/:type/:permanent)', to: 'menu#edit'
   # show menu(w/ buttons to delete/add dishes). date = optional parameter. 
   # If none specified, uses current date
   get 'menu/(:date)', to: 'menu#menu'
-
-  # api to edit the menu (add dish, delete dish)
-  post 'menu/edit/(:week/:day)', to: 'menu#edit'
-
 
 #--------------------------------------- dishes
 #   api to edit the dish
@@ -21,7 +18,8 @@ Rails.application.routes.draw do
 #   api to delete a dish and its occurences from the db
   delete 'dishes/:name', to: 'dishes#delete'
 
-
+# api to get all dishes
+  get 'dishes/all', to: 'dishes#all'
 #--------------------------------------- ingredients 
 
 # api to edit the ingredient name/total_amount

@@ -1,7 +1,15 @@
+# API to edit the dishes
+
+
 class DishesController < ApplicationController
+  #the two lines below are fow authentication
+  #when in production, use comented out line below to restrict
+  #access of anauthorized users to all functionality except 
+  #menu display
   skip_before_action :verify_authenticity_token
   #before_action :authenticate_user!
 
+  # POST
   # makes new dish
   # request.body wants:
   #   - dish_name
@@ -20,6 +28,7 @@ class DishesController < ApplicationController
   end
 
 
+  # POST
   # edit an existing dish
   # request body wants:
   #   - dish_name
@@ -56,7 +65,15 @@ class DishesController < ApplicationController
 
   end
 
+  # GET 
+  # returns all dishes
+  def all
+    dishes = Dish.all
+    render json: dishes
+  end 
 
+  # DELETE 
+  # deletes dish with dish.name == query parameter name
   def delete
       begin
         dish = Dish.get_dish(params[:name])

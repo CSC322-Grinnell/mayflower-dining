@@ -1,6 +1,17 @@
+# This controller is responsible for handling everything that occurs within the menu
+# - displaying menu for a given day
+# - editing what dishes a menu contains both temporary and permanently 
+# 
+
+
 class MenuController < ApplicationController
+    #the two lines below are fow authentication
+    #when in production, use comented out line below to restrict
+    #access of anauthorized users to all functionality except 
+    #menu display
     skip_before_action :verify_authenticity_token
-    
+    #before_action :authenticate_user!
+
     #finds the dishes and their recipies for a given meal_type and given day
     # spits out an array in the format [{name: ,recipies: [ingredient: ,portion_size:, comment:, step:, displayed:,]}]
     def find_dishes(meal_type,day)
@@ -31,8 +42,13 @@ class MenuController < ApplicationController
         return error, dishes
     end 
 
+
+    # GET 
+    # displays the menu, accepts optional query parameter date 
+    # if date is provided, shows menu for that date, otherwise shows 
+    # menu for today.
+    # Renders views/menu/menu.html
     def menu
-        # 1'st day hardcoded for now that the db and seed doesn't have all the data. Later, well use date
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
         error, @dinner_dishes = find_dishes("Dinner",date)
         error, @supper_dishes = find_dishes("Supper",date)
@@ -40,43 +56,42 @@ class MenuController < ApplicationController
     end 
 
 
+    # GET
     # edit the menu (add/remove dish)
-    # week, day are url params (see routes)
-    # request.body requires: 
-    #   - change_action: add OR remove
-    #   - dish_name: name of the dish
+    # url parameters required: 
+    #   - date 
+    #   - action: add OR remove
+    #   - dish: name of the dish
     #   - type: type of the meal
+    #   _ permanent: true or false -> Is the edit permanent or temporary
     # if things go wrong, spits out a flash message
    def edit
-    week = params[:week].to_i
-    day = params[:day].to_i
-    error = nil
-    if week > 6 || week < 0 || day > 6 || day < 0
-        error = 'Impossible week/day url parameters'
-    else 
-        begin
-            action = params[:change_action]
-            dish_name = params[:dish_name]
-            type = params[:type]
-            dish = Dish.get_dish(dish_name)
-            day = 7*(week) + day + 1
-            if action == nil || dish_name == nil
-                error = "Action or dish name is missing in request body"
-            end
+    begin
+        date = params[:date]
+        action = params[:act]
+        dish_name = params[:dish]
+        type = params[:type]
+        permanent = params[:permanent]
+        unless date != nil && dish_name != nil && action != nil && type != nil && permanent != nil
+            raise "A querry parameter is missing"
+        end 
+        parsed_date = Date.parse(date)
+        start_date = Date.new(2019, 12, 8)
+        day = ((parsed_date - start_date) % 49 ) + 1
+        dish = Dish.get_dish(dish_name)
 
-            if action == "remove" 
-                Menu.remove_dish_by_day_type(dish,day,type)
-            elsif action == "add"
-                Menu.add_dish_to_cycle(day,type,dish)
-            else 
-                error = "Unknown action" 
-            end
-             
-        rescue => e
-            error = e
+        if action == "remove" 
+            Menu.remove_dish_by_day_type(dish,day,type, permanent)
+        elsif action == "add"
+            Menu.add_dish_to_cycle(day,type,dish, permanent)
+        else 
+            raise "Unknown action" 
         end
+            
+    rescue => e
+        flash[:error] = e
     end
-    flash[:error] = error
+
     redirect_to '/menu'
    end 
     
