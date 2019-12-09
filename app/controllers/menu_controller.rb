@@ -66,7 +66,7 @@ class MenuController < ApplicationController
     #   _ permanent: true or false -> Is the edit permanent or temporary
     # if things go wrong, spits out a flash message
    def edit
-    begin
+     begin
         date = params[:date]
         action = params[:act]
         dish_name = params[:dish]
@@ -74,13 +74,12 @@ class MenuController < ApplicationController
         permanent = params[:permanent]
         unless date != nil && dish_name != nil && action != nil && type != nil && permanent != nil
             raise "A querry parameter is missing"
-        end 
+        end
         parsed_date = Date.parse(date)
         start_date = Date.new(2019, 12, 8)
         day = ((parsed_date - start_date) % 49 ) + 1
         dish = Dish.get_dish(dish_name)
-
-        if action == "remove" 
+        if action == "remove"
             Menu.remove_dish_by_day_type(dish,day,type, permanent)
         elsif action == "add"
             Menu.add_dish_to_cycle(day,type,dish, permanent)
@@ -92,7 +91,7 @@ class MenuController < ApplicationController
         flash[:error] = e
     end
 
-    redirect_to '/menu'
+    redirect_to '?date=' + date
    end 
     
 
