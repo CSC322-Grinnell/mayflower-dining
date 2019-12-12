@@ -1,6 +1,6 @@
 # README #
 
-Hi folks! 
+Hi folks! Current deployment: https://mayflower-dining-staging.herokuapp.com
 
 ##  Overview of the project files ##
 
