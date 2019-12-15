@@ -183,6 +183,9 @@ git push <Your heroku repo found under Settings on heroku dashboard> master
 
 ## Future work ##
 
-Finish hooking up the menu page to the controllers (lots of javascript)
-Creating to-do lists
-Other things
+1. Finish hooking up the menu page to the controllers properly (there are a number of bugs and errors right now).
+2. Creating to-do lists for the recipes.
+3. Figure out how to deal with ingredients.
+4. Connect recipe to do list to ingredient inventory.
+5. Add a page for users to edit dishes and ingredients.
+6. Add special menus: Thanksgiving, 4th of July, etc.
