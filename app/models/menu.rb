@@ -41,10 +41,10 @@ class Menu < ApplicationRecord
     #     and appropriate type
     # If specified day does not exist creates a new day,
     #     else adds new dishes to the Menu record with the given day
-    def self.add_dishes_to_cycle(day, type, dishes)
+    def self.add_dishes_to_cycle(day, type, dishes, permanent=true)
         menu = self.get_menu(day, type)
         dishes.each do |dish|
-            DishMenu.create!(dish_id:dish.id, menu_id:menu.id)
+            DishMenu.create!(dish_id:dish.id, menu_id:menu.id, temp:!permanent)
         end
         menu
     end
@@ -53,7 +53,7 @@ class Menu < ApplicationRecord
     #     and appropriate type
     # If specified day does not exist creates a new day,
     #     else adds new dishes to the Menu record with the given day
-    def self.add_dish_to_cycle(day, type, dish, permanent=true )
+    def self.add_dish_to_cycle(day, type, dish, permanent=true)
         menu = self.get_menu(day, type)
         DishMenu.create!(dish_id:dish.id, menu_id:menu.id, temp:!permanent)
         menu
@@ -102,7 +102,7 @@ class Menu < ApplicationRecord
           r.show = false
           r.save
         end
-      end  
+      end
       dish
     end
 end
