@@ -10,6 +10,11 @@ class Ingredient < ApplicationRecord
   has_many :recipes
   validates :name, presence: true
 
+  def self.add_ingredient(name)
+    ingr = self.create!(name:name)
+    ingr
+  end
+
   # gets an ingredient from its name
   # validates input
   def self.get_ingredient(name)

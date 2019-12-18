@@ -1,7 +1,7 @@
 ### CRUD:
 # Create has to be done through appropriate (0 validations for now)
 # Read can be done directly, but is safer if done through here
-# Update can be done directly
+# Update by the appropriate method.
 # Destroy has to be done through appropriate method
 ### End of CRUD
 
@@ -10,7 +10,7 @@ class Dish < ApplicationRecord
     has_many :recipes
     validates :name, presence: true
     # belongs_to :temporary_menu, optional: true
- 
+
 
     # Creates a dish
     # First input is name of dish
@@ -35,6 +35,16 @@ class Dish < ApplicationRecord
       raise ArgumentError, "Dish doesn't exist." unless !dish.empty?
       dish.first
     end
+
+
+    # updates a dishes name
+    # validates input
+    def self.update_name(name, new_name)
+      dish = self.get_dish(name)
+      dish.name = new_name
+      dish.save
+      dish
+    end
     # destroy a dish based on name
     # also destroys its recipes
     def self.remove_dish(name)
@@ -53,6 +63,4 @@ class Dish < ApplicationRecord
 
       dish
     end
-
-
 end
