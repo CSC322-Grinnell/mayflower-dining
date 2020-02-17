@@ -1,0 +1,14 @@
+To be able to run the project localy with rails:
+
+* rbenv install 2.4.1
+* rbenv local 2.4.1
+* install postgres 
+* create 2 databases, mayflower_test and mayflower_dev. NOTE THAT THEY MUST HAVE USERNAME AND PASSWORD 'postgres' AS SPECIFIED IN `seed.rb`
+* install nodejs
+* install yarn
+* bundle install
+* rails assets:precompile
+* rails db:migrate
+* rails db:seed
+
+Following these steps, you should be able to run both `rails s` and `rails t` successfully. 
