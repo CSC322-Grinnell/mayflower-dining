@@ -23,14 +23,7 @@
     }
     
     
-    function changeToTomorrow () {
-      
-      var d = new Date();
-      var tom = new Date();
-      tom.setDate(d.getDate()+1);
-      
-      window.location.href = '../menu/' + formatDate(tom);
-    }
+  
     
     function changeToToday () {
       
@@ -42,7 +35,6 @@
 
     window.addEventListener('DOMContentLoaded', (event) => {
         
-        document.getElementById("tomText").addEventListener("click", changeToTomorrow);
         document.getElementById("todText").addEventListener("click", changeToToday);
         document.getElementById("datePicker").onchange = function() {changeDate()};
     });
