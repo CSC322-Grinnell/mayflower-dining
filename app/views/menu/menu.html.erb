@@ -10,13 +10,9 @@
             <h1>Menu</h1>
             <ul>
               <a href="/" id="todText"><li>See today's menu</li></a>
-              <a href ="/" id="tomText"><li>See tomorrow's menu</li></a>
               <script>
                   var today = new Date();
-                  var tomorrow = new Date();
-                  tomorrow.setDate(tomorrow.getDate() + 1)
                   document.getElementById("todText").href = "/?date=" + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-                  document.getElementById("tomText").href = "/?date=" + tomorrow.getDate() + "/" + (tomorrow.getMonth() + 1) + "/" + tomorrow.toDateString().split(" ")[3];
               </script>
             </ul>
             <br />
