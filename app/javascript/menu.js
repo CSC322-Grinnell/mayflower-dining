@@ -13,7 +13,7 @@
     }
     
       
-      
+    //Changing the url
     function changeDate() {
       var mydate = document.getElementById("datePicker").value;
       
@@ -24,7 +24,7 @@
     
     
   
-    
+    //SHOULD be called when the user clicks "see today's menu"
     function changeToToday () {
       
       var d = new Date();
