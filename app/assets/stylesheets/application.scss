@@ -1,6 +1,6 @@
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files listed below.
-*/
+ */
 
 /*
  * Bootstrap provides good defaults for styling and some basic widgets.
@@ -10,7 +10,186 @@
 
 /* Grinnell Red ;)
 $primary: #D81E05;
-*/
+ */
 
 @import "bootstrap";
 @import "menu";
+
+#wrapper,#footer {
+	min-width:1300px;
+}
+#main-container {
+	margin-top:30px;
+	padding:0;
+	min-width:1200px;
+}
+.ie-dropdown-fix {
+    padding:0;
+}
+body.custom-background { background-color: #396e8e; background-image: url("https://www.mayflowerhomes.com/wp-content/uploads/2013/10/dh40jhc.png"); background-position: left top; background-size: auto; background-repeat: repeat; background-attachment: scroll; }
+body { color:#353535;font-size:14px;font-weight:500; 
+}
+h1{ font-size:24px;font-weight:500; }
+h2{ font-size:20px;font-weight:500; }
+h3{ font-size:18px;font-weight:500; }
+h4{ font-size:16px; }
+h5{ font-size:14px; }
+h1.logo a,
+#logo {
+margin-top:0px;      }
+#tagline {
+margin-top:px;  }
+@media only screen and (max-width: 767px) {
+	#tagline { margin-top: 5px;}
+}
+.container {
+    padding:0;
+	min-width: 1200px;
+    font-weight:400;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+}
+#header {
+	min-width: 1200px;
+	min-height: 100px;
+}
+@media only screen and (max-width: 767px) {
+	#navigation {
+		float: none;
+	}
+	.js .selectnav {
+		display: block;
+	}
+	.js #nav,
+	#navigation .dropmenu > li#search-in-menu,
+	#navigation ul li a {
+		display: none;
+	}
+}
+.post-icon { display: none; }
+.post-content { margin: 22px 0 0; }
+#navigation ul li a:hover,
+#navigation ul li:hover > a,
+#bolded-line,
+.button.gray:hover,
+.button.light:hover,
+.shipping-calculator-form button.button:hover,
+table.cart-table .cart-btns input:hover,
+table.cart-table .cart-btns a,
+.stacktable.small-only .cart-btns a,
+.price_slider_wrapper .ui-slider-horizontal .ui-slider-range,
+.button.color,
+.checkout-button,
+.wc-proceed-to-checkout a.button.wc-forward,
+.button.checkout.wc-forward,
+.onsale,
+#place_order,
+input[type="submit"] {
+	background: #396e8e;
+}
+.blog-sidebar .widget #twitter-blog li a,
+a, a:hover,
+.testimonials-author,
+.shop-item span.price,
+.list-1 li:before, .list-2 li:before, .list-3 li:before, .list-4 li:before,
+a.post-entry {
+color: #396e8e      }
+#navigation > div > ul > li.current-menu-item > a,
+#navigation > div > ul > li.current_page_parent > a,
+.pricing-table .color-3 h3, .color-3 .sign-up,
+#home-slider.rsDefault .rsArrowIcn:hover,
+.linking button.button,
+.slider .tp-leftarrow:hover,
+.slider .tp-rightarrow:hover,
+a.button.checkout.wc-forward:hover,
+a.button.wc-forward:hover,
+body .widget_price_filter .price_slider_amount button.button:hover,
+.cart-btn .button.hovered,
+.button.wc-backward:hover,
+.magazine-lead figcaption:hover .button,
+.wishlist_table .add_to_cart.button:hover,
+.cart-btn .button:hover,
+.featured-box:hover > .circle,
+.featured-box:hover > .circle span,
+#home-slider.rsDefault .rsArrowIcn:hover, #portfolio-slider.rsDefault .rsArrowIcn:hover,
+#scroll-top-top a,
+.quantity .plus:hover,#content .quantity .plus:hover,.quantity .minus:hover,#content .quantity .minus:hover,
+.infobox,
+.post-icon {
+	background-color:#396e8e;
+}
+.mr-rotato-prev:hover,
+.mr-rotato-next:hover,
+.pagination .current:hover,
+.pagination a:hover,
+.woocommerce-pagination a:hover,
+.widget_price_filter .button:hover,
+span.page-numbers.current,
+li.current,
+.tagcloud a:hover {
+	background-color: #396e8e;
+	border-color: #396e8e;
+}
+#filters a:hover,
+.option-set .selected,
+.wp-pagenavi .current,
+.pagination .current,
+#portfolio-navi a:hover {
+	background-color: #396e8e !important;
+	border: 1px solid #396e8e !important;
+}
+.pricing-table .color-3 h4 {
+	background-color:#396e8e;
+	opacity:0.8
+}
+.image-overlay-link, .image-overlay-zoom {
+	background-color: rgba(57,110,142,0.7);
+}
+body p a:visited {
+	color: #39708F;
+}     
+/*--- 2 Column Form Styles Start ---*/
+#left {
+	width: 47%;
+	float: left;
+	margin-right:6%;
+}   
+#right {
+	width: 47%;
+	float: left;
+}   
+.clearfix:after {
+	content:"\0020";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+	overflow:hidden;
+	margin-bottom:5px;
+}   
+.clearfix {
+	display:block;
+}   
+/*--- 2 Column Form Styles End ---*/
+ul.social-icons a.facebook{
+	background-color:#396383;
+}   
+.socialHeader{
+	color:#396e8e;
+	font-size:1.5em;
+	float:left;
+	padding:15px 10px 0 0;
+}         
+a.ptwsi-social-icon,
+a.ptwsi-social-icon:visited,
+.ptwsi_social-icons li a:visited,
+.ptwsi_social-icons li a {
+	color: #A0A0A0;
+	background:  #F2F2F2;
+}         
+
+.ptwsi_social-icons.ptwsi5 li a:visited,
+.ptwsi_social-icons.ptwsi5 li a{
+	background: #396e8e;
+	color:  #ffffff;
+}
+
