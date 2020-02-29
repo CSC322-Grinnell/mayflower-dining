@@ -1,3 +1,5 @@
+//! This whole file seems to be isolated from other files, suggesting deletion.
+
 console.log(hello);
 var selected = new Array();
 $('#table input[type="checkbox"]:checked').each(function() {

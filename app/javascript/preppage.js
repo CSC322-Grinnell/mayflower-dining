@@ -1,3 +1,5 @@
+//! This whole file seems to be isolated from other files, suggesting deletion.
+
 // This javascript file is not functioning yet.
 // We hope to find a way to store the checked data, so that after refreshing or closing this page,
 // the kitchen can still see which items are completed.
