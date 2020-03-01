@@ -1,9 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  population: 1
+  name: Dining Hall 
+  population: 1000
 
 two:
-  name: MyString
-  population: 1
+  name: Cafeteria 
+  population: 10
+
+three:
+  name: Bar 
+  population: 500
