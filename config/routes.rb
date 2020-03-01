@@ -31,6 +31,9 @@ Rails.application.routes.draw do
 # api to delete the ingredient and all its occurences
  delete 'ingredients/:name', to: 'ingredients#delete'
 
+#-------------------------------------- locations
+
+
   
   root to: "menu#menu"
   ActiveAdmin.routes(self)

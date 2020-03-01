@@ -38,4 +38,12 @@ yarn-debug.log*
 
 
 mayflower_dev Session.sql
-/db/seeds.rb
+
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+*.lock

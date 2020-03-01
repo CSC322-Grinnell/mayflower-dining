@@ -51,3 +51,9 @@ Dir.foreach(kMenuDir) do |filename|
 
 end
 
+# Create Locations
+
+Location.create!(name:"Dining Hall", population:1000)
+Location.create!(name:"Cafeteria", population:10)
+Location.create!(name:"Bar", population:50)
+
