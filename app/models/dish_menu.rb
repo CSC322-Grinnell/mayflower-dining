@@ -1,29 +1,13 @@
 class DishMenu < ApplicationRecord
-  self.table_name = "dishes_menus"
-  belongs_to :dish
-  belongs_to :menu
+    self.table_name = "dishes_menus"
+    belongs_to :dish
 
-  private 
-  def self.clean_up(dishes_menu)
-    dishes_menu.each do |dish_menu|
-      if dish_menu.temp
-        dish_menu.destroy
-      elsif !dish_menu.show 
-        dish_menu.show = true
-        dish_menu.save
-      end  
-    end 
-  end  
+    validates :day, presence: true,
+        :inclusion => 0..48
 
-  def self.remove_temp_changes()
-    now = Time.now.strftime("%d/%m/%Y")
+    def self.add_dish_to_cycle(day, dish)
+        DishMenu.create!(dish_id:dish.id, day:day)
+    end
 
-    dishes_menu_breakfast = Menu.get_dishes_by_date_type(now,"Breakfast")
-    dishes_menu_dinner = Menu.get_dishes_by_date_type(now,"Dinner")
-    dishes_menu_supper = Menu.get_dishes_by_date_type(now,"Supper")
-
-    self.clean_up(dishes_menu_breakfast)
-    self.clean_up(dishes_menu_dinner)
-    self.clean_up(dishes_menu_supper)
-  end 
+    private 
 end
