@@ -8,7 +8,7 @@
 class Dish < ApplicationRecord
     validates :name, presence: true
     validates :star, :inclusion => 0..3
-    validates :mesh_soft: :inclusion => 0..2
+    validates :mesh_soft, :inclusion => 0..2
 
     def self.get_dish(name)
       dish = self.where(name:name)

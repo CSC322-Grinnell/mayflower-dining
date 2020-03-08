@@ -8,6 +8,7 @@ class DishTest < ActiveSupport::TestCase
     end
 
     test 'get dish success' do
+        dish = Dish.create({name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving"})
         dish = Dish.get_dish("french toast")
         assert_equal(dish, Dish.where(name:"french toast").first)
     end
@@ -25,6 +26,7 @@ class DishTest < ActiveSupport::TestCase
     end
 
     test 'remove dish success' do
+        dish = Dish.create({name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving"})
         dish = Dish.get_dish("french toast")
         dish = Dish.remove_dish("french toast")
         assert_not Dish.exists?(dish.id)
