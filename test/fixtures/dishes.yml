@@ -8,11 +8,6 @@ one:
   id: 1
   name: "one"
 
-#
 two:
   id: 2
   name: "two"
-
-rando:
-  id: 12
-  name: "rando"
