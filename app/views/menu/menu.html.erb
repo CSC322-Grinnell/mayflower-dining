@@ -34,9 +34,12 @@
                        });
                    }
                    $('div tbody').on('click', 'tr > .day',function(){
-     	                 var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2]
-                         window.location.href = 'http://127.0.0.1:3000?date=' + date
-                     })
+     	               var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2];
+                       //break url at current query (if there wasnt one, it will just give whole url)
+                       // and concat new query on the end
+                       var url = window.location.href.split("?");
+                       window.location.href = url[0] + '?date=' + date;
+                   })
                });
            </script>
            <br />
