@@ -1,8 +1,9 @@
+//! This whole file seems to be isolated from other files, suggesting deletion.
 function changeURL () {
       var week = document.getElementById("cycle_week").value;
       var day = document.getElementById("cycle_day").value;
       var url = window.location.href.slice(-14);
-      if (url == "permanent_edit" || url == "ermanent_edit/") {
+      if (url == "permanent_edit" || url == "ermanent_edit/") {//! the second statement seems useless, and as our team (sp20) decided to switch to a different method, this line will become useless
           window.location.href = '../permanent_edit/' + parseInt(week) + '/' + parseInt(day) ;
       }
       else {
