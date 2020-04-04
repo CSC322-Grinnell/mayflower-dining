@@ -1,0 +1,124 @@
+#wrapper,#header,#footer {
+padding: 25px 0px 40px !important;
+}
+body { color:#353535;font-size:14px;font-weight:600; }
+h1{ font-size:24px;font-weight:600; }
+h2{ font-size:20px;font-weight:600; }
+h3{ font-size:18px;font-weight:600; }
+h4{ font-size:16px; }
+h5{ font-size:14px; }
+h6{  }
+h2.logo a,
+h1.logo a {  }
+#navigation ul li a {    }
+h1.logo a,
+#logo {
+margin-top:0px;      }
+#tagline {
+margin-top:px;  }
+@media only screen and (max-width: 767px) {
+#tagline { margin-top: 5px;}
+}
+#header {
+min-height: 100px;
+}
+@media only screen and (max-width: 767px) {
+#navigation {
+float: none;
+}
+.js .selectnav {
+display: block;
+}
+.js #nav,
+#navigation .dropmenu > li#search-in-menu,
+#navigation ul li a {
+display: none;
+}
+}
+.post-icon { display: none; }
+.post-content { margin: 22px 0 0; }
+#backtotop a:hover,.feature-circle.blue,.prev:hover, .next:hover,.mr-rotato-prev:hover, .mr-rotato-next:hover { background-color: ; }
+h1, h2, h3, h4, h5, h6 {
+color:        }
+a:hover, a:focus { color: ; }
+a, a:visited { color:  ; }
+#navigation ul li a:hover,
+#navigation ul li:hover > a,
+#bolded-line,
+.button.gray:hover,
+.button.light:hover,
+.shipping-calculator-form button.button:hover,
+table.cart-table .cart-btns input:hover,
+table.cart-table .cart-btns a,
+.stacktable.small-only .cart-btns a,
+.price_slider_wrapper .ui-slider-horizontal .ui-slider-range,
+.button.color,
+.checkout-button,
+.wc-proceed-to-checkout a.button.wc-forward,
+.button.checkout.wc-forward,
+.onsale,
+#place_order,
+input[type="submit"] {
+background: #396e8e;
+}
+.blog-sidebar .widget #twitter-blog li a,
+a, a:hover,
+.testimonials-author,
+.shop-item span.price,
+.list-1 li:before, .list-2 li:before, .list-3 li:before, .list-4 li:before,
+a.post-entry {
+color: #396e8e      }
+#navigation > div > ul > li.current-menu-item > a,
+#navigation > div > ul > li.current_page_parent > a,
+.pricing-table .color-3 h3, .color-3 .sign-up,
+#home-slider.rsDefault .rsArrowIcn:hover,
+.linking button.button,
+.slider .tp-leftarrow:hover,
+.slider .tp-rightarrow:hover,
+a.button.checkout.wc-forward:hover,
+a.button.wc-forward:hover,
+body .widget_price_filter .price_slider_amount button.button:hover,
+.cart-btn .button.hovered,
+.button.wc-backward:hover,
+.magazine-lead figcaption:hover .button,
+.wishlist_table .add_to_cart.button:hover,
+.cart-btn .button:hover,
+.featured-box:hover > .circle,
+.featured-box:hover > .circle span,
+#home-slider.rsDefault .rsArrowIcn:hover, #portfolio-slider.rsDefault .rsArrowIcn:hover,
+#scroll-top-top a,
+.quantity .plus:hover,#content .quantity .plus:hover,.quantity .minus:hover,#content .quantity .minus:hover,
+.infobox,
+.post-icon {
+background-color:#396e8e;
+}
+.mr-rotato-prev:hover,
+.mr-rotato-next:hover,
+.pagination .current:hover,
+.pagination a:hover,
+.woocommerce-pagination a:hover,
+.widget_price_filter .button:hover,
+span.page-numbers.current,
+li.current,
+.tagcloud a:hover {
+background-color: #396e8e;
+border-color: #396e8e;
+}
+#filters a:hover,
+.option-set .selected,
+.wp-pagenavi .current,
+.pagination .current,
+#portfolio-navi a:hover {
+background-color: #396e8e !important;
+border: 1px solid #396e8e !important;
+}
+.pricing-table .color-3 h4 {
+background-color:#396e8e;
+opacity:0.8
+}
+.image-overlay-link, .image-overlay-zoom {
+background-color: rgba(57,110,142,0.7);
+}
+body p a:visited {
+color: #39708F;
+}

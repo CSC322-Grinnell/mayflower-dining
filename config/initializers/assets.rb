@@ -14,3 +14,12 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
 Rails.application.config.assets.precompile += %w( bootstrap.css )
+
+# precompile ass custom css files
+Rails.application.config.assets.precompile += %w( wpemojis.css )
+Rails.application.config.assets.precompile += %w( wpstyles.css )
+Rails.application.config.assets.precompile += %w( layoutstyles.css )
+Rails.application.config.assets.precompile += %w( wfsisocialicons.css )
+Rails.application.config.assets.precompile += %w( vcshortcodes.css )
+Rails.application.config.assets.precompile += %w( rsplugins.css )
+Rails.application.config.assets.precompile += %w( background.css )

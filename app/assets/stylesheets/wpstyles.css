@@ -1,0 +1,32 @@
+/*--- 2 Column Form Styles Start ---*/
+#left {
+width: 47%;
+float: left;
+margin-right:6%;
+}
+#right {
+width: 47%;
+float: left;
+}
+.clearfix:after {
+content:"\0020";
+display:block;
+height:0;
+clear:both;
+visibility:hidden;
+overflow:hidden;
+margin-bottom:5px;
+}
+.clearfix {
+display:block;
+}
+/*--- 2 Column Form Styles End ---*/
+ul.social-icons a.facebook{
+background-color:#396383;
+}
+.socialHeader{
+color:#396e8e;
+font-size:1.5em;
+float:left;
+padding:15px 10px 0 0;
+}
