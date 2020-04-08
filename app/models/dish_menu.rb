@@ -29,5 +29,5 @@ class DishMenu < ApplicationRecord
         entry
     end
 
-    private 
+    private
 end
