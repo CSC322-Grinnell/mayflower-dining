@@ -34,9 +34,12 @@
                        });
                    }
                    $('div tbody').on('click', 'tr > .day',function(){
-     	                 var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2]
-                         window.location.href = 'http://127.0.0.1:3000?date=' + date
-                     })
+                       var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2];
+                       //break url at current query (if there wasnt one, it will just give whole url)
+                       // and concat new query on the end
+                       var url_prefix = window.location.href.split("?");
+                       window.location.href = url_prefix[0] + '?date=' + date;
+                   })
                });
            </script>
            <br />
@@ -59,15 +62,14 @@
                 document.getElementById("date").innerHTML = menu_day.toDateString();
             }
         </script>
-        <hr>
+        <hr class="pad">
 
         <div>
-          <h2>Dinner Menu</h2>
           <% if user_signed_in? %>
           <!--TODO: Select Search Dropdown-->
           <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
           <br>
-          <a href="/" id="dinner_add_link"><button class="btn btn-primary">Add Dish to Dinner Menu</button></a>
+          <a href="/" id="dinner_add_link"><button class="btn btn-primary">Add Dish to Menu</button></a>
           <p>&nbsp;</p>
           <script>
           function url() {
@@ -83,12 +85,12 @@
           <% end %>
           <table class="table table-striped">
               <tbody>
-                  <% @dinner_dishes.each do |dish| %>
+                  <% @daily_dishes.each_with_index do |dish, index| %>
                     <tr>
-                        <td><%= dish%></td>
+                        <td><%= dish %></td>
                         <% if user_signed_in? %>
-                        <td><a id="del_dinner_temp_<%= dish%>" href="/">TEMP remove dish</a></td>
-                        <td><a id="del_dinner_perm_<%= dish%>" href="/">PERM remove dish</a></td>
+                        <td><a id="del_dinner_temp_<%= index %>" href="/">TEMP remove dish</a></td>
+                        <td><a id="del_dinner_perm_<%= index %>" href="/">PERM remove dish</a></td>
                         <script>
                             if (window.location.href.split("?").length > 1) {
                                 date = window.location.href.split("?")[1].split("=")[1];
@@ -96,57 +98,11 @@
                                 today = new Date();
                                 date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
                             }
-                            document.getElementById("del_dinner_temp_<%= element.name%>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=false&dish=<%= element.name%>"
-                            document.getElementById("del_dinner_perm_<%= element.name%>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=true&dish=<%= element.name%>"
+                            document.getElementById("del_dinner_temp_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=false&dish=<%= dish %>"
+                            document.getElementById("del_dinner_perm_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=true&dish=<%= dish %>"
                         </script>
                         <% end %>
                     </tr>
-                  <% end %>
-              </tbody>
-          </table>
-        </div>
-        <hr />
-        <div>
-          <h2>Supper Menu</h2>
-          <% if user_signed_in? %>
-          <!--TODO: Select Search Dropdown-->
-          <input type="text" class="form-control" id="supper_field" onkeydown="url()">
-          <br>
-          <a href="/" id="supper_add_link"><button class="btn btn-primary">Add Dish to Supper Menu</button></a>
-          <p>&nbsp;</p>
-          <script>
-          function url() {
-              if (window.location.href.split("?").length > 1) {
-                  date = window.location.href.split("?")[1].split("=")[1];
-              } else {
-                  today = new Date();
-                  date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-              }
-              document.getElementById("supper_add_link").href = "/menu/edit?date=" + date + "&test=1&act=add&type=Supper&permanent=true&dish=" + document.getElementById("supper_field").value.replace(" ", "%20");
-              }
-          </script>
-          &nbsp;
-          <% end %>
-          <table class="table table-striped">
-              <tbody>
-                  <% @supper_dishes.each do |dish| %>
-                  <tr>
-                      <td><%= dish%></td>
-                      <% if user_signed_in? %>
-                      <td><a id="del_supper_temp_<%= dish%>" href="/">TEMP remove dish</a></td>
-                      <td><a id="del_supper_perm_<%= dish%>" href="/">PERM remove dish</a></td>
-                      <script>
-                          if (window.location.href.split("?").length > 1) {
-                              date = window.location.href.split("?")[1].split("=")[1];
-                          } else {
-                              today = new Date();
-                              date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-                          }
-                          document.getElementById("del_supper_temp_<%= element.name%>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Supper&permanent=false&dish=<%= element.name%>"
-                          document.getElementById("del_supper_perm_<%= element.name%>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Supper&permanent=true&dish=<%= element.name%>"
-                      </script>
-                      <% end %>
-                  </tr>
                   <% end %>
               </tbody>
           </table>
