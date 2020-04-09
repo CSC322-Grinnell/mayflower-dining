@@ -1,29 +1,33 @@
 class DishMenu < ApplicationRecord
-  self.table_name = "dishes_menus"
-  belongs_to :dish
-  belongs_to :menu
+    self.table_name = "dishes_menus"
+    belongs_to :dish
 
-  private 
-  def self.clean_up(dishes_menu)
-    dishes_menu.each do |dish_menu|
-      if dish_menu.temp
-        dish_menu.destroy
-      elsif !dish_menu.show 
-        dish_menu.show = true
-        dish_menu.save
-      end  
-    end 
-  end  
+    validates :day, presence: true,
+        :inclusion => 0..48
 
-  def self.remove_temp_changes()
-    now = Time.now.strftime("%d/%m/%Y")
+    def self.get_menu(day)
+        raise ArgumentError, "Day out of range." unless 0<=day && day<=48
+        entries=self.where(day:day)
+        entries
+    end
 
-    dishes_menu_breakfast = Menu.get_dishes_by_date_type(now,"Breakfast")
-    dishes_menu_dinner = Menu.get_dishes_by_date_type(now,"Dinner")
-    dishes_menu_supper = Menu.get_dishes_by_date_type(now,"Supper")
+    def self.get_dish_menu(day, dish)
+        entry=self.where(dish_id:dish.id, day:day)
+        raise ArgumentError, "Entry doesn't exist." unless !entry.empty?
+        entry.first
+    end
 
-    self.clean_up(dishes_menu_breakfast)
-    self.clean_up(dishes_menu_dinner)
-    self.clean_up(dishes_menu_supper)
-  end 
+    def self.add_dish_to_cycle(day, dish)
+        if !DishMenu.exists?(dish_id:dish.id, day:day)
+            DishMenu.create!(dish_id:dish.id, day:day)
+        end
+    end
+
+    def self.remove_dish_from_cycle(day, dish)
+        entry=DishMenu.get_dish_menu(day, dish)
+        entry.destroy
+        entry
+    end
+
+    private
 end

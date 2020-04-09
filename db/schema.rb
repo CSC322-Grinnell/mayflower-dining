@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_15_193127) do
+ActiveRecord::Schema.define(version: 2019_11_14_053948) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,52 +31,25 @@ ActiveRecord::Schema.define(version: 2019_11_15_193127) do
 
   create_table "dishes", force: :cascade do |t|
     t.string "name"
+    t.integer "star"
+    t.integer "mesh_soft"
+    t.string "puree"
+    t.string "portion_size"
+    t.string "diet"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "description"
-    t.string "dish_type"
   end
 
   create_table "dishes_menus", force: :cascade do |t|
     t.bigint "dish_id"
-    t.bigint "menu_id"
-    t.boolean "temp", default: false
-    t.boolean "show", default: true
-    t.index ["dish_id"], name: "index_dishes_menus_on_dish_id"
-    t.index ["menu_id"], name: "index_dishes_menus_on_menu_id"
-  end
-
-  create_table "ingredients", force: :cascade do |t|
-    t.string "name"
-    t.string "mech_soft"
-    t.string "pureed"
-    t.string "diet"
-    t.integer "hc_prep"
-    t.integer "hc_prep_leftover"
-    t.integer "bb_prep"
-    t.integer "bb_prep_leftover"
-    t.integer "buckley_prep"
-    t.integer "buckley_prep_leftover"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "menus", force: :cascade do |t|
     t.integer "day"
-    t.string "type_of_meal"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["day", "type_of_meal"], name: "by_day_type_of_meal", unique: true
-  end
-
-  create_table "recipes", force: :cascade do |t|
-    t.string "portion_size"
-    t.bigint "dish_id"
-    t.bigint "ingredient_id"
-    t.string "comment"
-    t.integer "step"
-    t.index ["dish_id"], name: "index_recipes_on_dish_id"
-    t.index ["ingredient_id"], name: "index_recipes_on_ingredient_id"
+    t.string "hc_prep"
+    t.string "hc_leftover"
+    t.string "bb_prep"
+    t.string "bb_leftover"
+    t.string "buckley_prep"
+    t.string "buckley_leftover"
+    t.index ["dish_id"], name: "index_dishes_menus_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|
