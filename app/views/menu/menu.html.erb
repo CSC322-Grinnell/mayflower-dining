@@ -43,12 +43,12 @@
                });
            </script>
            <br />
-            <% if user_signed_in? %>
-              <li style = "list-style-type:none; padding-left: 0;">
-                <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-              </li>
+            <% if current_user %>
+              <%= link_to(button_tag("Log out", class:"btn btn-primary"),
+                          log_out_path, method: :delete)%>
             <% else %>
-            <a href="../users/sign_in"><button type="button" class="btn btn-primary">Staff Login</button></a>
+              <%= link_to(button_tag("Staff Login",  class:"btn btn-primary"),
+                          log_in_path) %>
             <% end %>
 
         </div>
@@ -65,7 +65,7 @@
         <hr class="pad">
 
         <div>
-          <% if user_signed_in? %>
+          <% if current_user %>
           <!--TODO: Select Search Dropdown-->
           <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
           <br>
@@ -88,7 +88,7 @@
                   <% @daily_dishes.each_with_index do |dish, index| %>
                     <tr>
                         <td><%= dish %></td>
-                        <% if user_signed_in? %>
+                        <% if current_user %>
                         <td><a id="del_dinner_temp_<%= index %>" href="/">TEMP remove dish</a></td>
                         <td><a id="del_dinner_perm_<%= index %>" href="/">PERM remove dish</a></td>
                         <script>

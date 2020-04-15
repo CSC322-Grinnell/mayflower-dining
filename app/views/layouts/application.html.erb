@@ -236,14 +236,14 @@
         <!-- Navigation / End -->
       </div>
       <!--Our Stuff-->
-      <section class="flash">
-        <% if flash[:notice] %>
-        <p class="alert alert-primary"><%= notice %></p>
+      <div class="container">
+        <% flash.each do |key, value| %>
+          <div class="alert alert-<%= key %>">
+            <%= value %>
+          </div>
         <% end %>
-        <% if flash[:alert] %>
-        <p class="alert alert-warning"><%= alert %></p>
-        <% end %>
-      </section>
+      </div>
+      
       <div class="container" id="main-container">
         <%= yield %>
       </div>
