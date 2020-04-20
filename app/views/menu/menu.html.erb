@@ -46,6 +46,10 @@
             <% if current_user %>
               <%= link_to(button_tag("Log out", class:"btn btn-primary"),
                           log_out_path, method: :delete)%>
+              <% if current_user.admin %>
+                <%= link_to(button_tag("Admin Tasks", class:"btn btn-primary"),
+                            admin_path) %>
+              <% end %>
             <% else %>
               <%= link_to(button_tag("Staff Login",  class:"btn btn-primary"),
                           log_in_path) %>

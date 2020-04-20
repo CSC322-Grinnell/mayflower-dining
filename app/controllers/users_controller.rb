@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :require_login
+  before_action :authenticate_admin
 
   def new
     @user = User.new
@@ -13,6 +13,9 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+
+  def admin
   end
 
   private
