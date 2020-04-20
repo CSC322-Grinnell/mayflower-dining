@@ -29,7 +29,7 @@ class MenuController < ApplicationController
     # GET
     # edit the menu (add/remove an EXISTING dish)
     # url parameters required:
-    #   - date
+    #   - date: dd-mm-YYYY format
     #   - action: add OR remove
     #   - dish: name of the dish
     #   - type: aka 0-3 stars--whether dish is on any special default menus
@@ -46,10 +46,9 @@ class MenuController < ApplicationController
          unless date != nil && dish_name != nil && action != nil && type != nil && permanent != nil
              raise "A querry parameter is missing"
          end
-         parsed_date = Date.parse(date)
-         start_date = Date.new(2019, 12, 8)
-         day = ((parsed_date - start_date) % 49 ) + 1
-         dish = Dish.get_dish(dish_name)
+         day = convert_date_to_day(date.gsub('/','-'))
+         dish = Dish.get_dish(dish_name.capitalize)
+         puts "dish: #{dish}, dish anem: #{dish_name}"
          if action == "remove"
              DishMenu.remove_dish_from_cycle(day, dish)
          elsif action == "add"
@@ -62,23 +61,25 @@ class MenuController < ApplicationController
          flash[:error] = e
      end
 
-     redirect_to '?date=' + date
+     redirect_to '/menu/' + date.gsub('/','-')
     end
 
     private
     # Local helper methods
 
-    # Takes a day in dd/mm/yyyy format and converts it to the number of days
+    # Takes a day in dd/mm/yyyy (or y/m/d) format and converts it to the number of days
     # since 20/01/1999 mod 49, since dishes are stored from days 0-48
     def convert_date_to_day(date)
+      #standardize separator
+      date = date.gsub('-','/')
       begin
         parse_string = "%d/%m/%Y"
         start_date = Date.strptime("22/12/2011", parse_string)
         curr_date = Date.strptime(date, parse_string)
         return (curr_date - start_date).to_i % 49
       rescue
-        parse_string = "%Y-%m-%d"
-        start_date = DateTime.strptime("2011-12-22", parse_string)
+        parse_string = "%Y/%m/%d"
+        start_date = DateTime.strptime("2011/12/22", parse_string)
         curr_date = DateTime.strptime(date, parse_string)
         return (curr_date - start_date).to_i % 49
       end
