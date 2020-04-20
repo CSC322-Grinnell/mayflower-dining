@@ -7,7 +7,7 @@ end
 
 kMenuDir = 'db/menus/'
 
-day = 1
+day = 0
 
 Dir.foreach(kMenuDir) do |filename|
   next if filename == '.' or filename == '..'
@@ -19,24 +19,37 @@ Dir.foreach(kMenuDir) do |filename|
   while row < table.length
     # Each day ends on "CYCLE: xxx"
     while !table[row][0].include? "CYCLE"
-      type = "Dinner" # default type
+      # star options: 0 none, 1 *, 2 **, 3 */**
+      type = 0 # default type
       name = table[row][0]
-      if name.start_with?("*")
-        type = "Supper"
+      if name.start_with?("*/**")
+        type = 3
       elsif name.start_with?("**")
-        type = "Dinner"
+        type = 2
+      elsif name.start_with?("*")
+        type = 1
       end
   
       # Replace any leading non-word character with empty space
       name = name.sub!(/^\W*/, '')
   
       if !Dish.exists?(name: name)
-        dish = Dish.create({name: name})
+        portion=table[row][1]
+        ms=0
+        meshsoft=table[row][2] # meshsoft options: 0 none, 1 flaked, 2 ground
+        if meshsoft=="Flaked"
+          ms=1
+        elsif meshsoft=="Ground"
+          ms=2
+        end
+        puree=table[row][3]
+        diet=table[row][4]
+        dish = Dish.create({name: name, star: type, mesh_soft:ms, puree:puree, portion_size:portion, diet:diet})
       else
         dish = Dish.find_by(name: name)
       end
-      Menu.add_dish_to_cycle(day, type, dish)
-  
+      DishMenu.add_dish_to_cycle(day,dish)
+
       # Add the id for the newly created dish
       row += 1
 
