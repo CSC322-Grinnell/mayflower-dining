@@ -27,19 +27,20 @@ class MenuController < ApplicationController
 
 
     # GET
-    # edit the menu (add/remove dish)
+    # edit the menu (add/remove an EXISTING dish)
     # url parameters required:
     #   - date
     #   - action: add OR remove
     #   - dish: name of the dish
-    #   - type: type of the meal
-    #   _ permanent: true or false -> Is the edit permanent or temporary
+    #   - type: aka 0-3 stars--whether dish is on any special default menus
+    #   - permanent: true or false -> Is the edit permanent or temporary
     # if things go wrong, spits out a flash message
     def edit
       begin
          date = params[:date]
          action = params[:act]
          dish_name = params[:dish]
+         #TODO: these are currently unused fields; remove? 
          type = params[:type]
          permanent = params[:permanent]
          unless date != nil && dish_name != nil && action != nil && type != nil && permanent != nil
@@ -50,9 +51,9 @@ class MenuController < ApplicationController
          day = ((parsed_date - start_date) % 49 ) + 1
          dish = Dish.get_dish(dish_name)
          if action == "remove"
-             Menu.remove_dish_by_day_type(dish,day,type, permanent)
+             DishMenu.remove_dish_from_cycle(day, dish)
          elsif action == "add"
-             Menu.add_dish_to_cycle(day,type,dish, permanent)
+             DishMenu.add_dish_to_cycle(day,dish)
          else
              raise "Unknown action"
          end
