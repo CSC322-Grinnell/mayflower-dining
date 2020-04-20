@@ -1,6 +1,8 @@
 # Create admin user
-begin 
-  User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true) if Rails.env.development?
+begin
+  if Rails.env.development? or Rails.env.test?
+    User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
+  end
 rescue => e
   puts "Admin already created"
 end 
