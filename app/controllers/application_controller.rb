@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_admin
     unless current_user && current_user.admin
-      flash[:error] = "You must be an admin user to access this page."
+      flash[:warning] = "You must be an admin user to access this page."
       redirect_to log_in_path
     end
   end
