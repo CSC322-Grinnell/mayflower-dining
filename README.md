@@ -28,7 +28,7 @@ and render the view.
 
 This is the database that we have at the end of the semester, minus the user part. We really didn't touch that part.
 
-![alt text](./db-image2.png "Current State of the DB")
+![alt text](./db-image.png "Current State of the DB")
 
 Here is a detailed explanation of each table and its content.
 
