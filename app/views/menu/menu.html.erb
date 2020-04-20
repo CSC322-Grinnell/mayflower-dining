@@ -65,7 +65,7 @@
         <hr class="pad">
 
         <div>
-          <% if current_user %>
+          <% if current_user && current_user.admin %>
           <!--TODO: Select Search Dropdown-->
           <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
           <br>
@@ -88,7 +88,7 @@
                   <% @daily_dishes.each_with_index do |dish, index| %>
                     <tr>
                         <td><%= dish %></td>
-                        <% if current_user %>
+                        <% if current_user && current_user.admin %>
                         <td><a id="del_dinner_temp_<%= index %>" href="/">TEMP remove dish</a></td>
                         <td><a id="del_dinner_perm_<%= index %>" href="/">PERM remove dish</a></td>
                         <script>

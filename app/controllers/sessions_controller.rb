@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
   end
 
@@ -15,6 +16,6 @@ class SessionsController < ApplicationController
   def destroy
     logout
     flash[:success] = 'See you!'
-    redirect_to root_path
+    redirect_back_or_to root_path
   end
 end

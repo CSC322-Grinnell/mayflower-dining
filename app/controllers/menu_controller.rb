@@ -10,8 +10,7 @@ class MenuController < ApplicationController
     #when in production, use comented out line below to restrict
     #access of anauthorized users to all functionality except
     #menu display
-    skip_before_action :verify_authenticity_token
-    #before_action :authenticate_user!
+    before_action :require_login, except: [:menu]
 
 
     # GET

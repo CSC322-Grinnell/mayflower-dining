@@ -4,10 +4,9 @@
 class DishesController < ApplicationController
   #the two lines below are fow authentication
   #when in production, use comented out line below to restrict
-  #access of anauthorized users to all functionality except 
+  #access of anauthorized users to all functionality except
   #menu display
-  skip_before_action :verify_authenticity_token
-  #before_action :authenticate_user!
+  before_action :require_login
 
   # POST
   # makes new dish
@@ -19,7 +18,7 @@ class DishesController < ApplicationController
     dish_name = params[:dish_name]
     recipies = params[:recipies]
     description = params[:description]
-    begin 
+    begin
       dish = Dish.add_dish(dish_name, description, recipies.values)
     rescue => e
       flash[:error] = e
@@ -45,18 +44,18 @@ class DishesController < ApplicationController
       recipies_to_remove = Recipe.get_recipe_by_dish(dish)
       if new_name != nil
         dish.name = new_name
-      end 
-      if new_desc != nil 
+      end
+      if new_desc != nil
         dish.description = new_desc
-      end 
-      if recipies_to_remove != nil 
+      end
+      if recipies_to_remove != nil
         recipies_to_remove.each do |recipe|
           recipe.destroy
-        end 
-      end 
+        end
+      end
       new_recipies.each do |recipe|
         Recipe.create_recipe(dish, Ingredient.get_ingredient(recipe[0]), recipe[1], recipe[2])
-      end 
+      end
       dish.save
     rescue => e
       flash[:error] = e
@@ -65,14 +64,14 @@ class DishesController < ApplicationController
 
   end
 
-  # GET 
+  # GET
   # returns all dishes
   def all
     dishes = Dish.all
     render json: dishes
-  end 
+  end
 
-  # DELETE 
+  # DELETE
   # deletes dish with dish.name == query parameter name
   def delete
       begin
@@ -80,7 +79,7 @@ class DishesController < ApplicationController
         Dish.remove_dish(dish.name)
       rescue => e
         flash[:error] = e
-    end 
+    end
     redirect_to '/menu'
   end
 
