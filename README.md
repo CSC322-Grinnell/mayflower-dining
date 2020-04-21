@@ -26,40 +26,32 @@ and render the view.
 
 ## Database ##
 
-This is the database that we have at the end of the semester, minus the user part. We really didn't touch that part.
+Here is a diagram of the current database.
 
 ![alt text](./db-image.png "Current State of the DB")
 
 Here is a detailed explanation of each table and its content.
 
 ### 1. Dishes ###
-Has the dishes. Each dish should only appear once in here. Has a many to many relationship with ingredients through recipes and menus through dishes_menus.
-1. name: dish name.
-2. description: a description of the dish.
-3. dish_type: entree, dessert, etc. We really didn't have to get nit picky with this.
-### 2. Ingredients ###
-Has the ingredients. Each Ingredient should only appear once in here. Has a many to many relationship with dishes through recipes.
-1. name: ingredient name.
-2. everything else: we kept it from the last group's work. We don't know how they are useful, although it may become relevant once you see the recipes for the dishes used in MayFlower You can delete them if you see fit.
-### 3. Menus ###
-Is the main thing show to end users. The Menus is on a 49 day cycle (7 days, 7 weeks). Each day has breakfast, dinner (lunch as the younger kids -- <50 --  call it), and supper (dinner as the younger kids call it). Has a many to many relationship with dishes through dishes_menus.
-1. day: A number between 1-49. Essentially the day in the cycle.
-2. type_of_meal: Breakfast, dinner, or supper.
-### 4. Recipes ###
-Connects dishes to ingredients. Also holds some extra information about their connection. Keep in mind that a single recipe entry is a step in real world recipes. Hence, a dish will have multiple recipes, each of which will use a different ingredient.
-1. comment: it's the instruction of this particular step of the recipe.
-2. step: it's an integer specifying the order at which the recipe entries should be done.
-3. portion_size: how much of an ingredient should be used.
-4. ingredient_id: the id of the ingredient used in this step.
-5. dish_id: the id of the dish this recipe entry belongs to.
-### 5. Dishes_Menus ###
-Connects dishes to menus and contains some information about their relationship.
-1. dish_id: the dish that should be connected to a particular menu.
-2. menu_id: the menu the dish should be connected to.
-3. temp: a boolean that specifies that this entry is temporary. The default is false. This column allows temporary additions to a menu for this cycle. In the next cycle, this connection should be deleted.
-4. show: a boolean that specifies that this entry should be shown in the final menu. The default is true. This column allows temporary omissions from a menu. In the next cycle, this connection should still be there, but it should be set to true if it was false before.
-
-Finally, the scheduled command that resets all temp/show changes to in the dishes_menus is defined as the rake task here: lib/tasks/scheduled_db_commands.rake, and you should use heroku scheduler to run it in production. It required extra steps from the owner of the repo (professor), so we didn't add that. See: https://devcenter.heroku.com/articles/scheduler for how to set it up.
+Has the dishes. Each dish should only appear once in here. Has a one to many relationship with entires in dishes_menus.
+1. id: dish id. Auto-incremented.
+2. name: dish name.
+3. star: 0-3. 0 for no star. 1 for \*. 2 for \*\*. 3 for \*/\*\*.
+4. mesh_soft: 0-2. 0 for none. 1 for Flaked. 2 for Ground.
+5. puree: number of puree servings and puree texture.
+6. portion_size: portion size of the dish.
+7. diet: portion size for diet.
+### 2. Dishes_Menus ###
+Each entry contains information for one dish on one certain day / menu (0 - 48).
+1. id: dish_menu id. Auto-incremented.
+2. dish_id: the dish whose information is contained in this entry.
+3. day: the index of the menu (0-48).
+4. hc_prep: the prepared amount for dining location hc.
+5. hc_leftover: the leftover amount for dining location hc.
+6. hc_prep: the prepared amount for dining location hc.
+5. hc_leftover: the leftover amount for dining location hc.
+4. hc_prep: the prepared amount for dining location hc.
+5. hc_leftover: the leftover amount for dining location hc.
 
 ## Models ##
 
