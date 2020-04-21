@@ -31,4 +31,17 @@ class LoginIntegrationTest < Capybara::Rails::TestCase
         assert page.has_text?('Add Dish to Menu', count: 0), 'Add dish button present after logout'
     end
 
+    test "login failure" do
+        visit '/'
+        assert_selector 'h1', text: 'Menu for Today'
+
+        find('a[href="/users/sign_in"]').click
+        assert_selector 'h2', text: 'Log in'
+
+        #fill in fields
+        find('#user_email').fill_in with: "bad@email.com" 
+        find('#user_password').fill_in with: "assword" 
+        find('input[value="Log in"]').click
+        assert page.has_text?('Invalid Email or password.'), 'Failed sign in flash not present'
+    end
 end
