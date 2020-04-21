@@ -42,10 +42,10 @@ Has the dishes. Each dish should only appear once in here. Has a one to many rel
 6. portion_size: portion size of the dish.
 7. diet: portion size for diet.
 ### 2. Dishes_Menus ###
-Each entry contains information for one dish on one certain day / menu (0 - 48).
+Each entry contains information for one dish on one certain day / menu (0 - 48, a 7-week cycle).
 1. id: dish_menu id. Auto-incremented.
 2. dish_id: the dish whose information is contained in this entry.
-3. day: the index of the menu (0-48).
+3. day: the index of the menu (0-48) in a 7-week cycle.
 4. hc_prep: the prepared amount for dining location hc.
 5. hc_leftover: the leftover amount for dining location hc.
 6. bb_prep: the prepared amount for dining location hc.
