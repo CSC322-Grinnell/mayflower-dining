@@ -1,0 +1,28 @@
+<h1>User Management</h1>
+<%= link_to(button_tag("Create User",  class:"btn btn-primary"), new_user_path) %>
+<br><br>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Privilege</th>
+    <th colspan="2">Actions</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <% if user.admin %>
+        <td>Admin</td>
+      <% else %>
+        <td>Staff</td>
+      <% end %>
+      <td><%= link_to(button_tag('Edit', class:"btn btn-primary"), edit_user_path(user))%></td>
+      <td>
+        <%= link_to(button_tag('Remove', class:"btn btn-primary"), user_path(user), method: :delete,
+              data: { confirm: 'Are you sure?'}) %>
+      </td>
+    </tr>
+  <% end %>
+</table>
