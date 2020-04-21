@@ -22,7 +22,7 @@
 
   <div class="form-group">
     <%= form.label :admin %><br>
-    <%= form.select :admin, [true, false], required: true%>
+    <%= form.select :admin, ["Staff", "Admin"], required: true%>
   </div>
   <%= form.submit 'Update User', class: 'btn btn-primary' %>
 <% end %>

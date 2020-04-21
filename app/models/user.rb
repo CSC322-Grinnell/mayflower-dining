@@ -7,5 +7,14 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || crypted_password_changed? }
 
   validates :email, uniqueness: true
-  
+
+  def admin=(type)
+    if type == "Admin"
+      admin = true
+    else
+      admin = false
+    end
+    super(admin)
+  end
+
 end
