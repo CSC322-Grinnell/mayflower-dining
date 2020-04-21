@@ -36,7 +36,7 @@ Here is a detailed explanation of each table and its content.
 Has the dishes. Each dish should only appear once in here. Has a one to many relationship with entires in dishes_menus.
 1. id: dish id. Auto-incremented.
 2. name: dish name.
-3. star: 0-3. 0 for no star. 1 for \*. 2 for \*\*. 3 for \*/\*\*.
+3. star: 0-3. 0 for no star. 1 for \*, meaning it must appear in dinner. 2 for \*\*, meaning it must appear in supper. 3 for \*/\*\*, meaning it must appear in both dinner and supper.
 4. mesh_soft: 0-2. 0 for none. 1 for Flaked. 2 for Ground.
 5. puree: number of puree servings and puree texture.
 6. portion_size: portion size of the dish.
