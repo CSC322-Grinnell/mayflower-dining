@@ -48,68 +48,25 @@ Each entry contains information for one dish on one certain day / menu (0 - 48).
 3. day: the index of the menu (0-48).
 4. hc_prep: the prepared amount for dining location hc.
 5. hc_leftover: the leftover amount for dining location hc.
-6. hc_prep: the prepared amount for dining location hc.
-5. hc_leftover: the leftover amount for dining location hc.
-4. hc_prep: the prepared amount for dining location hc.
-5. hc_leftover: the leftover amount for dining location hc.
+6. bb_prep: the prepared amount for dining location hc.
+5. bb_leftover: the leftover amount for dining location hc.
+4. buckley_prep: the prepared amount for dining location hc.
+5. buckley_leftover: the leftover amount for dining location hc.
 
 ## Models ##
 
-The models directly interact with the DB and implement CRUD for all of them + some extra stuff.
+The models directly interact with the DB and selectively implement CRUD (create, read, update, delete) for security reason.
 ### 1. Dish ###
-CRUD:
-1. Create: use add_dish. It accepts a name and list. The list should have elements of the following format: \[ingredient_name, portion_size, comment\]. The add_dish function will make the appropriate recipe entries using this list for a dish.
+1. Create: use add_dish. Name is required. Other default values are star:0, mesh_soft:0, puree:"", portion_size:"", diet:"". Raises an exception if the dish already exists.
 2. Read: use get_dish. Only works by name. Raises an exception if the dish with that name does not exist.
-3. Update: you can only update a dish's name here by using update_name. For updating the recipes, resort to the recipes model. Can raise an exception if the dish you specified to update does not exist.
-4. Destroy: use remove_dish. Automatically deletes all the recipes that depend on this dish, then deletes the dish. Raises an exception if the dish you specified does not exist or there is a menu connection with this dish in it (meaning you have to first remove this dish from menus before being able to delete the dish just for caution).
+3. Update: use update_dish. Original name is required, followed by any attributes you want to update. Allowed attributes: new_name, star, mesh_soft, puree, portion_size, diet. 
+4. Destroy: use remove_dish. Raises an exception if the dish you specified does not exist or there is a menu connection with this dish in it (meaning you have to first remove this dish from menus before being able to delete the dish just for caution).
 
-For adding a dish to a menu, look at the menu model.
-
-TODO for the dishes model: ensure that you cannot make two dishes with the same name, or if you want to be able to do so, find a way to distinguish the two similar dishes.
-
-### 2. Ingredient ###
-CRUD:
-1. Create: use add_ingredient.
-2. Read: use get_ingredient.
-3. Update: none.
-4. Destroy: use remove_ingredient. It will raise an exception if there is a recipe that depends on it.
-
-TODO for the ingredients model: understand how the MayFlower ingredient system actually works so you populate the relevant fields properly, do data validation, etc.
-### 3. Menu ###
-Note that all methods in the menu will be validated by day and type. Day has to be between 1 & 49 and type has to be either Breakfast, Dinner, or Supper. If validation fails, an exception will rise.
-1. Create: You should not need to create more menus, they should be all created via the seed (the 49 day cycle should not be changed).
-2. Read: For getting a menu, use get_menu.
-3. Update: A menu should not need to be updated.
-4. Remove: A menu itself should not deleted.
-
-The menu model also handles adding, getting, and removing dishes to a menu. Getting and removing will raise an exception if the dish is not
-
-1. Add: the dishes you wish to add should be created before calling these methods. You can also specify if the addition is permanent or not.
-    1. For adding a single dish, use add_dish_to_cycle.
-    2. For adding more than one dish, use add_dishes_to_cycle.
-2. Get:
-  1. For getting dishes of a menu by day and type, use get_dishes_by_day_type (day as in day in the cycle).
-  2. For getting dishes of a menu by date and type, use get_dishes_by_date_type (date is in the format YYYY-mm-dd).
-3. Remove: For removing a dish from a menu, use remove_dish_by_day_type. You can specify whether the removal is temporary or not.
-
-
-TODO for the menu model: prevent a dish from being added to a menu more than once.
-
-
-### 4. Recipe ###
-CRUD:
-1. Create: use create_recipe.
-2. Read: use get_recipe_by_dish to get all the recipes belonging to a dish and get_recipe_by_ingredient to get all the recipes belonging to an ingredient.
-3. Update: use update_dish for updating the dish of a recipe. Use update_ingredient for updating the ingredient of a recipe.
-4. Destroy: we weren't able to hone this part. For instance, what would happen to recipe steps if one of them got removed? Should removal of single recipes be allowed?
-
-TODO for the recipe model: figure out removal procedures.
-
-### 5. Dishes_Menus ###
-CRUD: This model does not have any CRUD mainly due to historical reasons. Initially, the connection between was established in the menu model without the help of this table. After adding this table, we didn't bother with moving the methods from the menu model to the dishes_menus model. You may do so if you would like.
-
-Other methods:
-1. clean_up: this method removes temporary changes. It destroys dish-menu connections that are temp==true and for connections that have show==false, it sets show=true.
+### 2. Dishes_Menus ###
+1. Create: use add_dish_to_cycle. Takes a day and a dish name.
+2. Read: use get_menu if you want to get dishes of a day, and get_dish_menu if you want to get a specific entry.
+3. Update: use update_dish_menu. Day and name are required arguments, followed by any parameters you want update: hc_prep, hc_leftover, bb_prep, bb_leftover, buckley_prep, buckley_leftover. Can only be used to update prep and leftover.
+4. Destroy: use remove_dish_from_cycle. Takes a day and a dish name.
 
 ## Controllers, routes and view ##
 
