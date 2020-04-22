@@ -9,7 +9,8 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
 
   def admin=(type)
-    if type == "Admin"
+    # Handles passing string from forms, can also accept boolean
+    if type == "Admin" || type
       admin = true
     else
       admin = false
