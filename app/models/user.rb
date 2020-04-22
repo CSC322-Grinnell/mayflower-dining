@@ -10,10 +10,12 @@ class User < ApplicationRecord
 
   def admin=(type)
     # Handles passing string from forms, can also accept boolean
-    if type == "Admin" || type
+    if type == "Admin"
       admin = true
-    else
+    elsif type == "Staff"
       admin = false
+    else
+      admin = type
     end
     super(admin)
   end
