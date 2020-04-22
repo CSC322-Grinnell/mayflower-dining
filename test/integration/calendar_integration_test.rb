@@ -54,7 +54,7 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
         error, dishes = find_dishes(formated_date)
         
         for dish in dishes do
-            assert page.has_text?(dish), "Dish #{dish} wasn't present on page"
+            assert page.has_text?(dish.strip), "Dish #{dish} wasn't present on page"
         end
     end
 
