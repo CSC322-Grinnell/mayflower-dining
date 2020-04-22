@@ -5,6 +5,7 @@ begin
     admin = User.new
     admin.email = "admin@example.com"
     admin.password = "password"
+    admin.password_confirmation = "password"
     admin.name = "Mayflower Admin"
     admin.admin = true
     admin.save
@@ -12,6 +13,7 @@ begin
     staff = User.new
     staff.email = "staff@example.com"
     staff.password = "password"
+    staff.password_confirmation = "password"
     staff.name = "Mayflower Staff"
     staff.admin = false
     staff.save
