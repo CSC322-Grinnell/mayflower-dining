@@ -1,11 +1,26 @@
+require 'csv'
 # Create admin user
 begin
   if Rails.env.development? or Rails.env.test?
-    User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password', admin: true)
+    admin = User.new
+    admin.email = "admin@example.com"
+    admin.password = "password"
+    admin.password_confirmation = "password"
+    admin.name = "Mayflower Admin"
+    admin.admin = true
+    admin.save
+
+    staff = User.new
+    staff.email = "staff@example.com"
+    staff.password = "password"
+    staff.password_confirmation = "password"
+    staff.name = "Mayflower Staff"
+    staff.admin = false
+    staff.save
   end
 rescue => e
-  puts "Admin already created"
-end 
+  puts "Users already created"
+end
 
 kMenuDir = 'db/menus/'
 
@@ -31,10 +46,10 @@ Dir.foreach(kMenuDir) do |filename|
       elsif name.start_with?("*")
         type = 1
       end
-  
+
       # Replace any leading non-word character with empty space
       name = name.sub!(/^\W*/, '')
-  
+
       if !Dish.exists?(name: name)
         portion=table[row][1]
         ms=0
@@ -56,7 +71,7 @@ Dir.foreach(kMenuDir) do |filename|
       row += 1
 
     end
-  
+
     day += 1
     # Skip two rows: "CYCLE: xxx" and another header
     row += 2
@@ -65,4 +80,3 @@ Dir.foreach(kMenuDir) do |filename|
 
 
 end
-

@@ -53,14 +53,14 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  
+
   # nice ouput on models when function is called with 'ap' in fornt
   # eg: ap Menu.where(id:6)[0].dishes[1].ingredients
   gem "awesome_print", require:"ap"
-  
+
   # better errors
   gem "better_errors"
-  gem "binding_of_caller" 
+  gem "binding_of_caller"
 end
 
 group :test do
@@ -74,8 +74,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem 'devise'
 gem 'webpacker'
-gem 'activeadmin'
+gem 'sorcery'
 gem 'bootstrap', '~> 4.3'
 gem 'jquery-rails'

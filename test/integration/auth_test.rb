@@ -1,7 +1,6 @@
 require 'test_helper'
 
 class AuthTest < ActionDispatch::IntegrationTest
-  include Devise::Test::IntegrationHelpers
 
   # test users
   setup do

@@ -9,10 +9,9 @@ class MenuController < ApplicationController
     #the two lines below are fow authentication
     #when in production, use comented out line below to restrict
     #access of anauthorized users to all functionality except
-    #menu display
-    skip_before_action :verify_authenticity_token
-    #before_action :authenticate_user!
+    #menu displa
     include MenuHelper
+    before_action :authenticate_admin, except: [:menu]
 
     # GET
     # displays the menu, accepts optional query parameter date

@@ -4,10 +4,9 @@
 class DishesController < ApplicationController
   #the two lines below are fow authentication
   #when in production, use comented out line below to restrict
-  #access of anauthorized users to all functionality except 
+  #access of anauthorized users to all functionality except
   #menu display
-  skip_before_action :verify_authenticity_token
-  #before_action :authenticate_user!
+  before_action :authenticate_admin
 
   # POST
   # makes new dish
@@ -43,7 +42,7 @@ class DishesController < ApplicationController
   def all
     dishes = Dish.all
     render json: dishes
-  end 
+  end
 
   # DELETE 
   # deletes dish with dish.name == query parameter iname
@@ -55,7 +54,7 @@ class DishesController < ApplicationController
         Dish.remove_dish(dish.name)
       rescue => e
         flash[:error] = e
-    end 
+    end
     redirect_to '/menu'
   end
 
