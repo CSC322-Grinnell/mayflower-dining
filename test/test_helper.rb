@@ -10,4 +10,13 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+  def login_user(email='admin@example.com', password='password')
+    post '/sessions', params: {email: email, password: password}
+#    follow_redirect!
+  end
+
+  def logout_user
+    delete '/log_out'
+#    follow_redirect!
+  end
 end

@@ -4,8 +4,11 @@ class AuthTest < ActionDispatch::IntegrationTest
 
   # test users
   setup do
-    @user = User.all()[0]
-    sign_in @user
+    login_user("admin@example.com")
+  end
+
+  teardown do
+    logout_user
   end
 
   test "differnt view for loggedin user" do

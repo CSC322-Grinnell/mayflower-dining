@@ -25,8 +25,8 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
         assert page.has_css?('td.day.active.today', count: 1), "Non 1 number of calendars on initial page load"
 
         #click staff login and then navigate back
-        click_link 'Staff Login'
-        assert page.has_text?('Log in'), "Did not navigate to login page"
+        find('a[href="/log_in"]').click
+        assert page.has_text?('Log In'), "Did not navigate to login page"
         page.driver.go_back
         assert page.has_text?('Menu for Today')
 
