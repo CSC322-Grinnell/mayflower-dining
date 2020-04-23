@@ -8,6 +8,9 @@ class LoginIntegrationTest < Capybara::Rails::TestCase
         @pass = 'password'
     end
 
+    teardown do
+    end
+
     test "login and logout user flow" do
         visit '/'
         assert_selector 'h1', text: 'Menu for Today'
@@ -132,6 +135,9 @@ class LoginIntegrationTest < Capybara::Rails::TestCase
     end
 
     test "create, edit, destroy user success" do
+        #setup chrome driver for access to click js popups
+        Capybara.current_driver = :selenium_chrome_headless
+
         visit '/'
         assert_selector 'h1', text: 'Menu for Today'
 
@@ -195,6 +201,8 @@ class LoginIntegrationTest < Capybara::Rails::TestCase
         find('a[href="/log_out"]').click
         assert page.has_text?('See you!'), 'Sign out flash not present'
         assert page.has_text?('Add Dish to Menu', count: 0), 'Add dish button present after logout'
+
+        Capybara.use_default_driver
     end
 
 
