@@ -83,8 +83,8 @@ class MenuController < ApplicationController
       end
     end
 
-    #finds the dishes and their recipies for a given meal_type and given day
-    # spits out an array in the format [{name: ,recipies: [ingredient: ,portion_size:, comment:, step:, displayed:,]}]
+    #finds the dishes for a given day
+    # spits out an array in the format [Dish]
     def find_dishes(date)
       begin
         day = convert_date_to_day(date)
@@ -93,10 +93,10 @@ class MenuController < ApplicationController
         error = nil
         dishes_menu_arr.each do |dish_menu|
           dish = Dish.find(dish_menu.dish_id)
-          dishes.push(dish.name)
+          dishes.push(dish)
         end
       rescue => e
-          error = "Some #{meal_type} dishes of day #{day} not found. DB is in trouble!!"
+          error = "Some dishes of day #{day} not found. DB is in trouble!!"
       end
 
       return error, dishes
