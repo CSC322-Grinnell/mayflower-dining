@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   # api to edit the menu (add dish, delete dish)
   get 'menu/edit/(:date/:acts/:dish/:type/:permanent)', to: 'menu#edit'
-  # show menu(w/ buttons to delete/add dishes). date = optional parameter. 
+  # show menu(w/ buttons to delete/add dishes). date = optional parameter.
   # If none specified, uses current date
   get 'menu/(:date)', to: 'menu#menu'
 
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
 # api to get all dishes
   get 'dishes/all', to: 'dishes#all'
-#--------------------------------------- ingredients 
+#--------------------------------------- ingredients
 
 # api to edit the ingredient name/total_amount
  post 'ingredients/edit/', to: 'ingredients#edit'
@@ -31,11 +31,14 @@ Rails.application.routes.draw do
 # api to delete the ingredient and all its occurences
  delete 'ingredients/:name', to: 'ingredients#delete'
 
-  
-  root to: "menu#menu"
-  ActiveAdmin.routes(self)
-  devise_for :users
+# logging in and logging out
+resources :sessions, only: [:new, :create, :destroy]
+get '/log_in', to: 'sessions#new', as: :log_in
+delete '/log_out', to: 'sessions#destroy', as: :log_out
+
+resources :users
+get '/admin', to: 'users#admin', as: :admin
+get '/admin/management', to: 'users#management', as: :user_management
+root to: "menu#menu"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-

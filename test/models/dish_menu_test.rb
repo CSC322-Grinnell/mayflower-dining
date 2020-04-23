@@ -4,22 +4,36 @@ require "time"
 class DishMenuTest < ActiveSupport::TestCase
 
     test 'add dish to cycle' do
-        dish = Dish.create({name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving"})
-        DishMenu.add_dish_to_cycle(0,dish)
+        Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
+        DishMenu.add_dish_to_cycle(0,"french toast")
         assert DishMenu.exists?(dish_id:Dish.get_dish("french toast").id)
     end
 
+    test 'add dish to cycle fail' do
+        assert_raise ArgumentError do
+            DishMenu.add_dish_to_cycle(0,"non exist")
+        end
+    end
+
     test 'get menu' do
-        dish = Dish.create({name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving"})
-        DishMenu.add_dish_to_cycle(48,dish)
+        Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
+        DishMenu.add_dish_to_cycle(48,"french toast")
         menu=DishMenu.get_menu(48)
         assert menu.length()==1
     end
 
+    test 'update dish menu' do
+        Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
+        DishMenu.add_dish_to_cycle(0,"french toast")
+        DishMenu.update_dish_menu(day:0,name:"french toast",bb_prep:"1000")
+        entry = DishMenu.get_dish_menu(0,"french toast")
+        assert_equal(entry.bb_prep,"1000")
+    end
+
     test 'remove dish day entry' do
-        dish = Dish.create({name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving"})
-        DishMenu.add_dish_to_cycle(0,dish)
-        DishMenu.remove_dish_from_cycle(0,Dish.get_dish("french toast"))
+        Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
+        DishMenu.add_dish_to_cycle(0,"french toast")
+        DishMenu.remove_dish_from_cycle(0,"french toast")
         assert_not DishMenu.exists?(dish_id:Dish.get_dish("french toast").id)
     end
 
