@@ -2,7 +2,7 @@ ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 require 'rails/test_help'
 require "#{Rails.root}/db/seeds.rb"
-require 'Date'
+require 'date'
 require "minitest/rails/capybara"
 
 class ActiveSupport::TestCase
