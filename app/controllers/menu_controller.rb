@@ -20,7 +20,7 @@ class MenuController < ApplicationController
     # Renders views/menu/menu.html
     def menu
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @daily_dishes = find_dishes(date)
+        error, @daily_dishes_menus = find_dishes_menus(date)
         flash[:error] = error
     end
 
@@ -83,22 +83,15 @@ class MenuController < ApplicationController
     end
 
     #finds the dishes for a given day
-    # spits out an array in the format [Dish]
-    def find_dishes(date)
+    # spits out an array in the format [DishMenu]
+    def find_dishes_menus(date)
       begin
         day = convert_date_to_day(date)
-        dishes_menu_arr = DishMenu.get_menu(day)
-        dishes = []
-        error = nil
-        dishes_menu_arr.each do |dish_menu|
-          dish = Dish.find(dish_menu.dish_id)
-          dishes.push(dish)
-        end
       rescue => e
           error = "Some dishes of day #{day} not found. DB is in trouble!!"
       end
 
-      return error, dishes
+      return error, DishMenu.get_by_day(day)
     end
 
 end

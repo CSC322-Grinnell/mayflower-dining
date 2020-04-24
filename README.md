@@ -64,7 +64,7 @@ The models directly interact with the DB and selectively implement CRUD (create,
 
 ### 2. Dishes_Menus ###
 1. Create: use add_dish_to_cycle. Takes a day and a dish name.
-2. Read: use get_menu if you want to get dishes of a day, and get_dish_menu if you want to get a specific entry.
+2. Read: use get_by_day if you want to get dishes of a day, and get_by_day_and_dish if you want to get a specific entry.
 3. Update: use update_dish_menu. Day and name are required arguments, followed by any parameters you want update: hc_prep, hc_leftover, bb_prep, bb_leftover, buckley_prep, buckley_leftover. Can only be used to update prep and leftover.
 4. Destroy: use remove_dish_from_cycle. Takes a day and a dish name.
 

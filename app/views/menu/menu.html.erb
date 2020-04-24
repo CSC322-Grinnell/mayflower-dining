@@ -91,9 +91,19 @@
           <tr>
     <th>Dish Name</th>
     <th>Dinner/Supper</th>
+    <% if current_user %> <%# for staff %>
+        <th>HC Prep</th>
+        <th>HC Leftover</th> 
+        <th>BB Prep</th>
+        <th>BB Leftover</th>
+        <th>Buckley Prep</th>
+        <th>Buckley Leftover</th>
+    <% end %>
   </tr>
               <tbody>
-                    <% @daily_dishes.each_with_index do |dish, index| %> <%# print the table %>
+                    <% @daily_dishes_menus.each do |dish_menu|%>
+                    <% dish = Dish.find(dish_menu.dish_id) %>
+                     <%# print the table %>
                     <tr>
                         <td><%= dish.name %></td>
                         <td><%= 
@@ -107,10 +117,17 @@
                         "*/**"
                         end %></td>
                         
-                        <td><%= dish %></td>
+                       <% if current_user %> <%# for staff %>
+                            <td><%= dish_menu.hc_prep %></td>
+                            <td><%= dish_menu.hc_leftover %></td> 
+                            <td><%= dish_menu.bb_prep %></td>
+                            <td><%= dish_menu.bb_leftover %></td> 
+                            <td><%= dish_menu.buckley_prep %></td>
+                            <td><%= dish_menu.buckley_leftover %></td> 
+                        <% end %> 
                         <% if current_user && current_user.admin %>
-                        <td><a id="del_dinner_temp_<%= index %>" href="/">TEMP remove dish</a></td>
-                        <td><a id="del_dinner_perm_<%= index %>" href="/">PERM remove dish</a></td>
+                        <td><a  href="/">TEMP remove dish</a></td>
+                        <td><a  href="/">PERM remove dish</a></td>
                         <script>
                             if (window.location.href.split("?").length > 1) {
                                 date = window.location.href.split("?")[1].split("=")[1];
