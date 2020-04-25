@@ -1,7 +1,7 @@
 require 'csv'
 # Create admin user
 begin
-  if Rails.env.development?
+  if Rails.env.development? or Rails.env.test?
     admin = User.new
     admin.email = "admin@example.com"
     admin.password = "password"

@@ -5,7 +5,7 @@ class Dish < ApplicationRecord
 
     def self.get_dish(name)
         dish = self.where(name:name)
-        raise ArgumentError, "Dish doesn't exist." unless !dish.empty?
+        raise ArgumentError, "Dish #{name} doesn't exist." unless !dish.empty?
         dish.first
     end
 
