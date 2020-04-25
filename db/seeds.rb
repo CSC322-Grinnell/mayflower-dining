@@ -49,6 +49,8 @@ Dir.foreach(kMenuDir) do |filename|
 
       # Replace any leading non-word character with empty space
       name = name.sub!(/^\W*/, '')
+      # Strip repeated white space
+      name = name.gsub('  ', ' ')
 
       if !Dish.exists?(name: name)
         portion=table[row][1]
