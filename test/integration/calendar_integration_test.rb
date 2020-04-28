@@ -37,11 +37,17 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
     test "calendar date navigation" do
         visit '/'
         #test that clicked day changes date h1
-#TODO: will this line fail on Sundays because there is no NEXT sibling in the calendar row?
-        other_day = page.find('td.day.active.today')
-                        .first(:xpath, './following-sibling::td')
-        other_date = other_day['data-day']
-        other_day.click
+        today = page.find('td.day.active.today')['data-day'].split('/')
+        if today[1] == '01'
+            # make the click date the 2nd
+            today[1] = '02'
+            other_date = today.join('/')
+        else
+            #make the click date the first
+            today[1] = '01'
+            other_date = today.join('/')
+        end
+        page.find('td.day[data-day="' + other_date + '"]').click
         assert page.has_text?('Menu for Today', count: 0), 'Clicking calendar didnt change date heading text'
 
         #test that highlighted day changed
@@ -61,10 +67,17 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
     test "todays menu button updates calendar" do
         visit '/'
         #navigate to some other date
-        other_day = page.find('td.day.active.today')
-                        .first(:xpath, './following-sibling::td')
-        other_date = other_day['data-day']
-        other_day.click
+        today = page.find('td.day.active.today')['data-day'].split('/')
+        if today[1] == '01'
+            # make the click date the 2nd
+            today[1] = '02'
+            other_date = today.join('/')
+        else
+            #make the click date the first
+            today[1] = '01'
+            other_date = today.join('/')
+        end
+        page.find('td.day[data-day="' + other_date + '"]').click
         assert page.has_text?('Menu for Today', count: 0), 'Clicking calendar didnt change date heading text'
 
         #click todays menu button
