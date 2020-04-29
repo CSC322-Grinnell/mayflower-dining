@@ -18,6 +18,9 @@ class DishTest < ActiveSupport::TestCase
         Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
         dish = Dish.get_dish("french toast")
         assert_equal(dish, Dish.where(name:"french toast").first)
+        id = dish.id
+        dish = Dish.get_dish(id)
+        assert_equal(dish, Dish.where(name:"french toast").first)
     end
 
     test 'update dish success' do
