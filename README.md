@@ -58,7 +58,7 @@ Each entry contains information for one dish on one certain day / menu (0 - 48, 
 The models directly interact with the DB and selectively implement CRUD (create, read, update, delete) for security reason.
 ### 1. Dish ###
 1. Create: use add_dish. Name is required. Other default values are star:0, mesh_soft:0, puree:"", portion_size:"", diet:"". Raises an exception if the dish already exists.
-2. Read: use get_dish. Only works by name. Raises an exception if the dish with that name does not exist.
+2. Read: use get_dish. Works by either id or name. The method automatically checks the query type. Raises an exception if the dish with that name does not exist.
 3. Update: use update_dish. Original name is required, followed by any attributes you want to update. Allowed attributes: new_name, star, mesh_soft, puree, portion_size, diet. 
 4. Destroy: use remove_dish. Raises an exception if the dish you specified does not exist or there is a menu connection with this dish in it (meaning you have to first remove this dish from menus before being able to delete the dish just for caution).
 

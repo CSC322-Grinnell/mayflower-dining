@@ -3,9 +3,15 @@ class Dish < ApplicationRecord
     validates :star, :inclusion => 0..3
     validates :mesh_soft, :inclusion => 0..2
 
-    def self.get_dish(name)
-        dish = self.where(name:name)
-        raise ArgumentError, "Dish doesn't exist." unless !dish.empty?
+    def self.get_dish(query)
+        if query.is_a? Integer
+            dish = self.where(id:query)
+        elsif query.is_a? String
+            dish = self.where(name:query)
+        else
+            raise ArgumentError, "Query can only be dish id or dish name."
+        end
+        raise ArgumentError, "Dish #{name} doesn't exist." unless !dish.empty?
         dish.first
     end
 

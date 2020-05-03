@@ -10,8 +10,8 @@ class MenuController < ApplicationController
     #when in production, use comented out line below to restrict
     #access of anauthorized users to all functionality except
     #menu display
+    include MenuHelper
     before_action :authenticate_admin, except: [:menu]
-
 
     # GET
     # displays the menu, accepts optional query parameter date
@@ -26,32 +26,32 @@ class MenuController < ApplicationController
 
 
     # GET
-    # edit the menu (add/remove dish)
+    # edit the menu (add/remove an EXISTING dish)
     # url parameters required:
-    #   - date
+    #   - date: dd-mm-YYYY format
     #   - action: add OR remove
     #   - dish: name of the dish
-    #   - type: type of the meal
-    #   _ permanent: true or false -> Is the edit permanent or temporary
+    #   - type: aka 0-3 stars--whether dish is on any special default menus
+    #   - permanent: true or false -> Is the edit permanent or temporary
     # if things go wrong, spits out a flash message
     def edit
       begin
          date = params[:date]
          action = params[:act]
          dish_name = params[:dish]
+         #TODO: these are currently unused fields; remove? 
          type = params[:type]
          permanent = params[:permanent]
          unless date != nil && dish_name != nil && action != nil && type != nil && permanent != nil
              raise "A querry parameter is missing"
          end
-         parsed_date = Date.parse(date)
-         start_date = Date.new(2019, 12, 8)
-         day = ((parsed_date - start_date) % 49 ) + 1
-         dish = Dish.get_dish(dish_name)
+         day = convert_date_to_day(date.gsub('/','-'))
+         dish = Dish.get_dish(dish_name.capitalize)
+         puts "dish: #{dish}, dish anem: #{dish_name}"
          if action == "remove"
-             Menu.remove_dish_by_day_type(dish,day,type, permanent)
+             DishMenu.remove_dish_from_cycle(day, dish)
          elsif action == "add"
-             Menu.add_dish_to_cycle(day,type,dish, permanent)
+             DishMenu.add_dish_to_cycle(day,dish)
          else
              raise "Unknown action"
          end
@@ -60,38 +60,7 @@ class MenuController < ApplicationController
          flash[:error] = e
      end
 
-     redirect_to '?date=' + date
-    end
-
-    private
-    # Local helper methods
-
-    # Takes a day in dd/mm/yyyy format and converts it to the number of days
-    # since 20/01/1999 mod 49, since dishes are stored from days 0-48
-    def convert_date_to_day(date)
-      begin
-        parse_string = "%d/%m/%Y"
-        start_date = Date.strptime("22/12/2011", parse_string)
-        curr_date = Date.strptime(date, parse_string)
-        return (curr_date - start_date).to_i % 49
-      rescue
-        parse_string = "%Y-%m-%d"
-        start_date = DateTime.strptime("2011-12-22", parse_string)
-        curr_date = DateTime.strptime(date, parse_string)
-        return (curr_date - start_date).to_i % 49
-      end
-    end
-
-    #finds the dishes for a given day
-    # spits out an array in the format [DishMenu]
-    def find_dishes_menus(date)
-      begin
-        day = convert_date_to_day(date)
-      rescue => e
-          error = "Some dishes of day #{day} not found. DB is in trouble!!"
-      end
-
-      return error, DishMenu.get_by_day(day)
+     redirect_to '/menu/' + date.gsub('/','-')
     end
 
 end

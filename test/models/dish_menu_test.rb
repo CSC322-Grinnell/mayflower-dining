@@ -16,10 +16,11 @@ class DishMenuTest < ActiveSupport::TestCase
     end
 
     test 'get menu' do
+        old_len = DishMenu.get_menu(48).length()
         Dish.add_dish(name: "french toast", star: 3, mesh_soft:2, puree:"", portion_size:"", diet:"1/2 serving")
         DishMenu.add_dish_to_cycle(48,"french toast")
         menu=DishMenu.get_by_day(48)
-        assert menu.length()==1
+        assert menu.length()==old_len+1
     end
 
     test 'update dish menu' do

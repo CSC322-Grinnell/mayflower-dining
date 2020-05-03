@@ -1,7 +1,7 @@
 require 'csv'
 # Create admin user
 begin
-  if Rails.env.development?
+  if Rails.env.development? or Rails.env.test?
     admin = User.new
     admin.email = "admin@example.com"
     admin.password = "password"
@@ -49,6 +49,8 @@ Dir.foreach(kMenuDir) do |filename|
 
       # Replace any leading non-word character with empty space
       name = name.sub!(/^\W*/, '')
+      # Strip repeated white space
+      name = name.gsub('  ', ' ')
 
       if !Dish.exists?(name: name)
         portion=table[row][1]

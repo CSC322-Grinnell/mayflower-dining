@@ -18,7 +18,7 @@
             <br />
               <div id="calendar"></div>
               <script type="text/javascript">
-               $(function () {
+               $(window).on("load", function () {
                    if (window.location.href.split("?").length > 1) {
                        $('#calendar').datetimepicker({
                            inline: true,
@@ -90,7 +90,7 @@
           <table class="table table-striped">
           <tr>
     <th>Dish Name</th>
-    <th>Dinner/Supper</th>
+    <th>Preset Meals</th>
     <% if current_user %> <%# for staff %>
         <th>HC Prep</th>
         <th>HC Leftover</th> 
@@ -110,11 +110,11 @@
                         if (dish.star == 0) 
                         ""
                         elsif (dish.star == 1) 
-                        "*"
+                        "Dinner"
                         elsif (dish.star == 2) 
-                        "**"
+                        "Supper"
                         else 
-                        "*/**"
+                        "D + S"
                         end %></td>
                         
                        <% if current_user %> <%# for staff %>
