@@ -60,7 +60,12 @@
 
         <h1>Menu for <span id="date">Today</span></h1>
         <script> // show the selected date
-            var menu_day = new Date(window.location.href.split("?")[1].split("=")[1].split("/")[1] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[0] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[2]);
+            var menu_day = new
+            Date(window.location.href.split("?")[1].split("=")[1].split("/")[1]+
+            "/" + 
+            window.location.href.split("?")[1].split("=")[1].split("/")[0] +
+            "/" + 
+            window.location.href.split("?")[1].split("=")[1].split("/")[2]);
             var today = new Date();
             if (menu_day.toDateString() != today.toDateString()) {
                 document.getElementById("date").innerHTML = menu_day.toDateString();
