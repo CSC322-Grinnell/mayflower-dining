@@ -5,13 +5,13 @@ class DishMenu < ApplicationRecord
     validates :day, presence: true,
         :inclusion => 0..48
 
-    def self.get_menu(day)
+    def self.get_by_day(day) #get all the dishes for a day
         raise ArgumentError, "Day out of range." unless 0<=day && day<=48
         entries=self.where(day:day)
         entries
     end
 
-    def self.get_dish_menu(day, name)
+    def self.get_by_day_and_dish(day, name)
         dish = Dish.get_dish(name)
         entry=self.where(dish_id:dish.id, day:day)
         raise ArgumentError, "Entry doesn't exist." unless !entry.empty?
@@ -21,13 +21,14 @@ class DishMenu < ApplicationRecord
     def self.add_dish_to_cycle(day, name)
         dish = Dish.get_dish(name)
         if !DishMenu.exists?(dish_id:dish.id, day:day)
-            DishMenu.create!(dish_id:dish.id, day:day)
+            DishMenu.create!(dish_id:dish.id, day:day, hc_prep:"", hc_leftover:"", bb_prep:"", bb_leftover:"", buckley_prep:"", buckley_leftover:"")
+
         end
     end
     
     # update prep / leftover for an entry
     def self.update_dish_menu(day:, name:, hc_prep:nil, hc_leftover:nil, bb_prep:nil, bb_leftover:nil, buckley_prep:nil, buckley_leftover:nil)
-        entry=DishMenu.get_dish_menu(day, name)
+        entry=DishMenu.get_by_day_and_dish(day, name)
         entry.hc_prep = (hc_prep == nil ? entry.hc_prep : hc_prep)
         entry.hc_leftover = (hc_leftover == nil ? entry.hc_leftover: hc_leftover)
         entry.bb_prep = (bb_prep == nil ? entry.bb_prep : bb_prep)
@@ -39,7 +40,7 @@ class DishMenu < ApplicationRecord
     end
 
     def self.remove_dish_from_cycle(day, name)
-        entry=DishMenu.get_dish_menu(day, name)
+        entry=DishMenu.get_by_day_and_dish(day, name)
         entry.destroy
         entry
     end

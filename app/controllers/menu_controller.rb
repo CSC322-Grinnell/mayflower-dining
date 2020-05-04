@@ -20,7 +20,7 @@ class MenuController < ApplicationController
     # Renders views/menu/menu.html
     def menu
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @daily_dishes = find_dishes(date)
+        error, @daily_dishes_menus = find_dishes_menus(date)
         flash[:error] = error
     end
 

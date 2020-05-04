@@ -19,23 +19,14 @@ module MenuHelper
     end
   end
 
-  #finds the dishes and their recipies for a given meal_type and given day
-  # spits out an array in the format [{name: ,recipies: [ingredient: ,portion_size:, comment:, step:, displayed:,]}]
-  def find_dishes(date)
+  #finds the dishes for a given day
+  # spits out an array in the format [DishMenu]
+  def find_dishes_menus(date)
     begin
       day = convert_date_to_day(date)
-      dishes_menu_arr = DishMenu.get_menu(day)
-      dishes = []
-      error = nil
-      dishes_menu_arr.each do |dish_menu|
-        dish = Dish.find(dish_menu.dish_id)
-        dishes.push(dish.name)
-      end
     rescue => e
-        error = "Some #{meal_type} dishes of day #{day} not found. DB is in trouble!!"
+        error = "Some dishes of day #{day} not found. DB is in trouble!!"
     end
-
-    return error, dishes
+    return error, DishMenu.get_by_day(day)
   end
-
 end
