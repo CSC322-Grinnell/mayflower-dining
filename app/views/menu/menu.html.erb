@@ -95,8 +95,8 @@
           <table class="table table-striped">
           <tr>
     <th>Dish Name</th>
-    <th>Preset Meals</th>
     <% if current_user %> <%# for staff %>
+        <th>Preset Meals</th>
         <th>HC Prep</th>
         <th>HC Leftover</th> 
         <th>BB Prep</th>
@@ -111,18 +111,17 @@
                      <%# print the table %>
                     <tr>
                         <td><%= dish.name %></td>
-                        <td><%= 
-                        if (dish.star == 0) 
-                        ""
-                        elsif (dish.star == 1) 
-                        "Dinner"
-                        elsif (dish.star == 2) 
-                        "Supper"
-                        else 
-                        "D + S"
-                        end %></td>
-                        
-                       <% if current_user %> <%# for staff %>
+                         <% if current_user %> <%# for staff %>
+                            <td><%= 
+                            if (dish.star == 0) 
+                            ""
+                            elsif (dish.star == 1) 
+                            "Dinner"
+                            elsif (dish.star == 2) 
+                            "Supper"
+                            else 
+                            "D + S"
+                            end %></td>
                             <td><%= dish_menu.hc_prep %></td>
                             <td><%= dish_menu.hc_leftover %></td> 
                             <td><%= dish_menu.bb_prep %></td>
