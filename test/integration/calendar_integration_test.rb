@@ -57,10 +57,11 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
         #test that all db info for correct day is displayed
         formated_date = other_date.split('/')
         formated_date = [formated_date[1],formated_date[0],formated_date[2]].join('/')
-        error, dishes = find_dishes(formated_date)
+        error, dish_menus = find_dishes_menus(formated_date)
         
-        for dish in dishes do
-            assert page.has_text?(dish.strip), "Dish #{dish} wasn't present on page"
+        for dish_menu in dish_menus do
+            dish_name = Dish.find(dish_menu.dish_id).name.strip
+            assert page.has_text?(dish_name), "Dish #{dish_name} wasn't present on page"
         end
     end
 
@@ -92,10 +93,11 @@ class CalendarIntegrationTest < Capybara::Rails::TestCase
         #test menu contents match db
         date = find('td.day.active.today')['data-day'].split('/')
         formated_date = [date[1],date[0],date[2]].join('/')
-        error, dishes = find_dishes(formated_date)
+        error, dish_menus = find_dishes_menus(formated_date)
         
-        for dish in dishes do
-            assert page.has_text?(dish.strip), "Dish #{dish} wasn't present on page"
+        for dish_menu in dish_menus do
+            dish_name = Dish.find(dish_menu.dish_id).name.strip
+            assert page.has_text?(dish_name), "Dish #{dish_name} wasn't present on page"
         end
     end
 end
