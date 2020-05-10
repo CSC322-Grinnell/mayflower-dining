@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
 #--------------------------------------- menu
-  # api to edit the menu (add dish, delete dish)
-  get 'menu/edit/(:date/:acts/:dish)', to: 'menu#edit'
-  # show menu(w/ buttons to delete/add dishes). date = optional parameter.
-  # If none specified, uses current date
   get 'menu/(:date)', to: 'menu#menu'
-  resources :menus
+  resources :menu
 
 #--------------------------------------- dishes
 #   api to edit the dish

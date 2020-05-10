@@ -19,13 +19,15 @@ class MenuController < ApplicationController
     # menu for today.
     # Renders views/menu/menu.html
     def menu
-        date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @daily_menus = find_menus(date)
+        @date = params[:date] || Time.now.strftime("%d/%m/%Y")
+        error, @daily_menus = find_menus(@date)
         flash[:error] = error
     end
 
-    def update
-        puts "abcdfefg"
+    def destroy
+        Menu.remove_dish_from_cycle(params[:id].to_i)
+        redirect_back fallback_location: '/'
+        # redirect_to :controller => 'menu', :action => 'menu'
     end
 
     # GET

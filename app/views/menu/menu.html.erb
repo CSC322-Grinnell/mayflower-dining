@@ -124,7 +124,8 @@
                                         <% end %> 
                                         <% if current_user && current_user.admin %>
                                         <td><a  href="/">TEMP remove dish</a></td>
-                                        <td><a  href="/">PERM remove dish</a></td>
+                                        <td><%= link_to "PERM remove dish",
+                                        'menu/'+menu.id.to_s, :method => :delete %></td>
                                         <% end %>
                                     </tr>
                                 <% end %>

@@ -13,7 +13,7 @@ class Menu < ApplicationRecord
 
     def self.get_by_day_and_dish(day, name)
         dish = Dish.get_dish(name)
-        entry=self.where(dish_id:dish.id, day:day)
+        entry=self.where(dish_id:dish.id, day:day) #Should return only one entry due to common sense but may return multiples
         raise ArgumentError, "Entry doesn't exist." unless !entry.empty?
         entry.first
     end
@@ -39,8 +39,8 @@ class Menu < ApplicationRecord
         entry
     end
 
-    def self.remove_dish_from_cycle(day, name)
-        entry=Menu.get_by_day_and_dish(day, name)
+    def self.remove_dish_from_cycle(id)
+        entry=Menu.find(id)
         entry.destroy
         entry
     end
