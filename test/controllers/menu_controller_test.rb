@@ -20,9 +20,9 @@ class MenuControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
         assert_select 'td', text: 'Gravy', count: 0
         # add dish to menu
-        get "/menu/edit/#{@date}/add/gravy/type/permanent"
+        get "/menu/edit/#{@date}/add/gravy"
         assert_response :redirect
-        # check that dish was correctly added to dishmenu
+        # check that dish was correctly added to menu
         get "/menu/#{@date}"
         assert_select 'td', 'Ham'
         assert_select 'td', 'Gravy'
@@ -36,9 +36,9 @@ class MenuControllerTest < ActionDispatch::IntegrationTest
         assert_response :success
         assert_select 'td', text: 'Ham', count: 1
         # add dish to menu
-        get "/menu/edit/#{@date}/remove/ham/type/permanent"
+        get "/menu/edit/#{@date}/remove/ham"
         assert_response :redirect
-        # check that dish was correctly removed from dishmenu
+        # check that dish was correctly removed from menu
         get "/menu/#{@date}"
         assert_response :success
         assert_select 'td', text: 'Ham', count: 0

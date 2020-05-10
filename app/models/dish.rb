@@ -40,7 +40,7 @@ class Dish < ApplicationRecord
     def self.remove_dish(name)
         dish = self.get_dish(name)
         raise ArgumentError, "Dependent menu exist. Remove from menu before removing from dishes." \
-            unless not DishMenu.exists?(dish_id:dish.id)
+            unless not Menu.exists?(dish_id:dish.id)
                 # destroy dish
                 dish.destroy
                 dish

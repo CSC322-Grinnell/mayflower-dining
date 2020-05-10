@@ -1,156 +1,140 @@
 <main role="main" class="container">
 
-  <body>
-  <% if flash[:error] %>
-    <div class="notice"><%= flash[:error] %></div>
-  <% end %>
-  <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-md-4">
-            <h1>Menu</h1>
-            <ul>
-              <a href="/" id="todText"><li>See today's menu</li></a>
-              <script>
-                  var today = new Date();
-                  document.getElementById("todText").href = "/?date=" + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-              </script>
-            </ul>
-            <br />
-              <div id="calendar"></div>
-              <script type="text/javascript">
-               $(window).on("load", function () {
-                   if (window.location.href.split("?").length > 1) {
-                       $('#calendar').datetimepicker({
-                           inline: true,
-                           locale: 'en-us',
-                           format: 'L',
-                           defaultDate: window.location.href.split("?")[1].split("=")[1].split("/")[1] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[0] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[2]
-                       });
-                   } else {
-                       $('#calendar').datetimepicker({
-                           inline: true,
-                           locale: 'en-us',
-                           format: 'L',
-                       });
-                   }
-                   $('div tbody').on('click', 'tr > .day',function(){
-                       var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2];
-                       //break url at current query (if there wasnt one, it will just give whole url)
-                       // and concat new query on the end
-                       var url_prefix = window.location.href.split("?");
-                       window.location.href = url_prefix[0] + '?date=' + date;
-                   })
-               });
-           </script>
-           <br />
-            <% if current_user %>
-              <%= link_to(button_tag("Log out", class:"btn btn-primary"),
-                          log_out_path, method: :delete)%>
-              <% if current_user.admin %>
-                <%= link_to(button_tag("Admin Tasks", class:"btn btn-primary"),
-                            admin_path) %>
-              <% end %>
-            <% else %>
-              <%= link_to(button_tag("Staff Login",  class:"btn btn-primary"),
-                          log_in_path) %>
-            <% end %>
-
-        </div>
-      <div class="col-sm-12 col-md-8">
-
-        <h1>Menu for <span id="date">Today</span></h1>
-        <script> // show the selected date
-            var menu_day = new
-            Date(window.location.href.split("?")[1].split("=")[1].split("/")[1]+
-            "/" + 
-            window.location.href.split("?")[1].split("=")[1].split("/")[0] +
-            "/" + 
-            window.location.href.split("?")[1].split("=")[1].split("/")[2]);
-            var today = new Date();
-            if (menu_day.toDateString() != today.toDateString()) {
-                document.getElementById("date").innerHTML = menu_day.toDateString();
-            }
-        </script>
-        <hr class="pad">
-
-        <div>
-          <% if current_user && current_user.admin %>
-          <!--TODO: Select Search Dropdown-->
-          <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
-          <br>
-          <a href="/" id="dinner_add_link"><button class="btn btn-primary">Add Dish to Menu</button></a>
-          <p>&nbsp;</p>
-          <script>
-          function url() {
-              if (window.location.href.split("?").length > 1) {
-                  date = window.location.href.split("?")[1].split("=")[1];
-              } else {
-                  today = new Date();
-                  date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-              }
-              document.getElementById("dinner_add_link").href = "/menu/edit?date=" + date + "&test=1&act=add&type=Dinner&permanent=true&dish=" + document.getElementById("dinner_field").value.replace(" ", "%20");
-              }
-          </script>
-          <% end %>
-          <table class="table table-striped">
-          <tr>
-    <th>Dish Name</th>
-    <% if current_user %> <%# for staff %>
-        <th>Preset Meals</th>
-        <th>HC Prep</th>
-        <th>HC Leftover</th> 
-        <th>BB Prep</th>
-        <th>BB Leftover</th>
-        <th>Buckley Prep</th>
-        <th>Buckley Leftover</th>
-    <% end %>
-  </tr>
-              <tbody>
-                    <% @daily_dishes_menus.each do |dish_menu|%>
-                    <% dish = Dish.find(dish_menu.dish_id) %>
-                     <%# print the table %>
-                    <tr>
-                        <td><%= dish.name %></td>
-                         <% if current_user %> <%# for staff %>
-                            <td><%= 
-                            if (dish.star == 0) 
-                            ""
-                            elsif (dish.star == 1) 
-                            "Dinner"
-                            elsif (dish.star == 2) 
-                            "Supper"
-                            else 
-                            "D + S"
-                            end %></td>
-                            <td><%= dish_menu.hc_prep %></td>
-                            <td><%= dish_menu.hc_leftover %></td> 
-                            <td><%= dish_menu.bb_prep %></td>
-                            <td><%= dish_menu.bb_leftover %></td> 
-                            <td><%= dish_menu.buckley_prep %></td>
-                            <td><%= dish_menu.buckley_leftover %></td> 
-                        <% end %> 
-                        <% if current_user && current_user.admin %>
-                        <td><a  href="/">TEMP remove dish</a></td>
-                        <td><a  href="/">PERM remove dish</a></td>
-                        <script>
+    <body>
+        <% if flash[:error] %>
+            <div class="notice"><%= flash[:error] %></div>
+        <% end %>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-4">
+                    <h1>Menu</h1>
+                    <ul>
+                    <a href="/" id="todText"><li>See today's menu</li></a>
+                    <script>
+                        var today = new Date();
+                        document.getElementById("todText").href = "/?date=" + today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
+                    </script>
+                    </ul>
+                    <br />
+                    <div id="calendar"></div>
+                    <script type="text/javascript">
+                        $(window).on("load", function () {
                             if (window.location.href.split("?").length > 1) {
-                                date = window.location.href.split("?")[1].split("=")[1];
+                                $('#calendar').datetimepicker({
+                                    inline: true,
+                                    locale: 'en-us',
+                                    format: 'L',
+                                    defaultDate: window.location.href.split("?")[1].split("=")[1].split("/")[1] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[0] + "/" + window.location.href.split("?")[1].split("=")[1].split("/")[2]
+                                });
                             } else {
-                                today = new Date();
-                                date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
+                                $('#calendar').datetimepicker({
+                                    inline: true,
+                                    locale: 'en-us',
+                                    format: 'L',
+                                });
                             }
-                            document.getElementById("del_dinner_temp_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=false&dish=<%= dish %>"
-                            document.getElementById("del_dinner_perm_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=true&dish=<%= dish %>"
-                        </script>
-                        <% end %>
-                    </tr>
-                  <% end %>
-              </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
+                            $('div tbody').on('click', 'tr > .day',function(){
+                                var date = $(this).data().day.split("/")[1] + "/" + $(this).data().day.split("/")[0] + "/" + $(this).data().day.split("/")[2];
+                                //break url at current query (if there wasnt one, it will just give whole url)
+                                // and concat new query on the end
+                                var url_prefix = window.location.href.split("?");
+                                window.location.href = url_prefix[0] + '?date=' + date;
+                            })
+                        });
+                    </script>
+                    <br />
+                    <% if current_user %>
+                    <%= link_to(button_tag("Log out", class:"btn btn-primary"),
+                                log_out_path, method: :delete)%>
+                    <% if current_user.admin %>
+                        <%= link_to(button_tag("Admin Tasks", class:"btn btn-primary"),
+                                    admin_path) %>
+                    <% end %>
+                    <% else %>
+                    <%= link_to(button_tag("Staff Login",  class:"btn btn-primary"),
+                                log_in_path) %>
+                    <% end %>
 
-  </body>
+                </div>
+                <div class="col-sm-12 col-md-8">
+
+                    <h1>Menu for <span id="date">Today</span></h1>
+                    <script> // show the selected date
+                        var menu_day = new
+                        Date(window.location.href.split("?")[1].split("=")[1].split("/")[1]+
+                        "/" + 
+                        window.location.href.split("?")[1].split("=")[1].split("/")[0] +
+                        "/" + 
+                        window.location.href.split("?")[1].split("=")[1].split("/")[2]);
+                        var today = new Date();
+                        if (menu_day.toDateString() != today.toDateString()) {
+                            document.getElementById("date").innerHTML = menu_day.toDateString();
+                        }
+                    </script>
+                    <hr class="pad">
+
+                    <div>
+                        <% if current_user && current_user.admin %>
+                            <!--TODO: Select Search Dropdown-->
+                            <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
+                            <br>
+                            <button class="btn btn-primary">Add Dish to
+                            Menu</button></a> <%# TODO: this button has not been
+                            linked to back end yet %>
+                            <p>&nbsp;</p>
+                        <% end %>
+                        
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Dish Name</th>
+                                <% if current_user %> <%# for staff %>
+                                    <th>Preset Meals</th>
+                                    <th>HC Prep</th>
+                                    <th>HC Leftover</th> 
+                                    <th>BB Prep</th>
+                                    <th>BB Leftover</th>
+                                    <th>Buckley Prep</th>
+                                    <th>Buckley Leftover</th>
+                                <% end %>
+                            </tr>
+                            <tbody>
+                                <% @daily_menus.each do |menu|%>
+                                    <% dish = Dish.find(menu.dish_id) %>
+                                
+                                    <%# print the table %>
+                                    <tr>
+                                        <td><%= dish.name %></td>
+                                        <% if current_user %> <%# for staff %>
+                                            <td><%= 
+                                            if (dish.star == 0) 
+                                            ""
+                                            elsif (dish.star == 1) 
+                                            "Dinner"
+                                            elsif (dish.star == 2) 
+                                            "Supper"
+                                            else 
+                                            "D + S"
+                                            end %></td>
+                                            <td><%= best_in_place menu, :hc_prep, :as => :input %></td>
+                                            <td><%= menu.hc_leftover %></td> 
+                                            <td><%= menu.bb_prep %></td>
+                                            <td><%= menu.bb_leftover %></td> 
+                                            <td><%= menu.buckley_prep %></td>
+                                            <td><%= menu.buckley_leftover %></td> 
+                                        <% end %> 
+                                        <% if current_user && current_user.admin %>
+                                        <td><a  href="/">TEMP remove dish</a></td>
+                                        <td><%= link_to "PERM remove dish",
+                                        'menu/'+menu.id.to_s, :method => :delete %></td>
+                                        <% end %>
+                                    </tr>
+                                <% end %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
 </main>

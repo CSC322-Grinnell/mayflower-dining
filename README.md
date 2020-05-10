@@ -33,7 +33,7 @@ Here is a diagram of the current database.
 Here is a detailed explanation of each table and its content.
 
 ### 1. Dishes ###
-Has the dishes. Each dish should only appear once in here. Has a one to many relationship with entires in dishes_menus.
+Has the dishes. Each dish should only appear once in here. Has a one to many relationship with entires in menus.
 1. id: dish id. Auto-incremented.
 2. name: dish name.
 3. star: 0-3. 0 for no star. 1 for \*. 2 for \*\*. 3 for \*/\*\*. The number of stars represents which, if any, special menus (for people who can't choose their own meals, or otherwise) a dish is on. 0 stars indicate it is on no special menus, 1 star for the dinner (lunch) special menu, 2 stars for the supper (dinner) special menu and 3 stars for both dinner and supper special menus.
@@ -41,9 +41,9 @@ Has the dishes. Each dish should only appear once in here. Has a one to many rel
 5. puree: number of puree servings and puree texture.
 6. portion_size: portion size of the dish.
 7. diet: portion size for diet.
-### 2. Dishes_Menus ###
+### 2. menus ###
 Each entry contains information for one dish on one certain day / menu (0 - 48, a 7-week cycle).
-1. id: dish_menu id. Auto-incremented.
+1. id: menu id. Auto-incremented.
 2. dish_id: the dish whose information is contained in this entry.
 3. day: the index of the menu (0-48) in a 7-week cycle.
 4. hc_prep: the prepared amount for dining location hc.
@@ -62,10 +62,10 @@ The models directly interact with the DB and selectively implement CRUD (create,
 3. Update: use update_dish. Original name is required, followed by any attributes you want to update. Allowed attributes: new_name, star, mesh_soft, puree, portion_size, diet. 
 4. Destroy: use remove_dish. Raises an exception if the dish you specified does not exist or there is a menu connection with this dish in it (meaning you have to first remove this dish from menus before being able to delete the dish just for caution).
 
-### 2. Dishes_Menus ###
+### 2. Menus ###
 1. Create: use add_dish_to_cycle. Takes a day and a dish name.
 2. Read: use get_by_day if you want to get dishes of a day, and get_by_day_and_dish if you want to get a specific entry.
-3. Update: use update_dish_menu. Day and name are required arguments, followed by any parameters you want update: hc_prep, hc_leftover, bb_prep, bb_leftover, buckley_prep, buckley_leftover. Can only be used to update prep and leftover.
+3. Update: use update_menu. Day and name are required arguments, followed by any parameters you want update: hc_prep, hc_leftover, bb_prep, bb_leftover, buckley_prep, buckley_leftover. Can only be used to update prep and leftover.
 4. Destroy: use remove_dish_from_cycle. Takes a day and a dish name.
 
 ## Controllers, routes and view ##
