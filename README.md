@@ -103,6 +103,7 @@ Then run the server
 rails s
 ```
 
+If these steps did not work for you, please look in the file `setup.txt` for more explicit steps that we had to follow in order to get started.
 
 ## Honorable mentions ##
 
