@@ -1,12 +1,6 @@
 <main role="main" class="container">
 
     <body>
-    <% menu = Menu.first() %> <%# debugging %>
-    <p>
-    <h1> LOVE </h1>
-    <%= best_in_place menu, :hc_prep, :as => :textarea,
-                    :place_holder => 'place holder'%>
-    </p>
         <% if flash[:error] %>
             <div class="notice"><%= flash[:error] %></div>
         <% end %>
@@ -84,19 +78,10 @@
                             <!--TODO: Select Search Dropdown-->
                             <input type="text" class="form-control" id="dinner_field" onkeydown="url()">
                             <br>
-                            <a href="/" id="dinner_add_link"><button class="btn btn-primary">Add Dish to Menu</button></a>
+                            <button class="btn btn-primary">Add Dish to
+                            Menu</button></a> <%# TODO: this button has not been
+                            linked to back end yet %>
                             <p>&nbsp;</p>
-                            <script>
-                                function url() {
-                                    if (window.location.href.split("?").length > 1) {
-                                        date = window.location.href.split("?")[1].split("=")[1];
-                                    } else {
-                                        today = new Date();
-                                        date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-                                    }
-                                    document.getElementById("dinner_add_link").href = "/menu/edit?date=" + date + "&test=1&act=add&type=Dinner&permanent=true&dish=" + document.getElementById("dinner_field").value.replace(" ", "%20");
-                                }
-                            </script>
                         <% end %>
                         
                         <table class="table table-striped">
@@ -140,16 +125,6 @@
                                         <% if current_user && current_user.admin %>
                                         <td><a  href="/">TEMP remove dish</a></td>
                                         <td><a  href="/">PERM remove dish</a></td>
-                                        <script>
-                                            if (window.location.href.split("?").length > 1) {
-                                                date = window.location.href.split("?")[1].split("=")[1];
-                                            } else {
-                                                today = new Date();
-                                                date = today.getDate() + "/" + (today.getMonth() + 1) + "/" + today.toDateString().split(" ")[3];
-                                            }
-                                            document.getElementById("del_dinner_temp_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=false&dish=<%= dish %>"
-                                            document.getElementById("del_dinner_perm_<%= dish %>").href = "/menu/edit?date=" + date + "&test=1&act=remove&type=Dinner&permanent=true&dish=<%= dish %>"
-                                        </script>
                                         <% end %>
                                     </tr>
                                 <% end %>
