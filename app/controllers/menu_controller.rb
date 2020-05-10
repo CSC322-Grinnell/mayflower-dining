@@ -20,10 +20,13 @@ class MenuController < ApplicationController
     # Renders views/menu/menu.html
     def menu
         date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @daily_dishes_menus = find_dishes_menus(date)
+        error, @daily_menus = find_menus(date)
         flash[:error] = error
     end
 
+    def update
+        puts "abcdfefg"
+    end
 
     # GET
     # edit the menu (add/remove an EXISTING dish)
@@ -49,9 +52,9 @@ class MenuController < ApplicationController
          dish = Dish.get_dish(dish_name.capitalize)
          puts "dish: #{dish}, dish anem: #{dish_name}"
          if action == "remove"
-             DishMenu.remove_dish_from_cycle(day, dish)
+             Menu.remove_dish_from_cycle(day, dish)
          elsif action == "add"
-             DishMenu.add_dish_to_cycle(day,dish)
+             Menu.add_dish_to_cycle(day,dish)
          else
              raise "Unknown action"
          end

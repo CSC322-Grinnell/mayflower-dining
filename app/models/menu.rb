@@ -1,5 +1,5 @@
-class DishMenu < ApplicationRecord
-    self.table_name = "dishes_menus"
+class Menu < ApplicationRecord
+    self.table_name = "menus"
     belongs_to :dish
 
     validates :day, presence: true,
@@ -20,15 +20,15 @@ class DishMenu < ApplicationRecord
 
     def self.add_dish_to_cycle(day, name)
         dish = Dish.get_dish(name)
-        if !DishMenu.exists?(dish_id:dish.id, day:day)
-            DishMenu.create!(dish_id:dish.id, day:day, hc_prep:"", hc_leftover:"", bb_prep:"", bb_leftover:"", buckley_prep:"", buckley_leftover:"")
+        if !Menu.exists?(dish_id:dish.id, day:day)
+            Menu.create!(dish_id:dish.id, day:day, hc_prep:"111", hc_leftover:"", bb_prep:"", bb_leftover:"", buckley_prep:"", buckley_leftover:"")
 
         end
     end
     
     # update prep / leftover for an entry
-    def self.update_dish_menu(day:, name:, hc_prep:nil, hc_leftover:nil, bb_prep:nil, bb_leftover:nil, buckley_prep:nil, buckley_leftover:nil)
-        entry=DishMenu.get_by_day_and_dish(day, name)
+    def self.update_menu(day:, name:, hc_prep:nil, hc_leftover:nil, bb_prep:nil, bb_leftover:nil, buckley_prep:nil, buckley_leftover:nil)
+        entry=Menu.get_by_day_and_dish(day, name)
         entry.hc_prep = (hc_prep == nil ? entry.hc_prep : hc_prep)
         entry.hc_leftover = (hc_leftover == nil ? entry.hc_leftover: hc_leftover)
         entry.bb_prep = (bb_prep == nil ? entry.bb_prep : bb_prep)
@@ -40,7 +40,7 @@ class DishMenu < ApplicationRecord
     end
 
     def self.remove_dish_from_cycle(day, name)
-        entry=DishMenu.get_by_day_and_dish(day, name)
+        entry=Menu.get_by_day_and_dish(day, name)
         entry.destroy
         entry
     end

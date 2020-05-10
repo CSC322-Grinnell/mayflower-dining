@@ -67,7 +67,7 @@ Dir.foreach(kMenuDir) do |filename|
       else
         dish = Dish.find_by(name: name)
       end
-      DishMenu.add_dish_to_cycle(day,dish.name)
+      Menu.add_dish_to_cycle(day,dish.name)
 
       # Add the id for the newly created dish
       row += 1

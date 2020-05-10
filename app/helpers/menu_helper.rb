@@ -20,13 +20,13 @@ module MenuHelper
   end
 
   #finds the dishes for a given day
-  # spits out an array in the format [DishMenu]
-  def find_dishes_menus(date)
+  # spits out an array in the format [Menu]
+  def find_menus(date)
     begin
       day = convert_date_to_day(date)
     rescue => e
         error = "Some dishes of day #{day} not found. DB is in trouble!!"
     end
-    return error, DishMenu.get_by_day(day)
+    return error, Menu.get_by_day(day)
   end
 end

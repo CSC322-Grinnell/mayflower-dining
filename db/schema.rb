@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_145854) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "dishes_menus", force: :cascade do |t|
+  create_table "menus", force: :cascade do |t|
     t.bigint "dish_id"
     t.integer "day"
     t.string "hc_prep"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2020_04_15_145854) do
     t.string "bb_leftover"
     t.string "buckley_prep"
     t.string "buckley_leftover"
-    t.index ["dish_id"], name: "index_dishes_menus_on_dish_id"
+    t.index ["dish_id"], name: "index_menus_on_dish_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,6 +1,6 @@
 class CreateDishesMenus < ActiveRecord::Migration[5.2]
   def change
-    create_table :dishes_menus do |t|
+    create_table :menus do |t|
       t.belongs_to :dish
       t.integer :day # 0-48
       t.string :hc_prep
