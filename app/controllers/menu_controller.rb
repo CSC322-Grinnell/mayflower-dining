@@ -19,8 +19,13 @@ class MenuController < ApplicationController
     # menu for today.
     # Renders views/menu/menu.html
     def menu
-        @date = params[:date] || Time.now.strftime("%d/%m/%Y")
-        error, @daily_menus = find_menus(@date)
+        date = params[:date] || Time.now.strftime("%d/%m/%Y")
+        begin
+            day = convert_date_to_day(date)
+        rescue => e
+              error = "Some dishes of day #{day} not found. DB is in trouble!!"
+        end
+        @daily_menus = Menu.get_by_day(day)
         flash[:error] = error
     end
 

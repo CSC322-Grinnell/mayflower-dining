@@ -21,7 +21,7 @@ class Menu < ApplicationRecord
     def self.add_dish_to_cycle(day, name)
         dish = Dish.get_dish(name)
         if !Menu.exists?(dish_id:dish.id, day:day)
-            Menu.create!(dish_id:dish.id, day:day, hc_prep:"111", hc_leftover:"", bb_prep:"", bb_leftover:"", buckley_prep:"", buckley_leftover:"")
+            Menu.create!(dish_id:dish.id, day:day, hc_prep:"", hc_leftover:"", bb_prep:"", bb_leftover:"", buckley_prep:"", buckley_leftover:"")
 
         end
     end

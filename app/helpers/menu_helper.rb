@@ -18,15 +18,4 @@ module MenuHelper
       return (curr_date - start_date).to_i % 49
     end
   end
-
-  #finds the dishes for a given day
-  # spits out an array in the format [Menu]
-  def find_menus(date)
-    begin
-      day = convert_date_to_day(date)
-    rescue => e
-        error = "Some dishes of day #{day} not found. DB is in trouble!!"
-    end
-    return error, Menu.get_by_day(day)
-  end
 end
